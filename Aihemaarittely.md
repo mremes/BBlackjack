@@ -25,8 +25,7 @@ avoimena (arvopuoli näkyvillä) ja jakajan korteista ensimmäinen avoimena ja t
 Korttien jaon jälkeen alkaa lisäkorttien jakaminen alkaen pöydän vasemmasta pelaajasta. Pelaaja voi ottaa yhden tai useamman kortin
 niin kauan kuin hänen kätensä yhteispistemäärä on 20 tai alle. Pelaaja voi lopettaa korttien ottamisen milloin tahansa,
 jos korttien yhteispistemäärä ei ylitä 21. Jos otettujen korttien yhteispistemäärä nousee yli 21, pelaaja häviää pelin ja jakaja
-saa hänen panoksensa. Jos otettujen korttien yhteispistemäärä on 21, niin pelaajalla on nk. ventti, jolloin pelaaja ei voi hä-
-vitä muuta kuin jakajan blackjackille. Blackjack on kahden kortin yhdistelmä, jossa toinen korteista on ässä ja toinen kymppi
+saa hänen panoksensa. Jos otettujen korttien yhteispistemäärä on 21, niin pelaajalla on nk. ventti, jolloin pelaaja ei voi hävitä muuta kuin jakajan blackjackille. Blackjack on kahden kortin yhdistelmä, jossa toinen korteista on ässä ja toinen kymppi
 tai jokin kuvakortti. Blackjack voittaa kaikki kädet ja tasoittaa jakajan blackjackin kanssa.
 
 #### Pelaajan ratkaisut
