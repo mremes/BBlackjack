@@ -7,10 +7,10 @@ public enum Maa {
     @Override
     public String toString() {
         switch (this) {
-            case HERTTA: return "Hertta";
-            case RUUTU: return "Ruutu";
-            case RISTI: return "Risti";
-            case PATA: return "Pata";
+            case HERTTA: return "H";
+            case RUUTU: return "R";
+            case RISTI: return "X";
+            case PATA: return "P";
             default: throw new IllegalArgumentException();
         }
     }

@@ -8,6 +8,11 @@ public class Kortti {
         this.maa = maa;
         this.arvo = arvo;
     }
+    
+    public Kortti(Arvo arvo) {
+        this.maa = null;
+        this.arvo = arvo;
+    }
 
     public Arvo getArvo() {
         return arvo;
@@ -19,6 +24,12 @@ public class Kortti {
     
     @Override
     public String toString() {
-        return this.maa + " " + this.arvo;
+        return this.maa + " " + this.arvo.getKirjain();
     }
+    
+    public int getNumeroarvo() {
+        return this.arvo.getArvo();
+    }
+    
+   
 }
