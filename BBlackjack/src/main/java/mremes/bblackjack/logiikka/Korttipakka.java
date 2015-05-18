@@ -7,14 +7,14 @@ public class Korttipakka {
     private Kortti kortit[];
 
     public Korttipakka() {
-        this.kortit = new Kortti[2];
+        this.kortit = kortit();
 
     }
     
     public Kortti[] kortit() {
         String[] arvot = annaArvot();
         Maa[] maat = annaMaat();
-        Kortti[] kortit = new Kortti[52];
+        Kortti[] kortit = new Kortti[51];
         int i = 0;
         for (Maa maa : maat) {
             for (String arvo : arvot) {
