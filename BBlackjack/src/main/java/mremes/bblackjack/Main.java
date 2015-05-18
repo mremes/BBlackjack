@@ -15,5 +15,9 @@ public class Main {
 
     public static void main(String[] args) {
         Korttipakka pakka = new Korttipakka();
+        Kortti[] kortit = pakka.getKortit();
+        for (Kortti kortit1 : kortit) {
+            System.out.println(kortit1);
+        }
     }
 }

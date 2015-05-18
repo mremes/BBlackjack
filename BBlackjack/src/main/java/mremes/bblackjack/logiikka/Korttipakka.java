@@ -7,53 +7,42 @@ public class Korttipakka {
     private Kortti kortit[];
 
     public Korttipakka() {
-        this.kortit = kortit();
+        this.kortit = new Kortti[52];
+        int i = 0;
+        for (Arvo arvo : annaArvot()) {
+            kortit[i] = new Kortti(Maa.HERTTA, arvo);
+            kortit[i+1] = new Kortti(Maa.RUUTU, arvo);
+            kortit[i+2] = new Kortti(Maa.PATA, arvo);
+            kortit[i+3] = new Kortti(Maa.RISTI, arvo);
+            i = i + 4;
+        }
 
     }
-    
+
     public Kortti[] kortit() {
-        String[] arvot = annaArvot();
-        Maa[] maat = annaMaat();
         Kortti[] kortit = new Kortti[51];
-        int i = 0;
-        for (Maa maa : maat) {
-            for (String arvo : arvot) {
-                kortit[i] = new Kortti(maa, arvo);
-                i++;
-            }
-        }
         return kortit;
     }
 
-    public String[] annaArvot() {
-        String[] arvot = new String[12];
-        arvot[0] = "2";
-        arvot[1] = "3";
-        arvot[2] = "4";
-        arvot[3] = "5";
-        arvot[4] = "6";
-        arvot[5] = "7";
-        arvot[6] = "8";
-        arvot[7] = "9";
-        arvot[8] = "T";
-        arvot[9] = "J";
-        arvot[10] = "Q";
-        arvot[11] = "K";
-        arvot[12] = "A";
+    public Arvo[] annaArvot() {
+        Arvo[] arvot = new Arvo[13];
+        arvot[0] = Arvo.KAKKONEN;
+        arvot[1] = Arvo.KOLMONEN;
+        arvot[2] = Arvo.NELONEN;
+        arvot[3] = Arvo.VITONEN;
+        arvot[4] = Arvo.KUTONEN;
+        arvot[5] = Arvo.SEISKA;
+        arvot[6] = Arvo.KASI;
+        arvot[7] = Arvo.YSI;
+        arvot[8] = Arvo.KYMPPI;
+        arvot[9] = Arvo.JATKA;
+        arvot[10] = Arvo.ROUVA;
+        arvot[11] = Arvo.KUNKKU;
+        arvot[12] = Arvo.ASSA;
 
         return arvot;
     }
 
-    public Maa[] annaMaat() {
-        Maa[] maat = new Maa[3];
-        maat[0] = Maa.HERTTA;
-        maat[1] = Maa.PATA;
-        maat[2] = Maa.RISTI;
-        maat[3] = Maa.RUUTU;
-        return maat;
-
-    }
-    
     public Kortti[] getKortit() {
         return this.kortit;
     }
