@@ -5,6 +5,8 @@
  */
 package mremes.bblackjack;
 
+import mremes.bblackjack.logiikka.*;
+
 /**
  *
  * @author mattiremes
@@ -12,6 +14,6 @@ package mremes.bblackjack;
 public class Main {
 
     public static void main(String[] args) {
-        System.out.println("Testi.");
+        Korttipakka pakka = new Korttipakka();
     }
 }
