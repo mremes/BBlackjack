@@ -109,7 +109,7 @@ public class Game {
             } else if (jakajanKasi.onBlackjack() && this.paikka.getKasi().onBlackjack()) {
                 System.out.println("Push");
                 money += panos;
-            } else if (jakajanKasi.getArvo() > 21) {
+            } else if (jakajanKasi.getArvo() > 21 && !jakajanKasi.onBlackjack()) {
                 System.out.println("Dealer's bust, you win " + panos * 2 + "!");
                 money += panos * 2;
             } else if (jakajanKasi.getArvo() > this.paikka.getKasi().getArvo() && jakajanKasi.getArvo() < 22) {
