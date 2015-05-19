@@ -1,34 +1,47 @@
 package mremes.bblackjack.logiikka;
 
-public class Paikka {
+import java.util.ArrayList;
+
+public class Paikka implements Comparable<Paikka> {
     private int nro;
     private Kasi kasi;
-    private Kasi doubled;
-    private int panos;
+    private Kasi splitted;
     
     public Paikka(int nro) {
         this.nro = nro;
         this.kasi = null;
-        this.panos = 0;
-        this.doubled = null;
+        this.splitted = null;
     }
 
     public void setKasi(Kasi kasi) {
         this.kasi = kasi;
     }
 
-    public void setPanos(int panos) {
-        this.panos = panos;
+    public void setDoubled(Kasi splitted) {
+        this.splitted = splitted;
     }
-
-    public void setDoubled(Kasi doubled) {
-        this.doubled = doubled;
-    }
-    
-    
 
     public Kasi getKasi() {
         return this.kasi;
     }
+
+    public Kasi getSplitted() {
+        return this.splitted;
+    }
     
+    public ArrayList<Kasi> getKadet() {
+        ArrayList<Kasi> kadet = new ArrayList();
+        kadet.add(this.kasi);
+        kadet.add(this.splitted);
+        return kadet;
+    }
+
+    public int getNro() {
+        return nro;
+    }
+
+    @Override
+    public int compareTo(Paikka k) {
+        return this.nro - k.nro;
+    }
 }

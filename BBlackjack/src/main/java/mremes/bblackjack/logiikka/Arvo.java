@@ -19,6 +19,7 @@ public enum Arvo {
     
     private final int numeroarvo;
     private final String kirjain;
+    
     Arvo(int arvo, String kirjain) {
         this.numeroarvo = arvo;
         this.kirjain = kirjain;

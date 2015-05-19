@@ -1,7 +1,5 @@
 package mremes.bblackjack.logiikka;
 
-import java.util.ArrayList;
-
 public class Korttipakka {
 
     private Kortti kortit[];

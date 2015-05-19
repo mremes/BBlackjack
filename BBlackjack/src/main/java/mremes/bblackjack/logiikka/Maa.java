@@ -2,16 +2,20 @@ package mremes.bblackjack.logiikka;
 
 public enum Maa {
 
-    HERTTA, RUUTU, RISTI, PATA;
+    HERTTA("♥"),
+    RUUTU("♦"),
+    RISTI("♣"),
+    PATA("♠");
+    
+    private final String kirjain;
+    
+    Maa(String kirjain) {
+        this.kirjain = kirjain;
+    }
 
     @Override
     public String toString() {
-        switch (this) {
-            case HERTTA: return "H";
-            case RUUTU: return "R";
-            case RISTI: return "X";
-            case PATA: return "P";
-            default: throw new IllegalArgumentException();
-        }
+        return this.kirjain;
     }
+    
 }

@@ -11,6 +11,7 @@ public class Game {
     private Kasi jakajanKasi;
     private int counter;
     private Scanner lukija;
+    private int rahat;
 
     public Game(Scanner lukija) {
 
@@ -19,119 +20,88 @@ public class Game {
         this.jakajanKasi = null;
         this.counter = 0;
         this.lukija = lukija;
+        this.rahat = 1000;
     }
 
     public void play() throws InterruptedException {
         sekoitaKortit();
-        int money = 1000;
         while (true) {
-            System.out.println("Your stack: " + money);
+            int money = 1000;
+            System.out.println("Your stack: " + rahat);
             System.out.print("Place your bet: ");
             int panos = Integer.parseInt(lukija.nextLine());
-            money -= panos;
-            jaaKortit();
-            int i = 0;
-            System.out.println("Dealer: " + "[H] " + jakajanKasi.getKortit().get(1) + " (" + jakajanKasi.getKortit().get(1).getNumeroarvo() + ")");
-            while (i < 1) {
-                int reg = 0;
-                Kasi kasi = this.paikka.getKasi();
-                while (true) {
-                    if (!kasi.onBlackjack()) {
-                        System.out.print("You: ");
-                        System.out.println(kasi + " (" + kasi.getArvo() + ")");
-                    } else {
-                        break;
-                    }
-                    if (reg == 0) {
-                        System.out.print("HIT, STAND, DOUBLE: ");
-                        String valinta = lukija.nextLine();
-                        if (valinta.equals("HIT")) {
-                            Kortti k = this.kortit.get(counter);
-                            counter++;
-                            System.out.println("You've got: " + k.toString());
-                            kasi.lisaaKortti(k);
-                        } else if (valinta.equals("STAND")) {
-                            break;
-                        } else if (valinta.equals("DOUBLE")) {
-                            money -= panos;
-                            panos = panos * 2;
-                            Kortti k = this.kortit.get(counter);
-                            counter++;
-                            System.out.println("You've got: " + k.toString());
-                            kasi.lisaaKortti(k);
-                            System.out.println("Your hand: ");
-                            System.out.println(kasi + " (" + kasi.getArvo() + ")");
-                            break;
-                        }
-                    } else {
-                        System.out.print("HIT, STAND: ");
-                        String valinta = lukija.nextLine();
-                        if (valinta.equals("HIT")) {
-                            Kortti k = this.kortit.get(counter);
-                            counter++;
-                            System.out.println("You've got: " + k.toString());
-                            kasi.lisaaKortti(k);
-                        } else if (valinta.equals("STAND")) {
-                            break;
-                        }
-                    }
-                    reg++;
-                    if(kasi.getArvo() > 21) {
-                        break;
-                    }
-                }
-                if (kasi.getArvo() > 21 && kasi.getArvo() != 999) {
-                    System.out.println("Your hand's value is " + kasi.getArvo() + ", you're bust!");
-                    System.out.println("Dealer wins.");
-                } else if (kasi.getArvo() == 21) {
-                    System.out.println("Your hand's value is 21.");
-                }
-                i++;
+            rahat -= panos;
+            pelaaKierros(panos);
+           
+        }
+    }
+
+    public void pelaaKierros(int panos) {
+        jaaKortit(panos);
+        System.out.println("Dealer: " + jakajanKasi);
+        System.out.println("You: " + paikka.getKasi() + " " + paikka.getKasi().getArvoS());
+        while (true) {
+            int br = 0;
+            if (paikka.getKasi().onBlackjack()) {
+                break;
             }
-            System.out.print("Dealer: " + jakajanKasi + " ");
-            while (jakajanKasi.getArvo() < 17 && !this.paikka.getKasi().onBust()) {
-                Kortti k = kortit.get(counter);
-                counter++;
+            if (!paikka.getKasi().samatKortit() && br == 0) {
+                System.out.println("HIT, STAND, DOUBLE");
+                String syotto = lukija.nextLine();
+                if(syotto.equals("HIT")) {
+                    lisaaKortti(paikka.getKasi());
+                    br++;
+                } else if (syotto.equals("STAND")) {
+                    break;
+                } else if (syotto.equals("DOUBLE")) {
+                    tuplaa(paikka.getKasi(), panos);
+                    break;
+                }
+                
+                if(paikka.getKasi().getArvo() >= 21) {
+                    break;
+                }
+                
+            } else if (!paikka.getKasi().samatKortit() && br == 1) {
+                System.out.println("HIT, STAND");
+                String syotto = lukija.nextLine();
+                if(syotto.equals("HIT")) {
+                    lisaaKortti(paikka.getKasi());
+                } else if (syotto.equals("STAND")) {
+                    break;
+                }
+                
+                if(paikka.getKasi().getArvo() >= 21) {
+                    break;
+                }
+            }
+ 
+        }
+        jakajanKasi.avaa();
+        System.out.print("Dealer: " + jakajanKasi + " ");
+        while (jakajanKasi.getArvo() < 17 && !this.paikka.getKasi().onBust()) {
+            lisaaKortti(jakajanKasi);
+            System.out.print(kortti() + " ");
+        }
+        System.out.print(jakajanKasi.getArvoS() + "\n");
+        
+        tulos(panos);
+        
+            
+
+    }
+
+    public void dealerinKasi() {
+        while (jakajanKasi.getArvo() < 17 && !this.paikka.getKasi().onBust()) {
+                Kortti k = kortit.get(counter());
                 jakajanKasi.lisaaKortti(k);
-                Thread.sleep(700);
                 System.out.print(k + " ");
                 if (jakajanKasi.onBlackjack()) {
                     break;
                 }
             }
-            System.out.print("(" + jakajanKasi.getArvo() + ") \n");
-            if (this.paikka.getKasi().onBlackjack()) {
-                System.out.print("You: ");
-                System.out.println(this.paikka.getKasi() + ", BLACKJACK!");
-                int voitto = panos * 2 + panos / 2;
-                System.out.println("You win: " + voitto);
-                money += voitto;
-            } else if (jakajanKasi.onBlackjack() && this.paikka.getKasi().onBlackjack()) {
-                System.out.println("Push");
-                money += panos;
-            } else if (jakajanKasi.getArvo() > 21 && !jakajanKasi.onBlackjack()) {
-                System.out.println("Dealer's bust, you win " + panos * 2 + "!");
-                money += panos * 2;
-            } else if (jakajanKasi.getArvo() > this.paikka.getKasi().getArvo() && jakajanKasi.getArvo() < 22) {
-                System.out.println("Dealer wins.");
-            } else if (jakajanKasi.getArvo() == this.paikka.getKasi().getArvo()) {
-                System.out.println("Push.");
-                money += panos;
-            } else if ((jakajanKasi.getArvo() < this.paikka.getKasi().getArvo()) && this.paikka.getKasi().getArvo() < 22) {
-                System.out.println("You win " + panos * 2 + "!");
-                money += panos * 2;
-            } else if (jakajanKasi.onBlackjack()) {
-                System.out.println("Dealer wins.");
-            }
-            System.out.println("New game? (Y/N) ");
-            String syotto = lukija.nextLine();
-            if (syotto.equals("N")) {
-                i = 0;
-                break;
-            }
-        }
     }
-
+    
     private ArrayList<Kortti> kortit() {
         ArrayList<Kortti> kortit1 = new ArrayList();
         Korttipakka[] pakat = new Korttipakka[8];
@@ -150,10 +120,55 @@ public class Game {
         Collections.shuffle(this.kortit);
     }
 
-    public void jaaKortit() {
-        this.paikka.setKasi(new Pelaaja(kortit.get(counter), kortit.get(counter + 1)));
+    public void jaaKortit(int panos) {
+        this.paikka.setKasi(new Kasi(kortit.get(counter), kortit.get(counter + 1), panos));
         counter += 2;
-        this.jakajanKasi = new Jakaja(kortit.get(counter), kortit.get(counter + 1));
+        this.jakajanKasi = new Kasi(kortit.get(counter), kortit.get(counter + 1));
         counter += 2;
     }
-}
+
+    public void lisaaKortti(Kasi k) {
+        k.lisaaKortti(kortit.get(counter()));
+    }
+    
+    public Kortti kortti() {
+        return this.kortit.get(counter-1);
+    }
+
+    public void tuplaa(Kasi kasi, int panos) {
+        lisaaKortti(kasi);
+        kasi.tuplaa();
+        rahat -= panos;
+    }
+
+    public int counter() {
+        counter++;
+        return counter - 1;
+    }
+    
+    public void tulos(int panos) {
+        if (this.paikka.getKasi().onBlackjack()) {
+                System.out.print("You: ");
+                System.out.println(this.paikka.getKasi() + ", BLACKJACK!");
+                int voitto = panos * 2 + panos / 2;
+                System.out.println("You win: " + voitto);
+                rahat += voitto;
+            } else if (jakajanKasi.onBlackjack() && this.paikka.getKasi().onBlackjack()) {
+                System.out.println("Push");
+                rahat += panos;
+            } else if (jakajanKasi.getArvo() > 21 && !jakajanKasi.onBlackjack()) {
+                System.out.println("Dealer's bust, you win " + panos * 2 + "!");
+                rahat += panos * 2;
+            } else if (jakajanKasi.getArvo() > this.paikka.getKasi().getArvo() && jakajanKasi.getArvo() < 22) {
+                System.out.println("Dealer wins.");
+            } else if (jakajanKasi.getArvo() == this.paikka.getKasi().getArvo()) {
+                System.out.println("Push.");
+                rahat += panos;
+            } else if ((jakajanKasi.getArvo() < this.paikka.getKasi().getArvo()) && this.paikka.getKasi().getArvo() < 22) {
+                System.out.println("You win " + panos * 2 + "!");
+                rahat += panos * 2;
+            } else if (jakajanKasi.onBlackjack()) {
+                System.out.println("Dealer wins.");
+            }
+    }
+}   

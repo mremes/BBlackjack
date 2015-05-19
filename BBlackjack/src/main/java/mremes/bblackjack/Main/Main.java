@@ -1,7 +1,7 @@
 package mremes.bblackjack.Main;
 
 import java.util.Scanner;
-import mremes.bblackjack.logiikka.Game;
+import mremes.bblackjack.logiikka.*;
 
 public class Main {
 
