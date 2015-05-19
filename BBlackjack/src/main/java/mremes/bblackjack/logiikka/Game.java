@@ -12,6 +12,7 @@ public class Game {
     private int counter;
     private Scanner lukija;
     private int rahat;
+    private int panos;
 
     public Game(Scanner lukija) {
 
@@ -21,87 +22,113 @@ public class Game {
         this.counter = 0;
         this.lukija = lukija;
         this.rahat = 1000;
+        this.panos = 0;
     }
 
     public void play() throws InterruptedException {
+        System.out.println("*** BETTER BLACKJACK v. 0.1 ***");
         sekoitaKortit();
         while (true) {
-            int money = 1000;
-            System.out.println("Your stack: " + rahat);
-            System.out.print("Place your bet: ");
-            int panos = Integer.parseInt(lukija.nextLine());
-            rahat -= panos;
-            pelaaKierros(panos);
-           
+            System.out.println(" * 1 * PLAY \n * 2 * BALANCE \n * 3 * DEPOSIT \n * 4 * EXIT");
+            System.out.print("Choose: ");
+            String syotto = lukija.nextLine();
+            if (syotto.equals("1")) {
+                boolean pelataan = true;
+                while(pelataan) {
+                    pelaaKierros();
+                    System.out.print("New round? (Y/N) ");
+                    String syote = lukija.nextLine();
+                    if (!syote.equals("Y")) {
+                        pelataan = false;
+                    }
+                }
+            } else if (syotto.equals("2")) {
+                System.out.println("Your balance: " + rahat);
+            } else if (syotto.equals("3")) {
+                System.out.print("How much? ");
+                deposit(Integer.parseInt(lukija.nextLine()));
+            } else if (syotto.equals("4")) {
+                System.out.println("Thank you for playing!");
+                break;
+            }
+
         }
+        System.out.println("*** BETTER BLACKJACK v. 0.1 ***");
     }
 
-    public void pelaaKierros(int panos) {
-        jaaKortit(panos);
+    public void pelaaKierros() throws InterruptedException {
+        System.out.println("Your stack: " + rahat);
+        System.out.print("Place your bet: ");
+        panos = Integer.parseInt(lukija.nextLine());
+        rahat -= panos;
+        jaaKortit();
+        boolean hit = false;
         System.out.println("Dealer: " + jakajanKasi);
-        System.out.println("You: " + paikka.getKasi() + " " + paikka.getKasi().getArvoS());
         while (true) {
-            int br = 0;
+            System.out.println("You: " + paikka.getKasi() + " " + paikka.getKasi().getArvoS());
             if (paikka.getKasi().onBlackjack()) {
                 break;
             }
-            if (!paikka.getKasi().samatKortit() && br == 0) {
-                System.out.println("HIT, STAND, DOUBLE");
+            if (!hit) {
+                System.out.print("HIT, STAND, DOUBLE: ");
                 String syotto = lukija.nextLine();
-                if(syotto.equals("HIT")) {
+                if (syotto.equals("HIT")) {
                     lisaaKortti(paikka.getKasi());
-                    br++;
+                    hit = true;
                 } else if (syotto.equals("STAND")) {
                     break;
                 } else if (syotto.equals("DOUBLE")) {
-                    tuplaa(paikka.getKasi(), panos);
+                    tuplaa(paikka.getKasi());
+                    System.out.println("You: " + paikka.getKasi() + " " + paikka.getKasi().getArvoS());
                     break;
                 }
-                
-                if(paikka.getKasi().getArvo() >= 21) {
+
+                if (paikka.getKasi().getArvo() >= 21) {
+                    System.out.println("You: " + paikka.getKasi() + " " + paikka.getKasi().getArvoS());
                     break;
                 }
-                
-            } else if (!paikka.getKasi().samatKortit() && br == 1) {
-                System.out.println("HIT, STAND");
+
+            } else {
+                System.out.print("HIT, STAND: ");
                 String syotto = lukija.nextLine();
-                if(syotto.equals("HIT")) {
+                if (syotto.equals("HIT")) {
                     lisaaKortti(paikka.getKasi());
                 } else if (syotto.equals("STAND")) {
                     break;
                 }
-                
-                if(paikka.getKasi().getArvo() >= 21) {
+
+                if (paikka.getKasi().getArvo() >= 21) {
+                    System.out.println("You: " + paikka.getKasi() + " " + paikka.getKasi().getArvoS());
                     break;
                 }
             }
- 
         }
-        jakajanKasi.avaa();
-        System.out.print("Dealer: " + jakajanKasi + " ");
-        while (jakajanKasi.getArvo() < 17 && !this.paikka.getKasi().onBust()) {
-            lisaaKortti(jakajanKasi);
-            System.out.print(kortti() + " ");
-        }
-        System.out.print(jakajanKasi.getArvoS() + "\n");
-        
-        tulos(panos);
-        
-            
+        tulos();
 
+    }
+
+    public void deposit(int summa) throws InterruptedException {
+        rahat += summa;
+        System.out.print("Processing.");
+        Thread.sleep(1200);
+        System.out.print(".");
+        Thread.sleep(1200);
+        System.out.print(".");
+        Thread.sleep(2200);
+        System.out.println("\nYou have successfully deposited " + summa + "!");
     }
 
     public void dealerinKasi() {
         while (jakajanKasi.getArvo() < 17 && !this.paikka.getKasi().onBust()) {
-                Kortti k = kortit.get(counter());
-                jakajanKasi.lisaaKortti(k);
-                System.out.print(k + " ");
-                if (jakajanKasi.onBlackjack()) {
-                    break;
-                }
+            Kortti k = kortit.get(counter());
+            jakajanKasi.lisaaKortti(k);
+            System.out.print(k + " ");
+            if (jakajanKasi.onBlackjack()) {
+                break;
             }
+        }
     }
-    
+
     private ArrayList<Kortti> kortit() {
         ArrayList<Kortti> kortit1 = new ArrayList();
         Korttipakka[] pakat = new Korttipakka[8];
@@ -120,7 +147,7 @@ public class Game {
         Collections.shuffle(this.kortit);
     }
 
-    public void jaaKortit(int panos) {
+    public void jaaKortit() {
         this.paikka.setKasi(new Kasi(kortit.get(counter), kortit.get(counter + 1), panos));
         counter += 2;
         this.jakajanKasi = new Kasi(kortit.get(counter), kortit.get(counter + 1));
@@ -130,45 +157,77 @@ public class Game {
     public void lisaaKortti(Kasi k) {
         k.lisaaKortti(kortit.get(counter()));
     }
-    
+
     public Kortti kortti() {
-        return this.kortit.get(counter-1);
+        return this.kortit.get(counter - 1);
     }
 
-    public void tuplaa(Kasi kasi, int panos) {
+    public void tuplaa(Kasi kasi) {
         lisaaKortti(kasi);
         kasi.tuplaa();
         rahat -= panos;
+        panos *= 2;
+    }
+
+    public void tulos() throws InterruptedException {
+        jakajanKasi.avaa();
+        if (!this.paikka.getKasi().onBust()) {
+            System.out.print("Dealer: " + jakajanKasi + " ");
+            while (jakajanKasi.getArvo() < 17) {
+                lisaaKortti(jakajanKasi);
+                Thread.sleep(1000);
+                System.out.print(kortti() + " ");
+            }
+            System.out.print(jakajanKasi.getArvoS() + "\n");
+        }
+        int compare = paikka.getKasi().compareTo(jakajanKasi);
+
+        switch (compare) {
+            case 1:
+                voitto();
+                break;
+            case 0:
+                tasuri();
+                break;
+            case -1:
+                havio();
+                break;
+            default:
+                break;
+
+        }
+    }
+
+    public void voitto() {
+        int voitto = panos * 2;
+        if (paikka.getKasi().onBlackjack()) {
+            voitto = panos * 2 + panos / 2;
+            System.out.println("BLACKJACK, you win " + voitto + "!");
+        } else if (!jakajanKasi.onBust()) {
+            System.out.println("You win " + voitto + "!");
+        } else {
+            System.out.println("Dealer's bust, you win " + voitto + "!");
+        }
+        rahat += voitto;
+    }
+
+    public void tasuri() {
+        rahat += panos;
+        System.out.println("Push.");
+    }
+
+    public void havio() {
+        if (this.paikka.getKasi().onBust()) {
+            System.out.println("You're bust, dealer wins!");
+        } else if (jakajanKasi.onBlackjack()) {
+            System.out.println("Dealer has a BLACKJACK, dealer wins!");
+        } else {
+            System.out.println("Dealer wins!");
+        }
     }
 
     public int counter() {
         counter++;
         return counter - 1;
     }
-    
-    public void tulos(int panos) {
-        if (this.paikka.getKasi().onBlackjack()) {
-                System.out.print("You: ");
-                System.out.println(this.paikka.getKasi() + ", BLACKJACK!");
-                int voitto = panos * 2 + panos / 2;
-                System.out.println("You win: " + voitto);
-                rahat += voitto;
-            } else if (jakajanKasi.onBlackjack() && this.paikka.getKasi().onBlackjack()) {
-                System.out.println("Push");
-                rahat += panos;
-            } else if (jakajanKasi.getArvo() > 21 && !jakajanKasi.onBlackjack()) {
-                System.out.println("Dealer's bust, you win " + panos * 2 + "!");
-                rahat += panos * 2;
-            } else if (jakajanKasi.getArvo() > this.paikka.getKasi().getArvo() && jakajanKasi.getArvo() < 22) {
-                System.out.println("Dealer wins.");
-            } else if (jakajanKasi.getArvo() == this.paikka.getKasi().getArvo()) {
-                System.out.println("Push.");
-                rahat += panos;
-            } else if ((jakajanKasi.getArvo() < this.paikka.getKasi().getArvo()) && this.paikka.getKasi().getArvo() < 22) {
-                System.out.println("You win " + panos * 2 + "!");
-                rahat += panos * 2;
-            } else if (jakajanKasi.onBlackjack()) {
-                System.out.println("Dealer wins.");
-            }
-    }
-}   
+}

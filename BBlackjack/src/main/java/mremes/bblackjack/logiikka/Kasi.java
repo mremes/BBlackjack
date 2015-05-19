@@ -42,7 +42,7 @@ public class Kasi implements Comparable<Kasi> {
             if (laskeArvo(this.kortit) + 10 == 21 && this.kortit.size() == 2) {
                 return 999;
             }
-            if (laskeArvo(this.kortit) + 10 < 21) {
+            if (laskeArvo(this.kortit) + 10 <= 21) {
                 return laskeArvo(this.kortit) + 10;
             } else if (laskeArvo(this.kortit) > 21) {
                 return laskeArvo(this.kortit);
@@ -89,7 +89,7 @@ public class Kasi implements Comparable<Kasi> {
     }
 
     public boolean onBust() {
-        if (getArvo() > 21) {
+        if (getArvo() > 21 && !onBlackjack()) {
             return true;
         }
         return false;
@@ -133,14 +133,12 @@ public class Kasi implements Comparable<Kasi> {
     public int compareTo(Kasi jakajanKasi) {
         if (onBust()) {
             return -1;
+        } else if (jakajanKasi.onBust()) {
+            return 1;
         }
 
         if (this.onBlackjack() && jakajanKasi.onBlackjack()) {
             return 0;
-        } else if (this.onBlackjack() && !jakajanKasi.onBlackjack()) {
-            return 1;
-        } else if (!this.onBlackjack() && jakajanKasi.onBlackjack()) {
-            return -1;
         } else {
             if (!onBust() && (this.getArvo() > jakajanKasi.getArvo())) {
                 return 1;
