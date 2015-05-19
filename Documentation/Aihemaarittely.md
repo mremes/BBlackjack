@@ -1,3 +1,5 @@
+(OMAT MERKINNÄT: tarkastele, miten merkitsisit hardin ja softin!)
+
 # BBlackjack - Better Blackjack
 Projektin tavoitteena on toteuttaa Java-kielellä viiden ruudun Blackjack-sovellus 'treenausominaisuudella'. Blackjack on korttipeli,
 jonka osapuolina ovat jakaja sekä pelaaja(t). Pelaaja(t) pelaavat jakajaa vastaan. Pelaajan tavoitteena on
