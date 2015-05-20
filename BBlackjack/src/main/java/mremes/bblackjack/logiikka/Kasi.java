@@ -8,6 +8,7 @@ public class Kasi implements Comparable<Kasi> {
     private ArrayList<Kortti> kortit;
     private int panos;
     private boolean dealer;
+    private boolean soft;
 
     public Kasi(Kortti kortti1, Kortti kortti2, int panos) {
         this.kortit = new ArrayList();
@@ -15,6 +16,7 @@ public class Kasi implements Comparable<Kasi> {
         kortit.add(kortti2);
         this.panos = panos;
         this.dealer = false;
+        this.soft = false;
     }
 
     public Kasi(Kortti kortti1, Kortti kortti2) {
@@ -37,17 +39,18 @@ public class Kasi implements Comparable<Kasi> {
     public int getArvo() {
         int arvo = 0;
         if (!onkoAssaa()) {
-            return laskeArvo(this.kortit);
+            return laskeArvo();
         } else {
-            if (laskeArvo(this.kortit) + 10 == 21 && this.kortit.size() == 2) {
+            if (laskeArvo() + 10 == 21 && this.kortit.size() == 2) {
                 return 999;
             }
-            if (laskeArvo(this.kortit) + 10 <= 21) {
-                return laskeArvo(this.kortit) + 10;
-            } else if (laskeArvo(this.kortit) > 21) {
-                return laskeArvo(this.kortit);
+            if (laskeArvo() + 10 <= 21) {
+                this.soft = true;
+                return laskeArvo() + 10;
+            } else if (laskeArvo() > 21) {
+                return laskeArvo();
             } else {
-                return laskeArvo(this.kortit);
+                return laskeArvo();
             }
         }
     }
@@ -65,9 +68,9 @@ public class Kasi implements Comparable<Kasi> {
         return false;
     }
 
-    public int laskeArvo(ArrayList<Kortti> kortit) {
+    public int laskeArvo() {
         int arvo = 0;
-        for (Kortti kortti : kortit) {
+        for (Kortti kortti : this.kortit) {
             arvo += kortti.getArvo().getArvo();
         }
         return arvo;
@@ -106,12 +109,19 @@ public class Kasi implements Comparable<Kasi> {
     public void tuplaa() {
         this.panos = panos * 2;
     }
-    
+
     public void avaa() {
         dealer = false;
     }
 
     public String getArvoS() {
+        if (onBlackjack()) {
+            return "(BLACKJACK)";
+        } else if (onkoAssaa() && laskeArvo() + 10 <= 21) {
+            soft = true;
+            return "(" + laskeArvo() + " / " + getArvo() + ")";
+        }
+        
         return "(" + getArvo() + ")";
     }
 
@@ -158,4 +168,12 @@ public class Kasi implements Comparable<Kasi> {
         }
         return this.getArvo() + this.getKortit().get(0).hashCode() + this.getKortit().get(1).hashCode() + bj;
     }
+    
+    public boolean nakyvaAssa() {
+        if(kortit.get(1).getArvo() == Arvo.ASSA) {
+            return true;
+        }
+        return false;
+    }
+    
 }

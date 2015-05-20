@@ -16,6 +16,13 @@ public class Paikka implements Comparable<Paikka> {
     public void setKasi(Kasi kasi) {
         this.kasi = kasi;
     }
+    
+    public void split(Kortti k1, Kortti k2) {
+        Kasi ekaKasi = new Kasi(this.kasi.getKortti(0), k1);
+        Kasi tokaKasi = new Kasi(this.kasi.getKortti(1), k2);
+        this.kasi = ekaKasi;
+        this.splitted = tokaKasi;
+    }
 
     public void setDoubled(Kasi splitted) {
         this.splitted = splitted;
