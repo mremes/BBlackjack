@@ -8,34 +8,32 @@ public class Kortti implements Comparable<Kortti> {
         this.maa = maa;
         this.arvo = arvo;
     }
-
+    
+    // GETTERIT
     public Arvo getArvo() {
         return arvo;
     }
-
     public Maa getMaa() {
         return maa;
     }
-    
     public int getNumeroarvo() {
         return this.arvo.getArvo();
     }
-    
+    public String getArvoS() {
+        return "(" + getArvo() + ")";
+    }
+    // VERTAILUMETODI
     public boolean samaArvo(Kortti k) {
         if (getNumeroarvo() == k.getNumeroarvo()) {
             return true;
         }
         return false;
     }
-    
-    public String getArvoS() {
-        return "(" + getArvo() + ")";
-    }
+    // OVERRIDED
     @Override
     public String toString() {
         return this.maa + this.arvo.getKirjain();
     }
-    
     @Override
     public int compareTo(Kortti k) {
         if(getNumeroarvo() > k.getNumeroarvo()) {
@@ -46,11 +44,8 @@ public class Kortti implements Comparable<Kortti> {
             return 0;
         }
     }
-    
     @Override
     public int hashCode() {
         return getNumeroarvo() + getMaa().hashCode();
     }
-    
-   
 }

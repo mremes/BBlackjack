@@ -1,8 +1,9 @@
 mremes/bblackjack/Main/Main.class
-mremes/bblackjack/logiikka/Game.class
 mremes/bblackjack/logiikka/Kasi.class
+mremes/bblackjack/logiikka/Pelaaja.class
 mremes/bblackjack/logiikka/Maa.class
-mremes/bblackjack/logiikka/Paikka.class
+mremes/bblackjack/logiikka/Kasino.class
+mremes/bblackjack/logiikka/Jakaja.class
 mremes/bblackjack/logiikka/Kierros.class
 mremes/bblackjack/logiikka/Arvo.class
 mremes/bblackjack/logiikka/Kortti.class

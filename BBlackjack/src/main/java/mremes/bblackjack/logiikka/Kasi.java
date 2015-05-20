@@ -6,36 +6,73 @@ import java.util.Arrays;
 public class Kasi implements Comparable<Kasi> {
 
     private ArrayList<Kortti> kortit;
-    private int panos;
     private boolean dealer;
     private boolean soft;
-
-    public Kasi(Kortti kortti1, Kortti kortti2, int panos) {
-        this.kortit = new ArrayList();
-        kortit.add(kortti1);
-        kortit.add(kortti2);
-        this.panos = panos;
-        this.dealer = false;
-        this.soft = false;
-    }
+    private boolean valmis;
 
     public Kasi(Kortti kortti1, Kortti kortti2) {
         this.kortit = new ArrayList();
         kortit.add(kortti1);
         kortit.add(kortti2);
-        this.panos = 0;
-        this.dealer = true;
-
+        this.dealer = false;
+        this.soft = false;
+        this.valmis = false;
     }
-
+    // TILAMETODIT
+    public boolean isDealer() {
+        return dealer;
+    }
+    public boolean isValmis() {
+        return valmis;
+    }
+    public boolean onBlackjack() {
+        if (((kortit.get(0).getNumeroarvo() == 10 && kortit.get(1).getNumeroarvo() == 1) || (kortit.get(0).getNumeroarvo() == 1 && kortit.get(1).getNumeroarvo() == 10)) && kortit.size() == 2) {
+            return true;
+        }
+        return false;
+    }
+    public boolean onBust() {
+        if (getArvo() > 21 && !onBlackjack()) {
+            return true;
+        }
+        return false;
+    }
+    private boolean onkoAssaa() {
+        for (Kortti kortti : this.kortit) {
+            if (kortti.getArvo() == Arvo.ASSA) {
+                return true;
+            }
+        }
+        return false;
+    }
+    // DEALERIN TILAMETODI
+    public boolean nakyvaAssa() {
+        if(kortit.get(1).getArvo() == Arvo.ASSA) {
+            return true;
+        }
+        return false;
+    }
+    // SETTERIT
+    public void valmis() {
+        valmis = true;
+    }
+    public void avaa() {
+        dealer = false;
+    }
+    public void lisaaKortti(Kortti k) {
+        this.kortit.add(k);
+    }
+    public void setDealer() {
+        this.dealer = true;
+        
+    }
+    // GETTERIT
     public ArrayList<Kortti> getKortit() {
         return kortit;
     }
-
     public Kortti getKortti(int index) {
         return this.kortit.get(index);
     }
-
     public int getArvo() {
         int arvo = 0;
         if (!onkoAssaa()) {
@@ -53,67 +90,14 @@ public class Kasi implements Comparable<Kasi> {
                 return laskeArvo();
             }
         }
-    }
-
-    public void lisaaKortti(Kortti k) {
-        this.kortit.add(k);
-    }
-
-    public boolean onkoAssaa() {
-        for (Kortti kortti : this.kortit) {
-            if (kortti.getArvo() == Arvo.ASSA) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    public int laskeArvo() {
+    } // LASKEE KAIKKIEN YHDISTELMIEN ARVOT
+    private int laskeArvo() {
         int arvo = 0;
         for (Kortti kortti : this.kortit) {
             arvo += kortti.getArvo().getArvo();
         }
         return arvo;
-    }
-
-    public boolean samatKortit() {
-        if (kortit.get(0).getArvo() == kortit.get(1).getArvo() && kortit.size() == 2) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    public boolean onBlackjack() {
-        if (((kortit.get(0).getNumeroarvo() == 10 && kortit.get(1).getNumeroarvo() == 1) || (kortit.get(0).getNumeroarvo() == 1 && kortit.get(1).getNumeroarvo() == 10)) && kortit.size() == 2) {
-            return true;
-        }
-        return false;
-    }
-
-    public boolean onBust() {
-        if (getArvo() > 21 && !onBlackjack()) {
-            return true;
-        }
-        return false;
-    }
-
-    public boolean onDealerinKasi() {
-        return this.dealer;
-    }
-
-    public int getPanos() {
-        return panos;
-    }
-
-    public void tuplaa() {
-        this.panos = panos * 2;
-    }
-
-    public void avaa() {
-        dealer = false;
-    }
-
+    } // LASKEE VAIN KADET ILMAN A:TA
     public String getArvoS() {
         if (onBlackjack()) {
             return "(BLACKJACK)";
@@ -123,8 +107,8 @@ public class Kasi implements Comparable<Kasi> {
         }
         
         return "(" + getArvo() + ")";
-    }
-
+    } // PALAUTTAA ARVON STRINGINÄ
+    // OVERRIDED
     @Override
     public String toString() {
         if (!dealer) {
@@ -138,7 +122,6 @@ public class Kasi implements Comparable<Kasi> {
             return "XX " + this.kortit.get(1).toString();
         }
     }
-
     @Override
     public int compareTo(Kasi jakajanKasi) {
         if (onBust()) {
@@ -159,7 +142,6 @@ public class Kasi implements Comparable<Kasi> {
             }
         }
     }
-
     @Override
     public int hashCode() {
         int bj = 0;
@@ -167,13 +149,6 @@ public class Kasi implements Comparable<Kasi> {
             bj = 4839;
         }
         return this.getArvo() + this.getKortit().get(0).hashCode() + this.getKortit().get(1).hashCode() + bj;
-    }
-    
-    public boolean nakyvaAssa() {
-        if(kortit.get(1).getArvo() == Arvo.ASSA) {
-            return true;
-        }
-        return false;
     }
     
 }

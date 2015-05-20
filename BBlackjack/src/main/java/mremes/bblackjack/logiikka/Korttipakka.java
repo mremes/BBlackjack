@@ -3,7 +3,7 @@ package mremes.bblackjack.logiikka;
 public class Korttipakka {
 
     private Kortti kortit[];
-
+    // KORTTIPAKKA KONSTRUOIDAAN KONSTRUKTORISSA
     public Korttipakka() {
         this.kortit = new Kortti[52];
         int i = 0;
@@ -16,13 +16,13 @@ public class Korttipakka {
         }
 
     }
-
-    public Kortti[] kortit() {
-        Kortti[] kortit = new Kortti[51];
-        return kortit;
+    
+    // PALAUTTAA KORTIT
+    public Kortti[] getKortit() {
+        return this.kortit;
     }
-
-    public Arvo[] annaArvot() {
+    // APUMETODI
+    private Arvo[] annaArvot() {
         Arvo[] arvot = new Arvo[13];
         arvot[0] = Arvo.KAKKONEN;
         arvot[1] = Arvo.KOLMONEN;
@@ -39,9 +39,5 @@ public class Korttipakka {
         arvot[12] = Arvo.ASSA;
 
         return arvot;
-    }
-
-    public Kortti[] getKortit() {
-        return this.kortit;
     }
 }

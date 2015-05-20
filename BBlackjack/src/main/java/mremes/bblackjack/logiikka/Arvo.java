@@ -25,10 +25,10 @@ public enum Arvo {
         this.kirjain = kirjain;
     }
     
+    // GETTERIT
     public int getArvo() {
         return numeroarvo;
     }
-    
     public String getKirjain() {
         return this.kirjain;
     }
