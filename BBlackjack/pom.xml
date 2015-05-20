@@ -13,30 +13,40 @@
     </properties>
 
     <dependencies>
-    <dependency>
-        <groupId>junit</groupId>
-        <artifactId>junit</artifactId>
-        <version>4.11</version>
-        <scope>test</scope>
-    </dependency>
-</dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.11</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
 
-<build>
-    <plugins>
-        <plugin>
-            <artifactId>maven-compiler-plugin</artifactId>
-            <configuration>
-                <source>1.7</source>
-                <target>1.7</target>
-            </configuration>
-            <version>3.2</version>
-        </plugin>
-        <plugin>
-            <groupId>org.pitest</groupId>
-            <artifactId>pitest-maven</artifactId>
-            <version>1.1.4</version>
-        </plugin>
-    </plugins>
-</build>
+    <build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.7</source>
+                    <target>1.7</target>
+                </configuration>
+                <version>3.2</version>
+            </plugin>
+            <plugin>
+                <groupId>org.pitest</groupId>
+                <artifactId>pitest-maven</artifactId>
+                <version>1.1.4</version>
+                <configuration>
+                    <targetClasses>
+                        <param>mremes.bblackjack.logiikka.Kasi</param>
+                        <param>mremes.bblackjack.logiikka.Kortti</param>
+                    </targetClasses>
+                    <targetTests>
+                        <param>bblackjack.logiikka.KasiTest</param>
+                        <param>bblackjack.logiikka.KorttiTest</param>
+                    </targetTests>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
     <name>BBlackjack</name>
 </project>
