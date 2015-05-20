@@ -9,6 +9,7 @@ public class Kasi implements Comparable<Kasi> {
     private boolean dealer;
     private boolean soft;
     private boolean valmis;
+    private boolean insured;
 
     public Kasi(Kortti kortti1, Kortti kortti2) {
         this.kortit = new ArrayList();
@@ -17,6 +18,7 @@ public class Kasi implements Comparable<Kasi> {
         this.dealer = false;
         this.soft = false;
         this.valmis = false;
+        this.insured = false;
     }
     // TILAMETODIT
     public boolean isDealer() {
@@ -45,6 +47,9 @@ public class Kasi implements Comparable<Kasi> {
         }
         return false;
     }
+    public boolean isInsured() {
+        return insured;
+    }
     // DEALERIN TILAMETODI
     public boolean nakyvaAssa() {
         if(kortit.get(1).getArvo() == Arvo.ASSA) {
@@ -65,6 +70,9 @@ public class Kasi implements Comparable<Kasi> {
     public void setDealer() {
         this.dealer = true;
         
+    }
+    public void setInsurance() {
+        this.insured = true;
     }
     // GETTERIT
     public ArrayList<Kortti> getKortit() {

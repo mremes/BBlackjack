@@ -24,8 +24,9 @@ public class Kierros {
         this.jakaja = jakaja;
 
     }
-    
+
     // PELAA YHDEN KIERROKSEN
+    
     public void pelaaKierros() throws InterruptedException {
         // PANOSTEN ASETTAMINEN JA KORTTIEN JAKO
         pelaajanKadet.put(uusiKasi(), panostus());
@@ -41,11 +42,16 @@ public class Kierros {
                 if (k.onBlackjack()) {
                     k.valmis();
                 } else {
-                    if(pelaajanKadet.keySet().size() > 1) {
+                    if (pelaajanKadet.keySet().size() > 1) {
                         System.out.println(k + " " + k.getArvoS());
                     }
-                    komennot(k);
-                    komento(lukija.nextLine(), k);
+                    if (jakajanKasi.nakyvaAssa() && k.getKortit().size() > 2) {
+                        insurance(k);
+                    }
+                    if (!k.isValmis()) {
+                        komennot(k);
+                        komento(lukija.nextLine(), k);
+                    }
                 }
             }
             if (pelaajaValmis()) {
@@ -54,23 +60,31 @@ public class Kierros {
         }
         tulos();
     }
+
     // UUDEN KÄDEN GENEROINTI
+    
     public Kasi uusiKasi() {
         return new Kasi(Jakaja.annaKortti(), Jakaja.annaKortti());
     }
+
     // TULOSTUSMETODIT
+    
     public void pelaaja() {
         for (Kasi k : pelaajanKadet.keySet()) {
             System.out.println("You: " + k + " " + k.getArvoS());
         }
     }
+
     public void dealer() {
-        System.out.println("Dealer: " + jakajanKasi);
         if (!jakajanKasi.isDealer()) {
-            System.out.println(" " + jakajanKasi.getArvoS());
+            System.out.println("Dealer: " + jakajanKasi + " " + jakajanKasi.getArvoS());
+        } else {
+            System.out.println("Dealer: " + jakajanKasi);
         }
     }
+
     // TILAMETODIT
+    
     public boolean pelaajaBust() {
         boolean bust = true;
         for (Kasi k : pelaajanKadet.keySet()) {
@@ -81,6 +95,7 @@ public class Kierros {
         }
         return bust;
     }
+
     public boolean pelaajaValmis() {
         boolean valmis = true;
         for (Kasi k : pelaajanKadet.keySet()) {
@@ -91,17 +106,20 @@ public class Kierros {
         }
         return valmis;
     }
+
     public boolean pelaajaAllBj() {
         boolean allbj = true;
-        for(Kasi k : pelaajanKadet.keySet()) {
-            if(!k.onBlackjack()) {
+        for (Kasi k : pelaajanKadet.keySet()) {
+            if (!k.onBlackjack()) {
                 allbj = false;
                 break;
             }
         }
         return allbj;
     }
-    // PANOSTUSMETODI
+
+    // PANOSTUS- JA VAKUUTUSMETODI
+    
     public int panostus() {
         System.out.println("Your stack: " + pelaaja.getBalance());
         System.out.print("Place your bet: ");
@@ -109,7 +127,26 @@ public class Kierros {
         pelaaja.veloita(panos);
         return panos;
     }
+
+    public void insurance(Kasi k) throws InterruptedException {
+        System.out.print("INSURANCE? (Y/N) ");
+        String syotto = lukija.nextLine();
+        if (syotto.equals("Y")) {
+            k.setInsurance();
+            System.out.println("Checking...");
+            Thread.sleep(1000);
+            pelaaja.veloita(panos / 2);
+            if (jakajanKasi.onBlackjack()) {
+                k.valmis();
+                jakajanKasi.avaa();
+            } else {
+                System.out.println("Insurance lost.");
+            }
+        }
+    }
+
     // KOMENTOMETODIT
+    
     public void komennot(Kasi k) {
         String hit = "HIT";
         String stand = "STAND";
@@ -124,9 +161,11 @@ public class Kierros {
         }
         System.out.print(komennot + ": ");
     }
+
     public void komento(String komento, Kasi k) {
         if (komento.equals("HIT")) {
             hit(k);
+            System.out.println("");
         } else if (komento.equals("STAND")) {
             k.valmis();
         } else if (k.getKortit().size() == 2) {
@@ -138,13 +177,20 @@ public class Kierros {
         }
         if (k.getArvo() >= 21) {
             System.out.println(k + " " + k.getArvoS());;
+
+            if (k.getArvo() > 21 && pelaajanKadet.size() > 1) {
+                System.out.println("Bust.");
+            }
             k.valmis();
         }
     }
+
     // TOIMINTAMETODIT
+    
     public void stand(Kasi k) {
         k.valmis();
     }
+
     public void split() {
         Kortti k1 = null;
         Kortti k2 = null;
@@ -160,17 +206,21 @@ public class Kierros {
         pelaaja.veloita(panos);
         pelaajanKadet.remove(kasi);
     }
+
     public void hit(Kasi k) {
         k.lisaaKortti(Jakaja.annaKortti());
     }
+
     public void doubl(Kasi k) {
         k.lisaaKortti(Jakaja.annaKortti());
         pelaaja.veloita(panos);
         panos *= 2;
         k.valmis();
-        System.out.println("You: " + k + " " + k.getArvoS());
+        System.out.println("\nYou: " + k + " " + k.getArvoS());
     }
+
     // TULOSMETODIT
+    
     public void tulos() throws InterruptedException {
         jakajanKasi.avaa();
 
@@ -181,9 +231,14 @@ public class Kierros {
                 Thread.sleep(1000);
                 System.out.print(Jakaja.edellinenKortti() + " ");
             }
-            System.out.println(jakajanKasi.getArvoS());
+            System.out.println(jakajanKasi.getArvoS() + "\n");
         }
+        int i = 1;
         for (Kasi k : pelaajanKadet.keySet()) {
+            if (pelaajanKadet.size() > 1) {
+                System.out.println("\nHand " + i + ": " + k + " " + k.getArvoS());
+                i++;
+            }
             int compare = k.compareTo(jakajanKasi);
             switch (compare) {
                 case 1:
@@ -200,6 +255,7 @@ public class Kierros {
             }
         }
     }
+
     public void voitto(Kasi k) {
         int voitto = panos * 2;
         if (k.onBlackjack()) {
@@ -212,18 +268,24 @@ public class Kierros {
         }
         pelaaja.lisaaRahaa(voitto);
     }
+
     public void tasuri(Kasi k) {
         pelaaja.lisaaRahaa(panos);
         System.out.println("Push.");
     }
+
     public void havio(Kasi k) {
         if (k.onBust()) {
-            System.out.println("You're bust, dealer wins!");
+            System.out.println("\nYou're bust, dealer wins!");
             jakajanKasi.avaa();
             dealer();
         } else if (jakajanKasi.onBlackjack()) {
             dealer();
             System.out.println("Dealer has a BLACKJACK, dealer wins!");
+            if (k.isInsured()) {
+                System.out.println("Insurance pays " + pelaajanKadet.get(k));
+                pelaaja.lisaaRahaa(pelaajanKadet.get(k));
+            }
         } else {
             System.out.println("Dealer wins!");
         }

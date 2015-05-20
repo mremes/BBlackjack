@@ -29,6 +29,7 @@ public class Kasino {
                     kierros.pelaaKierros();
                     System.out.print("NEW ROUND? (Y/N) ");
                     String syote = lukija.nextLine();
+                    System.out.println("");
                     if (!syote.equals("Y")) {
                         pelataan = false;
                     }
