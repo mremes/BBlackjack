@@ -25,26 +25,22 @@ public class Kasi implements Comparable<Kasi> {
     public boolean isDealer() {
         return dealer;
     }
-
     public boolean isValmis() {
         return valmis;
     }
-
-    public boolean onBlackjack() {
+    public boolean isBlackjack() {
         if (((kortit.get(0).getNumeroarvo() == 10 && kortit.get(1).getNumeroarvo() == 1) || (kortit.get(0).getNumeroarvo() == 1 && kortit.get(1).getNumeroarvo() == 10)) && kortit.size() == 2) {
             return true;
         }
         return false;
     }
-
-    public boolean onBust() {
-        if (getArvo() > 21 && !onBlackjack()) {
+    public boolean isBust() {
+        if (getArvo() > 21 && !isBlackjack()) {
             return true;
         }
         return false;
     }
-
-    private boolean onkoAssaa() {
+    private boolean hasAce() {
         for (Kortti kortti : this.kortit) {
             if (kortti.getArvo() == Arvo.ASSA) {
                 return true;
@@ -52,43 +48,47 @@ public class Kasi implements Comparable<Kasi> {
         }
         return false;
     }
-
     public boolean isInsured() {
         return insured;
     }
-
-    public boolean canSplit() {
+    public boolean isSplittable() {
         return getKortti(0).getNumeroarvo() == getKortti(1).getNumeroarvo()
                 && kortit.size() == 2;
     }
 
     // DEALERIN TILAMETODI
-
     public boolean nakyvaAssa() {
         if (kortit.get(1).getArvo() == Arvo.ASSA) {
             return true;
         }
         return false;
     }
-
+    public void doables() {
+        String dble = "DOUBLE";
+        String split = "SPLIT";
+        String komennot = "\nHIT, STAND";
+        if (korttienLkm() == 2) {
+            komennot += ", " + dble;
+        }
+        if (isSplittable()) {
+            komennot += ", " + split;
+        }
+        System.out.print(komennot + ": ");
+    }
     // SETTERIT
-    public void valmis() {
+    public void setValmis() {
         valmis = true;
     }
-
-    public void avaa() {
+    public void setOpen() {
         dealer = false;
     }
-
-    public void lisaaKortti(Kortti k) {
+    public void addKortti(Kortti k) {
         this.kortit.add(k);
     }
-
     public void setDealer() {
         this.dealer = true;
 
     }
-
     public void setInsurance() {
         this.insured = true;
     }
@@ -97,14 +97,12 @@ public class Kasi implements Comparable<Kasi> {
     public ArrayList<Kortti> getKortit() {
         return kortit;
     }
-
     public Kortti getKortti(int index) {
         return this.kortit.get(index);
     }
-
     public int getArvo() {
         int arvo = 0;
-        if (!onkoAssaa()) {
+        if (!hasAce()) {
             return laskeArvo();
         } else {
             if (laskeArvo() + 10 == 21 && this.kortit.size() == 2) {
@@ -120,11 +118,9 @@ public class Kasi implements Comparable<Kasi> {
             }
         }
     } // LASKEE KAIKKIEN YHDISTELMIEN ARVOT
-
-    public int kortteja() {
+    public int korttienLkm() {
         return this.kortit.size();
     }
-
     private int laskeArvo() {
         int arvo = 0;
         for (Kortti kortti : this.kortit) {
@@ -132,18 +128,16 @@ public class Kasi implements Comparable<Kasi> {
         }
         return arvo;
     } // LASKEE VAIN KADET ILMAN A:TA
-
     public String getArvoS() {
-        if (onBlackjack()) {
+        if (isBlackjack()) {
             return "(BLACKJACK)";
-        } else if (onkoAssaa() && laskeArvo() + 10 <= 21) {
+        } else if (hasAce() && laskeArvo() + 10 <= 21) {
             soft = true;
             return "(" + laskeArvo() + " / " + getArvo() + ")";
         }
 
         return "(" + getArvo() + ")";
     } // PALAUTTAA ARVON STRINGINÄ
-
     public String kortit() {
         String stringi = "";
         for (Kortti k : this.kortit) {
@@ -152,19 +146,6 @@ public class Kasi implements Comparable<Kasi> {
         return stringi;
     }
     // OVERRIDED
-    
-    public void doables() {
-        String dble = "DOUBLE";
-        String split = "SPLIT";
-        String komennot = "\nHIT, STAND";
-        if (kortteja() == 2) {
-            komennot += ", " + dble;
-        }
-        if (canSplit()) {
-            komennot += ", " + split;
-        }
-        System.out.print(komennot + ": ");
-    }
     @Override
     public String toString() {
         if (!dealer) {
@@ -180,32 +161,30 @@ public class Kasi implements Comparable<Kasi> {
             return "XX " + this.kortit.get(1).toString();
         }
     }
-
     @Override
     public int compareTo(Kasi jakajanKasi) {
-        if (onBust()) {
+        if (isBust()) {
             return -1;
-        } else if (jakajanKasi.onBust()) {
+        } else if (jakajanKasi.isBust()) {
             return 1;
         }
 
-        if (this.onBlackjack() && jakajanKasi.onBlackjack()) {
+        if (this.isBlackjack() && jakajanKasi.isBlackjack()) {
             return 0;
         } else {
-            if (!onBust() && (this.getArvo() > jakajanKasi.getArvo())) {
+            if (!isBust() && (this.getArvo() > jakajanKasi.getArvo())) {
                 return 1;
-            } else if (!onBust() && (this.getArvo() < jakajanKasi.getArvo())) {
+            } else if (!isBust() && (this.getArvo() < jakajanKasi.getArvo())) {
                 return -1;
             } else {
                 return 0;
             }
         }
     }
-
     @Override
     public int hashCode() {
         int bj = 0;
-        if (onBlackjack()) {
+        if (isBlackjack()) {
             bj = 4839;
         }
         return this.getArvo() + this.getKortit().get(0).hashCode() + this.getKortit().get(1).hashCode() + bj;

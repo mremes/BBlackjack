@@ -25,12 +25,12 @@ public class KasiTest {
     
     @Test
     public void onBlackjackToimii() {
-        assertTrue(blackjack.onBlackjack());
+        assertTrue(blackjack.isBlackjack());
     }
     
     @Test
     public void onBustToimii() {
-        assertTrue(!blackjack.onBust());
+        assertTrue(!blackjack.isBust());
     }
     
     @Test
@@ -46,7 +46,7 @@ public class KasiTest {
     
     @Test
     public void avoinKasiNakyy() {
-        blackjack.avaa();
+        blackjack.setOpen();
         assertEquals(blackjack.toString(), "♥A ♠J");
     }
     
@@ -57,7 +57,7 @@ public class KasiTest {
     
     @Test
     public void softKasiMuuttuuHardiksiKunLisataanYhdeksan() {
-        softKasi.lisaaKortti(new Kortti(Maa.PATA, Arvo.YSI));
+        softKasi.addKortti(new Kortti(Maa.PATA, Arvo.YSI));
         assertEquals(softKasi.getArvoS(), "(14)");
     }
 }

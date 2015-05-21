@@ -1,4 +1,4 @@
-package mremes.bblackjack.logiikka.Tulos;
+
 
 import mremes.bblackjack.logiikka.Jakaja;
 import mremes.bblackjack.logiikka.Kasi;
@@ -9,6 +9,7 @@ public class Tulos {
     private Pelaaja kayttaja;
     private Kasi pelaaja;
     private Kasi jakaja;
+    private int kasia;
     
     public Tulos(Pelaaja kayttaja, Kasi pelaaja, Kasi jakaja, int panos) {
         this.kayttaja = kayttaja;
@@ -17,8 +18,8 @@ public class Tulos {
         this.panos = panos;
     }
     
-    public void tulos() {
-        this.panos = panos;
+    public void tulos(int kasia) {
+        tuloste();
         int compare = pelaaja.compareTo(jakaja);
         switch (compare) {
             case 1:
@@ -34,7 +35,6 @@ public class Tulos {
                 break;
         }
     }
-    
     private void voitto(Kasi k) {
         int voitto = panos * 2;
         if (k.onBlackjack()) {
@@ -48,11 +48,29 @@ public class Tulos {
         kayttaja.lisaaRahaa(voitto);
     }
     private void havio(Kasi k) {
-        
+        if (k.onBust()) {
+            System.out.println("You're bust, dealer wins!");
+            if (kasia == 1) {
+                System.out.println("Dealer: " + jakaja);
+            }
+        } else if (jakaja.onBlackjack()) {
+            System.out.println("Dealer has a BLACKJACK, dealer wins!");
+            if (k.isInsured()) {
+                System.out.println("Insurance pays " + panos);
+                kayttaja.lisaaRahaa(panos);
+            }
+        } else {
+            System.out.println("Dealer wins!");
+        }
     }
-    
     private void tasuri(Kasi k) {
-        
+        kayttaja.lisaaRahaa(panos);
+        System.out.println("Push.");
+    } 
+    private void tuloste() {
+        if (kasia > 1) {
+                System.out.println("\nHand :" + pelaaja);
+        }
     }
 
 }

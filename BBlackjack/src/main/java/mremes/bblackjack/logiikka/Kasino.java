@@ -13,7 +13,7 @@ public class Kasino {
         this.pelaaja = new Pelaaja(1000);
         Jakaja jakaja = new Jakaja();
     }
-    
+
     // KAYNNISTYSMETODI
     public void kaynnista() throws InterruptedException {
         System.out.println("*** BETTER BLACKJACK v. 0.1 ***");
@@ -32,14 +32,8 @@ public class Kasino {
                     if (!syote.equals("Y")) {
                         pelataan = false;
                     }
-                    if(Jakaja.jaljellaKortteja() < 80) {
-                        Jakaja.sekoitaKortit();
-                        System.out.print("Shuffling.");
-                        Thread.sleep(750);
-                        System.out.print(".");
-                        Thread.sleep(750);
-                        System.out.println(".");
-                        Thread.sleep(750);
+                    if (Jakaja.jaljellaKortteja() < 80) {
+                        shuffle();
                     }
                 }
             } else if (syotto.equals("2")) {
@@ -52,10 +46,12 @@ public class Kasino {
                 break;
             }
         }
-        
+
         System.out.println("*** BETTER BLACKJACK v. 0.1 ***");
     }
+
     // DEPO-METODI
+
     private void deposit(int summa) throws InterruptedException {
         pelaaja.lisaaRahaa(summa);
         System.out.print("Processing.");
@@ -65,5 +61,14 @@ public class Kasino {
         System.out.print(".");
         Thread.sleep(2200);
         System.out.println("\nYou have successfully deposited " + summa + "!");
+    }
+    private void shuffle() throws InterruptedException {
+        Jakaja.sekoitaKortit();
+        System.out.print("Shuffling.");
+        Thread.sleep(750);
+        System.out.print(".");
+        Thread.sleep(750);
+        System.out.println(".");
+        Thread.sleep(750);
     }
 }
