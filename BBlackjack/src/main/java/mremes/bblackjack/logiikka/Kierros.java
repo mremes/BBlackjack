@@ -5,31 +5,38 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Scanner;
 import java.util.Set;
+import mremes.bblackjack.deckofcards.Arvo;
+import mremes.bblackjack.deckofcards.Kortti;
+import mremes.bblackjack.deckofcards.Maa;
+import mremes.bblackjack.elements.Kasi;
+import mremes.bblackjack.elements.Pelaaja;
+import mremes.bblackjack.utilities.Jakaja;
+import mremes.bblackjack.utilities.KierrosUtil;
+import mremes.bblackjack.utilities.Tulos;
 
 public class Kierros {
 
     private Pelaaja pelaaja;
-    private Jakaja jakaja;
     private HashMap<Kasi, Integer> pelaajanKadet;
     private Kasi jakajanKasi;
     private Scanner lukija;
     private int panos;
-    
 
     public Kierros(Pelaaja pelaaja, Scanner lukija, Jakaja jakaja) {
         this.pelaaja = pelaaja;
         this.pelaajanKadet = new HashMap();
         this.lukija = lukija;
-        this.jakaja = jakaja;
+
     }
 
     // PELAA YHDEN KIERROKSEN
     public void pelaaKierros() throws InterruptedException {
-        jaaKadet();
+        int panos = panostus();
+        jaaKadet(panos);
         dealer();
-        while (!pelaajaValmis()) {
+        while (!KierrosUtil.pelaajaValmis(pelaajanKadet)) {
             pelaaja();
-            for (Kasi k : pelaajanKadet()) {
+            for (Kasi k : pelaajanKadet.keySet()) {
                 while (!k.isValmis()) {
                     actions(k);
                 }
@@ -38,81 +45,25 @@ public class Kierros {
         tulos();
     }
 
-    // TULOSTUSMETODIT
-    public void jaaKadet() {
-        pelaajanKadet.put(Jakaja.uusiKasi(), panostus());
-        this.jakajanKasi = Jakaja.uusiKasi();
+    public void jaaKadet(int panos) {
+        pelaajanKadet.put(Jakaja.uusiKasi(), panos);
+        jakajanKasi = Jakaja.uusiKasi();
         jakajanKasi.setDealer();
         System.out.println("");
     }
+
+    // SOUT-TULOSTUSMETODIT
     public void pelaaja() {
         System.out.println("");
-        for (Kasi k : pelaajanKadet()) {
+        for (Kasi k : pelaajanKadet.keySet()) {
             System.out.println("You: " + k);
         }
     }
+
     public void dealer() {
-        if (!jakajanKasi.isDealer()) {
-            System.out.println("Dealer: " + jakajanKasi);
-        } else {
-            System.out.print("Dealer: " + jakajanKasi);
-        }
+        System.out.print("Dealer: " + jakajanKasi);
     }
 
-    // TILAMETODIT
-    public boolean pelaajaBust() {
-        boolean bust = true;
-        for (Kasi k : pelaajanKadet()) {
-            if (!k.isBust()) {
-                bust = false;
-                break;
-            }
-        }
-        return bust;
-    }
-    public boolean pelaajaValmis() {
-        boolean valmis = true;
-        for (Kasi k : pelaajanKadet()) {
-            if (!k.isValmis()) {
-                valmis = false;
-                break;
-            }
-        }
-        return valmis;
-    }
-    public boolean pelaajaAllBj() {
-        boolean allbj = true;
-        for (Kasi k : pelaajanKadet()) {
-            if (!k.isBlackjack()) {
-                allbj = false;
-                break;
-            }
-        }
-        return allbj;
-    }
-    public boolean voiVakuuttaa(Kasi k) {
-        return jakajanKasi.nakyvaAssa() && pelaajanKadet.size() == 1 && k.korttienLkm() == 2;
-    }
-    public boolean montaKatta() {
-        return pelaajanKadet().size() > 1;
-    }
-    public boolean dealerOttaa() {
-        int busted = 0;
-        int blackjacks = 0;
-        for (Kasi k : pelaajanKadet()) {
-            if (k.isBust()) {
-                busted++;
-            }
-            if (k.isBlackjack()) {
-                blackjacks++;
-            }
-        }
-        if (busted + blackjacks == pelaajanKadet().size()) {
-            return false;
-        }
-        return true;
-    }
-    
     // PANOSTUS- JA VAKUUTUSMETODI
     public int panostus() {
         System.out.println("\nYour stack: " + pelaaja.getBalance());
@@ -121,6 +72,7 @@ public class Kierros {
         pelaaja.veloita(panos);
         return panos;
     }
+
     public void insurance(Kasi k) throws InterruptedException {
         System.out.print("INSURANCE? (Y/N) ");
         String syotto = lukija.nextLine();
@@ -132,37 +84,41 @@ public class Kierros {
             Thread.sleep(750);
             System.out.println(".");
             pelaaja.veloita(panos / 2);
-            if (jakajanKasi.isBlackjack()) {
-                k.setValmis();
-                jakajanKasi.setOpen();
-            } else {
+            if (!jakajanKasi.isBlackjack()) {
                 System.out.println("Insurance lost.");
             }
         }
+        if (jakajanKasi.isBlackjack()) {
+            k.setValmis();
+            jakajanKasi.setOpen();
+        }
     }
-    
+
     // ACTION-METODIT
     public void actions(Kasi k) throws InterruptedException {
         if (k.isBlackjack()) {
             k.setValmis();
         } else {
-            if (montaKatta()) {
-                System.out.println("\n" + k);
-            }
-            if (voiVakuuttaa(k)) {
+            if (KierrosUtil.voiVakuuttaa(jakajanKasi, k, pelaajanKadet)) {
                 insurance(k);
             }
             if (!k.isValmis()) {
+                if (pelaajanKadet.keySet().size() > 1) {
+                    System.out.println("\nYou: " + k);
+                }
                 komento(k);
             }
         }
     }
+
     public void komento(Kasi k) {
-        k.doables();
+        k.doables(pelaajanKadet.size());
         String komento = lukija.nextLine();
         if (komento.equals("HIT")) {
             hit(k);
-            System.out.println("You: " + k);
+            if (!k.isBust() && !k.isSplitted()) {
+                System.out.println("\nYou: " + k);
+            }
         } else if (komento.equals("STAND")) {
             stand(k);
         } else if (k.korttienLkm() == 2) {
@@ -174,22 +130,23 @@ public class Kierros {
         }
         if (k.getArvo() >= 21) {
             if (k.isBust() && pelaajanKadet.size() > 1) {
-                System.out.println("Bust.");
+                System.out.println("\nYou: " + k);
             }
             k.setValmis();
         }
     }
-    
+
     // TOIMINTAMETODIT
     public void stand(Kasi k) {
         k.setValmis();
     }
+
     public void split(Kasi hand) {
         hand.setValmis();
         Kortti k1 = null;
         Kortti k2 = null;
         Kasi kasi = null;
-        for (Kasi k : pelaajanKadet()) {
+        for (Kasi k : pelaajanKadet.keySet()) {
             kasi = k;
             k1 = k.getKortti(0);
             k2 = k.getKortti(1);
@@ -197,46 +154,71 @@ public class Kierros {
         }
         pelaajanKadet.put(new Kasi(k1, Jakaja.annaKortti()), panos);
         pelaajanKadet.put(new Kasi(k2, Jakaja.annaKortti()), panos);
+
+        for (Kasi k : pelaajanKadet.keySet()) {
+            k.setSplitted();
+            if (k1.getArvo() == Arvo.ASSA && k2.getArvo() == Arvo.ASSA) {
+                k.setValmis();
+            }
+        }
+
         pelaaja.veloita(panos);
         pelaajanKadet.remove(kasi);
     }
+
     public void hit(Kasi k) {
         k.addKortti(Jakaja.annaKortti());
     }
+
     public void doubl(Kasi k) {
         k.addKortti(Jakaja.annaKortti());
+        k.setDoubled();
         pelaaja.veloita(panos);
         panos *= 2;
         k.setValmis();
-        System.out.println("\nYou: " + k);
+        if (!k.isSplitted()) {
+            System.out.print("\nYou: " + k);
+        }
 
     }
-    
+
     // TULOSMETODIT
     public void tulos() throws InterruptedException {
         jakajanKasi();
-        for (Kasi k : pelaajanKadet()) {
+        for (Kasi k : pelaajanKadet.keySet()) {
             Tulos tulos = new Tulos(pelaaja, k, jakajanKasi, panos);
-            tulos.tulos(pelaajanKadet().size());
+            if (!k.isDoubled() && !jakajanKasi.isBlackjack()) {
+                System.out.println("You: " + k);
+                tulos.tulos(pelaajanKadet.keySet().size());
+            } else if (!jakajanKasi.isBust() && !k.isSplitted() && !k.isBlackjack()) {
+                if (!k.isDoubled()) {
+                    System.out.println("You: " + k);
+                }
+                tulos.tulos(pelaajanKadet.keySet().size());
+            } else {
+                tulos.tulos(pelaajanKadet.keySet().size());
+            }
         }
     }
+
     public void jakajanKasi() throws InterruptedException {
         jakajanKasi.setOpen();
         System.out.println("");
-        if (dealerOttaa()) {
+        if (KierrosUtil.dealerOttaa(pelaajanKadet)) {
             System.out.print("Dealer: " + jakajanKasi.kortit());
-            while (jakajanKasi.getArvo() < 17 && !pelaajaAllBj()) {
+            while (jakajanKasi.getArvo() < 17 && !KierrosUtil.pelaajaAllBj(pelaajanKadet)) {
                 jakajanKasi.addKortti(Jakaja.annaKortti());
                 Thread.sleep(1000);
                 System.out.print(Jakaja.edellinenKortti() + " ");
             }
             System.out.println(jakajanKasi.getArvoS());
         }
-    }
-    
-    // GETTERIT
-    public Set<Kasi> pelaajanKadet() {
-        return pelaajanKadet.keySet();
+        for (Kasi k : pelaajanKadet.keySet()) {
+            if (k.isSplitted()) {
+                System.out.println("");
+                break;
+            }
+        }
     }
 
 }

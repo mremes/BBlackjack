@@ -1,8 +1,7 @@
-package mremes.bblackjack.logiikka;
+package mremes.bblackjack.utilities;
 
-import mremes.bblackjack.logiikka.Jakaja;
-import mremes.bblackjack.logiikka.Kasi;
-import mremes.bblackjack.logiikka.Pelaaja;
+import mremes.bblackjack.elements.Kasi;
+import mremes.bblackjack.elements.Pelaaja;
 
 public class Tulos {
     private int panos;
@@ -50,9 +49,6 @@ public class Tulos {
     private void havio(Kasi k) {
         if (k.isBust()) {
             System.out.println("You're bust, dealer wins!");
-            if (kasia == 1) {
-                System.out.println("Dealer: " + jakaja);
-            }
         } else if (jakaja.isBlackjack()) {
             System.out.println("Dealer has a BLACKJACK, dealer wins!");
             if (k.isInsured()) {
@@ -60,7 +56,7 @@ public class Tulos {
                 kayttaja.lisaaRahaa(panos);
             }
         } else {
-            System.out.println("Dealer wins!");
+            System.out.print("Dealer wins!");
         }
     }
     private void tasuri(Kasi k) {

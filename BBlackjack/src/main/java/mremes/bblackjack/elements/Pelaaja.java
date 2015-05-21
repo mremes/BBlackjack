@@ -1,10 +1,11 @@
-package mremes.bblackjack.logiikka;
+package mremes.bblackjack.elements;
 
 import java.util.ArrayList;
 
 public class Pelaaja {
+
     private int balance;
-    
+
     public Pelaaja(int balance) {
         this.balance = balance;
     }
@@ -13,11 +14,17 @@ public class Pelaaja {
     public int getBalance() {
         return balance;
     }
+
     public void lisaaRahaa(int summa) {
-        this.balance += summa;
+        if (summa > 0) {
+            this.balance += summa;
+        }
     }
+
     public void veloita(int summa) {
-        this.balance -= summa;
+        if (summa > 0) {
+            this.balance -= summa;
+        }
     }
 
 }

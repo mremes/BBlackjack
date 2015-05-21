@@ -1,5 +1,7 @@
-package mremes.bblackjack.logiikka;
+package mremes.bblackjack.elements;
 
+import mremes.bblackjack.deckofcards.Kortti;
+import mremes.bblackjack.deckofcards.Arvo;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -10,6 +12,8 @@ public class Kasi implements Comparable<Kasi> {
     private boolean soft;
     private boolean valmis;
     private boolean insured;
+    private boolean doubled;
+    private boolean splitted;
 
     public Kasi(Kortti kortti1, Kortti kortti2) {
         this.kortit = new ArrayList();
@@ -19,15 +23,26 @@ public class Kasi implements Comparable<Kasi> {
         this.soft = false;
         this.valmis = false;
         this.insured = false;
+        this.doubled = false;
+        this.splitted = false;
     }
 
     // TILAMETODIT
     public boolean isDealer() {
         return dealer;
     }
+
+    public boolean isDoubled() {
+        return doubled;
+    }
     public boolean isValmis() {
         return valmis;
     }
+
+    public boolean isSplitted() {
+        return splitted;
+    }
+
     public boolean isBlackjack() {
         if (((kortit.get(0).getNumeroarvo() == 10 && kortit.get(1).getNumeroarvo() == 1) || (kortit.get(0).getNumeroarvo() == 1 && kortit.get(1).getNumeroarvo() == 10)) && kortit.size() == 2) {
             return true;
@@ -63,14 +78,14 @@ public class Kasi implements Comparable<Kasi> {
         }
         return false;
     }
-    public void doables() {
+    public void doables(int kasienMaara) {
         String dble = "DOUBLE";
         String split = "SPLIT";
         String komennot = "\nHIT, STAND";
         if (korttienLkm() == 2) {
             komennot += ", " + dble;
         }
-        if (isSplittable()) {
+        if (isSplittable() && kasienMaara == 1) {
             komennot += ", " + split;
         }
         System.out.print(komennot + ": ");
@@ -81,6 +96,14 @@ public class Kasi implements Comparable<Kasi> {
     }
     public void setOpen() {
         dealer = false;
+    }
+
+    public void setDoubled() {
+        this.doubled = true;
+    }
+    
+    public void setSplitted() {
+        this.splitted = true;
     }
     public void addKortti(Kortti k) {
         this.kortit.add(k);

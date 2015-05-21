@@ -1,6 +1,6 @@
-import mremes.bblackjack.logiikka.Arvo;
-import mremes.bblackjack.logiikka.Kortti;
-import mremes.bblackjack.logiikka.Maa;
+import mremes.bblackjack.deckofcards.Arvo;
+import mremes.bblackjack.deckofcards.Kortti;
+import mremes.bblackjack.deckofcards.Maa;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;

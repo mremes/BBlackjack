@@ -1,8 +1,8 @@
 
 
-import mremes.bblackjack.logiikka.Jakaja;
-import mremes.bblackjack.logiikka.Kasi;
-import mremes.bblackjack.logiikka.Pelaaja;
+import mremes.bblackjack.utilities.Jakaja;
+import mremes.bblackjack.elements.Kasi;
+import mremes.bblackjack.elements.Pelaaja;
 
 public class PelinTulos {
     private int panos;

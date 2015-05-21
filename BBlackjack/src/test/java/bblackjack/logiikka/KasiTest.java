@@ -1,7 +1,7 @@
-import mremes.bblackjack.logiikka.Arvo;
-import mremes.bblackjack.logiikka.Kasi;
-import mremes.bblackjack.logiikka.Kortti;
-import mremes.bblackjack.logiikka.Maa;
+import mremes.bblackjack.deckofcards.Arvo;
+import mremes.bblackjack.elements.Kasi;
+import mremes.bblackjack.deckofcards.Kortti;
+import mremes.bblackjack.deckofcards.Maa;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -25,12 +25,15 @@ public class KasiTest {
     
     @Test
     public void onBlackjackToimii() {
+        
         assertTrue(blackjack.isBlackjack());
     }
     
     @Test
     public void onBustToimii() {
-        assertTrue(!blackjack.isBust());
+        softKasi.addKortti(new Kortti(Maa.HERTTA, Arvo.KUNKKU));
+        softKasi.addKortti((new Kortti(Maa.HERTTA, Arvo.KUNKKU)));
+        assertTrue(softKasi.isBust());
     }
     
     @Test
@@ -47,7 +50,7 @@ public class KasiTest {
     @Test
     public void avoinKasiNakyy() {
         blackjack.setOpen();
-        assertEquals(blackjack.toString(), "♥A ♠J");
+        assertEquals(blackjack.toString(), "♥A ♠J (BLACKJACK)");
     }
     
     @Test

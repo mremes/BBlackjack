@@ -37,12 +37,14 @@
                 <version>1.1.4</version>
                 <configuration>
                     <targetClasses>
-                        <param>mremes.bblackjack.logiikka.Kasi</param>
-                        <param>mremes.bblackjack.logiikka.Kortti</param>
+                        <param>mremes.bblackjack.elements.Kasi</param>
+                        <param>mremes.bblackjack.deckofcards.Kortti</param>
+                        <param>mremes.bblackjack.elements.Pelaaja</param>
                     </targetClasses>
                     <targetTests>
                         <param>bblackjack.logiikka.KasiTest</param>
                         <param>bblackjack.logiikka.KorttiTest</param>
+                        <param>bblackjack.logiikka.PelaajaTest</param>
                     </targetTests>
                 </configuration>
             </plugin>

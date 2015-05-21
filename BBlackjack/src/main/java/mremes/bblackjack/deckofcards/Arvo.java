@@ -1,5 +1,5 @@
 
-package mremes.bblackjack.logiikka;
+package mremes.bblackjack.deckofcards;
 
 
 public enum Arvo {

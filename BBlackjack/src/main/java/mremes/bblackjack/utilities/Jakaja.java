@@ -1,5 +1,8 @@
-package mremes.bblackjack.logiikka;
+package mremes.bblackjack.utilities;
 
+import mremes.bblackjack.elements.Kasi;
+import mremes.bblackjack.deckofcards.Korttipakka;
+import mremes.bblackjack.deckofcards.Kortti;
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -29,8 +32,7 @@ public class Jakaja {
     } 
     public static Kortti edellinenKortti() {
         return Jakaja.kortit.get(counter - 1);
-    }
-    
+    } 
     public static Kasi uusiKasi() {
         return new Kasi(Jakaja.annaKortti(), Jakaja.annaKortti());
     }
@@ -39,15 +41,12 @@ public class Jakaja {
         counter++;
         return counter - 1;
     }
-    
     public static int jaljellaKortteja() {
         return Jakaja.kortit.size() - counter;
     }
-    
     private static int getCounter() {
         return counter;
     }
-    
     public static void resetCounter() {
          Jakaja.counter = 0;
     }

@@ -1,8 +1,8 @@
 
 
-import mremes.bblackjack.logiikka.Jakaja;
-import mremes.bblackjack.logiikka.Kasi;
-import mremes.bblackjack.logiikka.Pelaaja;
+import mremes.bblackjack.utilities.Jakaja;
+import mremes.bblackjack.elements.Kasi;
+import mremes.bblackjack.elements.Pelaaja;
 
 public class Tulos {
     private int panos;
@@ -16,9 +16,10 @@ public class Tulos {
         this.pelaaja = pelaaja;
         this.jakaja = jakaja;
         this.panos = panos;
+        this.kasia = 0;
     }
-    
     public void tulos(int kasia) {
+        this.kasia = kasia;
         tuloste();
         int compare = pelaaja.compareTo(jakaja);
         switch (compare) {
@@ -36,11 +37,12 @@ public class Tulos {
         }
     }
     private void voitto(Kasi k) {
+        System.out.print(k.toString() + ": ");
         int voitto = panos * 2;
-        if (k.onBlackjack()) {
+        if (k.isBlackjack()) {
             voitto = panos * 2 + panos / 2;
             System.out.println("BLACKJACK, you win " + voitto + "!");
-        } else if (!jakaja.onBust()) {
+        } else if (!jakaja.isBust()) {
             System.out.println("You win " + voitto + "!");
         } else {
             System.out.println("Dealer's bust, you win " + voitto + "!");
@@ -48,12 +50,13 @@ public class Tulos {
         kayttaja.lisaaRahaa(voitto);
     }
     private void havio(Kasi k) {
-        if (k.onBust()) {
+        System.out.print(k.toString() + ": ");
+        if (k.isBust()) {
             System.out.println("You're bust, dealer wins!");
             if (kasia == 1) {
                 System.out.println("Dealer: " + jakaja);
             }
-        } else if (jakaja.onBlackjack()) {
+        } else if (jakaja.isBlackjack()) {
             System.out.println("Dealer has a BLACKJACK, dealer wins!");
             if (k.isInsured()) {
                 System.out.println("Insurance pays " + panos);
@@ -65,6 +68,7 @@ public class Tulos {
     }
     private void tasuri(Kasi k) {
         kayttaja.lisaaRahaa(panos);
+        System.out.print(k + ": ");
         System.out.println("Push.");
     } 
     private void tuloste() {

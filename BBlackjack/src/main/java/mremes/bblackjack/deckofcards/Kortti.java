@@ -1,4 +1,6 @@
-package mremes.bblackjack.logiikka;
+package mremes.bblackjack.deckofcards;
+
+import mremes.bblackjack.deckofcards.Arvo;
 
 public class Kortti implements Comparable<Kortti> {
     private Maa maa;

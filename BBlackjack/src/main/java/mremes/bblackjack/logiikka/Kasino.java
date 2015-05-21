@@ -1,6 +1,9 @@
 package mremes.bblackjack.logiikka;
 
 import java.util.Scanner;
+import mremes.bblackjack.utilities.Jakaja;
+import mremes.bblackjack.logiikka.Kierros;
+import mremes.bblackjack.elements.Pelaaja;
 
 public class Kasino {
 

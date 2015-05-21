@@ -1,4 +1,8 @@
-package mremes.bblackjack.logiikka;
+package mremes.bblackjack.deckofcards;
+
+import mremes.bblackjack.deckofcards.Maa;
+import mremes.bblackjack.deckofcards.Kortti;
+import mremes.bblackjack.deckofcards.Arvo;
 
 public class Korttipakka {
 
@@ -22,7 +26,7 @@ public class Korttipakka {
         return this.kortit;
     }
     // APUMETODI
-    private Arvo[] annaArvot() {
+    public Arvo[] annaArvot() {
         Arvo[] arvot = new Arvo[13];
         arvot[0] = Arvo.KAKKONEN;
         arvot[1] = Arvo.KOLMONEN;
