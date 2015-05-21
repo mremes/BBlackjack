@@ -27,11 +27,19 @@ public class Kasino {
                 while (pelataan) {
                     Kierros kierros = new Kierros(pelaaja, lukija, jakaja);
                     kierros.pelaaKierros();
-                    System.out.print("NEW ROUND? (Y/N) ");
+                    System.out.print("\nNEW ROUND? (Y/N) ");
                     String syote = lukija.nextLine();
-                    System.out.println("");
                     if (!syote.equals("Y")) {
                         pelataan = false;
+                    }
+                    if(Jakaja.jaljellaKortteja() < 80) {
+                        Jakaja.sekoitaKortit();
+                        System.out.print("Shuffling.");
+                        Thread.sleep(750);
+                        System.out.print(".");
+                        Thread.sleep(750);
+                        System.out.println(".");
+                        Thread.sleep(750);
                     }
                 }
             } else if (syotto.equals("2")) {

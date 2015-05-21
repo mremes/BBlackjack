@@ -30,9 +30,25 @@ public class Jakaja {
     public static Kortti edellinenKortti() {
         return Jakaja.kortit.get(counter - 1);
     }
+    
+    public static Kasi uusiKasi() {
+        return new Kasi(Jakaja.annaKortti(), Jakaja.annaKortti());
+    }
     // LASKIJA
     private static int counter() {
         counter++;
         return counter - 1;
+    }
+    
+    public static int jaljellaKortteja() {
+        return Jakaja.kortit.size() - counter;
+    }
+    
+    private static int getCounter() {
+        return counter;
+    }
+    
+    public static void resetCounter() {
+         Jakaja.counter = 0;
     }
 }

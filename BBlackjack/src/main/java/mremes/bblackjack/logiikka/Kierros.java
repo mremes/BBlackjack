@@ -26,68 +26,47 @@ public class Kierros {
     }
 
     // PELAA YHDEN KIERROKSEN
-    
     public void pelaaKierros() throws InterruptedException {
-        // PANOSTEN ASETTAMINEN JA KORTTIEN JAKO
-        pelaajanKadet.put(uusiKasi(), panostus());
-        this.jakajanKasi = uusiKasi();
-        jakajanKasi.setDealer();
-        System.out.println("");
-        // PELI ALKAA
+        jaaKadet();
         dealer();
-        while (true) {
+        while (!pelaajaValmis()) {
             pelaaja();
-            for (Kasi k : pelaajanKadet.keySet()) {
-                System.out.println("");
-                if (k.onBlackjack()) {
-                    k.valmis();
-                } else {
-                    if (pelaajanKadet.keySet().size() > 1) {
-                        System.out.println(k + " " + k.getArvoS());
-                    }
-                    if (jakajanKasi.nakyvaAssa() && k.getKortit().size() > 2) {
-                        insurance(k);
-                    }
-                    if (!k.isValmis()) {
-                        komennot(k);
-                        komento(lukija.nextLine(), k);
-                    }
+            for (Kasi k : pelaajanKadet()) {
+                while (!k.isValmis()) {
+                    actions(k);
                 }
-            }
-            if (pelaajaValmis()) {
-                break;
             }
         }
         tulos();
     }
 
-    // UUDEN KÄDEN GENEROINTI
-    
-    public Kasi uusiKasi() {
-        return new Kasi(Jakaja.annaKortti(), Jakaja.annaKortti());
+    // TULOSTUSMETODIT
+    public void jaaKadet() {
+        pelaajanKadet.put(Jakaja.uusiKasi(), panostus());
+        this.jakajanKasi = Jakaja.uusiKasi();
+        jakajanKasi.setDealer();
+        System.out.println("");
     }
 
-    // TULOSTUSMETODIT
-    
     public void pelaaja() {
-        for (Kasi k : pelaajanKadet.keySet()) {
-            System.out.println("You: " + k + " " + k.getArvoS());
+        System.out.println("");
+        for (Kasi k : pelaajanKadet()) {
+            System.out.println("You: " + k);
         }
     }
 
     public void dealer() {
         if (!jakajanKasi.isDealer()) {
-            System.out.println("Dealer: " + jakajanKasi + " " + jakajanKasi.getArvoS());
-        } else {
             System.out.println("Dealer: " + jakajanKasi);
+        } else {
+            System.out.print("Dealer: " + jakajanKasi);
         }
     }
 
     // TILAMETODIT
-    
     public boolean pelaajaBust() {
         boolean bust = true;
-        for (Kasi k : pelaajanKadet.keySet()) {
+        for (Kasi k : pelaajanKadet()) {
             if (!k.onBust()) {
                 bust = false;
                 break;
@@ -98,7 +77,7 @@ public class Kierros {
 
     public boolean pelaajaValmis() {
         boolean valmis = true;
-        for (Kasi k : pelaajanKadet.keySet()) {
+        for (Kasi k : pelaajanKadet()) {
             if (!k.isValmis()) {
                 valmis = false;
                 break;
@@ -109,7 +88,7 @@ public class Kierros {
 
     public boolean pelaajaAllBj() {
         boolean allbj = true;
-        for (Kasi k : pelaajanKadet.keySet()) {
+        for (Kasi k : pelaajanKadet()) {
             if (!k.onBlackjack()) {
                 allbj = false;
                 break;
@@ -118,23 +97,32 @@ public class Kierros {
         return allbj;
     }
 
+    public boolean voiVakuuttaa(Kasi k) {
+        return jakajanKasi.nakyvaAssa() && pelaajanKadet.size() == 1 && k.kortteja() == 2;
+    }
+
+    public boolean montaKatta() {
+        return pelaajanKadet().size() > 1;
+    }
+
     // PANOSTUS- JA VAKUUTUSMETODI
-    
     public int panostus() {
-        System.out.println("Your stack: " + pelaaja.getBalance());
+        System.out.println("\nYour stack: " + pelaaja.getBalance());
         System.out.print("Place your bet: ");
         panos = Integer.parseInt(lukija.nextLine());
         pelaaja.veloita(panos);
         return panos;
     }
-
     public void insurance(Kasi k) throws InterruptedException {
         System.out.print("INSURANCE? (Y/N) ");
         String syotto = lukija.nextLine();
         if (syotto.equals("Y")) {
             k.setInsurance();
-            System.out.println("Checking...");
-            Thread.sleep(1000);
+            System.out.print("\nChecking.");
+            Thread.sleep(750);
+            System.out.print(".");
+            Thread.sleep(750);
+            System.out.println(".");
             pelaaja.veloita(panos / 2);
             if (jakajanKasi.onBlackjack()) {
                 k.valmis();
@@ -144,58 +132,54 @@ public class Kierros {
             }
         }
     }
-
-    // KOMENTOMETODIT
-    
-    public void komennot(Kasi k) {
-        String hit = "HIT";
-        String stand = "STAND";
-        String dble = "DOUBLE";
-        String split = "SPLIT";
-        String komennot = hit + ", " + stand;
-        if (k.getKortit().size() == 2) {
-            komennot += ", " + dble;
+    // ACTION-METODIT
+    public void actions(Kasi k) throws InterruptedException {
+        if (k.onBlackjack()) {
+            k.valmis();
+        } else {
+            if (montaKatta()) {
+                System.out.println("\n" + k);
+            }
+            if (voiVakuuttaa(k)) {
+                insurance(k);
+            }
+            if (!k.isValmis()) {
+                komento(k);
+            }
         }
-        if (k.getKortti(0).getNumeroarvo() == k.getKortti(1).getNumeroarvo()) {
-            komennot += ", " + split;
-        }
-        System.out.print(komennot + ": ");
     }
-
-    public void komento(String komento, Kasi k) {
+    public void komento(Kasi k) {
+        k.doables();
+        String komento = lukija.nextLine();
         if (komento.equals("HIT")) {
             hit(k);
-            System.out.println("");
+            System.out.println("You: " + k);
         } else if (komento.equals("STAND")) {
             k.valmis();
-        } else if (k.getKortit().size() == 2) {
+        } else if (k.kortteja() == 2) {
             if (komento.equals("DOUBLE")) {
                 doubl(k);
             } else if (komento.equals("SPLIT")) {
-                split();
+                split(k);
             }
         }
         if (k.getArvo() >= 21) {
-            System.out.println(k + " " + k.getArvoS());;
-
-            if (k.getArvo() > 21 && pelaajanKadet.size() > 1) {
+            if (k.onBust() && pelaajanKadet.size() > 1) {
                 System.out.println("Bust.");
             }
             k.valmis();
         }
     }
-
     // TOIMINTAMETODIT
-    
     public void stand(Kasi k) {
         k.valmis();
     }
-
-    public void split() {
+    public void split(Kasi hand) {
+        hand.valmis();
         Kortti k1 = null;
         Kortti k2 = null;
         Kasi kasi = null;
-        for (Kasi k : pelaajanKadet.keySet()) {
+        for (Kasi k : pelaajanKadet()) {
             kasi = k;
             k1 = k.getKortti(0);
             k2 = k.getKortti(1);
@@ -206,37 +190,35 @@ public class Kierros {
         pelaaja.veloita(panos);
         pelaajanKadet.remove(kasi);
     }
-
     public void hit(Kasi k) {
         k.lisaaKortti(Jakaja.annaKortti());
     }
-
     public void doubl(Kasi k) {
         k.lisaaKortti(Jakaja.annaKortti());
         pelaaja.veloita(panos);
         panos *= 2;
         k.valmis();
-        System.out.println("\nYou: " + k + " " + k.getArvoS());
+        System.out.println("\nYou: " + k);
+
     }
 
     // TULOSMETODIT
-    
     public void tulos() throws InterruptedException {
         jakajanKasi.avaa();
-
-        if (!pelaajaBust() && !jakajanKasi.onBlackjack()) {
-            System.out.print("Dealer: " + jakajanKasi + " ");
+        System.out.println("");
+        if (dealerOttaa()) {
+            System.out.print("Dealer: " + jakajanKasi.kortit());
             while (jakajanKasi.getArvo() < 17 && !pelaajaAllBj()) {
                 jakajanKasi.lisaaKortti(Jakaja.annaKortti());
                 Thread.sleep(1000);
                 System.out.print(Jakaja.edellinenKortti() + " ");
             }
-            System.out.println(jakajanKasi.getArvoS() + "\n");
+            System.out.println(jakajanKasi.getArvoS());
         }
         int i = 1;
-        for (Kasi k : pelaajanKadet.keySet()) {
+        for (Kasi k : pelaajanKadet()) {
             if (pelaajanKadet.size() > 1) {
-                System.out.println("\nHand " + i + ": " + k + " " + k.getArvoS());
+                System.out.println("\nHand " + i + ": " + k);
                 i++;
             }
             int compare = k.compareTo(jakajanKasi);
@@ -255,7 +237,6 @@ public class Kierros {
             }
         }
     }
-
     public void voitto(Kasi k) {
         int voitto = panos * 2;
         if (k.onBlackjack()) {
@@ -268,19 +249,17 @@ public class Kierros {
         }
         pelaaja.lisaaRahaa(voitto);
     }
-
     public void tasuri(Kasi k) {
         pelaaja.lisaaRahaa(panos);
         System.out.println("Push.");
     }
-
     public void havio(Kasi k) {
         if (k.onBust()) {
-            System.out.println("\nYou're bust, dealer wins!");
-            jakajanKasi.avaa();
-            dealer();
+            System.out.println("You're bust, dealer wins!");
+            if (pelaajanKadet().size() == 1) {
+                System.out.println("Dealer: " + jakajanKasi);
+            }
         } else if (jakajanKasi.onBlackjack()) {
-            dealer();
             System.out.println("Dealer has a BLACKJACK, dealer wins!");
             if (k.isInsured()) {
                 System.out.println("Insurance pays " + pelaajanKadet.get(k));
@@ -290,4 +269,26 @@ public class Kierros {
             System.out.println("Dealer wins!");
         }
     }
+
+    // GETTERIT
+    public Set<Kasi> pelaajanKadet() {
+        return pelaajanKadet.keySet();
+    }
+    public boolean dealerOttaa() {
+        int busted = 0;
+        int blackjacks = 0;
+        for (Kasi k : pelaajanKadet()) {
+            if (k.onBust()) {
+                busted++;
+            }
+            if (k.onBlackjack()) {
+                blackjacks++;
+            }
+        }
+        if (busted + blackjacks == pelaajanKadet().size()) {
+            return false;
+        }
+        return true;
+    }
+
 }

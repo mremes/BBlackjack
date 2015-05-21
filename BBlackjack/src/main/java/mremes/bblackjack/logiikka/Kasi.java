@@ -20,25 +20,30 @@ public class Kasi implements Comparable<Kasi> {
         this.valmis = false;
         this.insured = false;
     }
+
     // TILAMETODIT
     public boolean isDealer() {
         return dealer;
     }
+
     public boolean isValmis() {
         return valmis;
     }
+
     public boolean onBlackjack() {
         if (((kortit.get(0).getNumeroarvo() == 10 && kortit.get(1).getNumeroarvo() == 1) || (kortit.get(0).getNumeroarvo() == 1 && kortit.get(1).getNumeroarvo() == 10)) && kortit.size() == 2) {
             return true;
         }
         return false;
     }
+
     public boolean onBust() {
         if (getArvo() > 21 && !onBlackjack()) {
             return true;
         }
         return false;
     }
+
     private boolean onkoAssaa() {
         for (Kortti kortti : this.kortit) {
             if (kortti.getArvo() == Arvo.ASSA) {
@@ -47,40 +52,56 @@ public class Kasi implements Comparable<Kasi> {
         }
         return false;
     }
+
     public boolean isInsured() {
         return insured;
     }
+
+    public boolean canSplit() {
+        return getKortti(0).getNumeroarvo() == getKortti(1).getNumeroarvo()
+                && kortit.size() == 2;
+    }
+
     // DEALERIN TILAMETODI
+
     public boolean nakyvaAssa() {
-        if(kortit.get(1).getArvo() == Arvo.ASSA) {
+        if (kortit.get(1).getArvo() == Arvo.ASSA) {
             return true;
         }
         return false;
     }
+
     // SETTERIT
     public void valmis() {
         valmis = true;
     }
+
     public void avaa() {
         dealer = false;
     }
+
     public void lisaaKortti(Kortti k) {
         this.kortit.add(k);
     }
+
     public void setDealer() {
         this.dealer = true;
-        
+
     }
+
     public void setInsurance() {
         this.insured = true;
     }
+
     // GETTERIT
     public ArrayList<Kortti> getKortit() {
         return kortit;
     }
+
     public Kortti getKortti(int index) {
         return this.kortit.get(index);
     }
+
     public int getArvo() {
         int arvo = 0;
         if (!onkoAssaa()) {
@@ -99,6 +120,11 @@ public class Kasi implements Comparable<Kasi> {
             }
         }
     } // LASKEE KAIKKIEN YHDISTELMIEN ARVOT
+
+    public int kortteja() {
+        return this.kortit.size();
+    }
+
     private int laskeArvo() {
         int arvo = 0;
         for (Kortti kortti : this.kortit) {
@@ -106,6 +132,7 @@ public class Kasi implements Comparable<Kasi> {
         }
         return arvo;
     } // LASKEE VAIN KADET ILMAN A:TA
+
     public String getArvoS() {
         if (onBlackjack()) {
             return "(BLACKJACK)";
@@ -113,10 +140,31 @@ public class Kasi implements Comparable<Kasi> {
             soft = true;
             return "(" + laskeArvo() + " / " + getArvo() + ")";
         }
-        
+
         return "(" + getArvo() + ")";
     } // PALAUTTAA ARVON STRINGINÄ
+
+    public String kortit() {
+        String stringi = "";
+        for (Kortti k : this.kortit) {
+            stringi += k + " ";
+        }
+        return stringi;
+    }
     // OVERRIDED
+    
+    public void doables() {
+        String dble = "DOUBLE";
+        String split = "SPLIT";
+        String komennot = "\nHIT, STAND";
+        if (kortteja() == 2) {
+            komennot += ", " + dble;
+        }
+        if (canSplit()) {
+            komennot += ", " + split;
+        }
+        System.out.print(komennot + ": ");
+    }
     @Override
     public String toString() {
         if (!dealer) {
@@ -125,11 +173,14 @@ public class Kasi implements Comparable<Kasi> {
                 kortit += k.toString() + " ";
             }
             kortit = kortit.substring(0, kortit.length() - 1);
+            kortit = kortit + " " + getArvoS();
+
             return kortit;
         } else {
             return "XX " + this.kortit.get(1).toString();
         }
     }
+
     @Override
     public int compareTo(Kasi jakajanKasi) {
         if (onBust()) {
@@ -150,6 +201,7 @@ public class Kasi implements Comparable<Kasi> {
             }
         }
     }
+
     @Override
     public int hashCode() {
         int bj = 0;
@@ -158,5 +210,5 @@ public class Kasi implements Comparable<Kasi> {
         }
         return this.getArvo() + this.getKortit().get(0).hashCode() + this.getKortit().get(1).hashCode() + bj;
     }
-    
+
 }
