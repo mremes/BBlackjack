@@ -1,3 +1,5 @@
+package bblackjack.logiikka;
+
 import mremes.bblackjack.deckofcards.Arvo;
 import mremes.bblackjack.deckofcards.Kortti;
 import mremes.bblackjack.deckofcards.Maa;

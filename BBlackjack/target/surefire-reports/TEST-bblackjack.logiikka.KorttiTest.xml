@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="7" failures="0" name="KasiTest" time="0.012" errors="0" skipped="0">
+<testsuite tests="6" failures="0" name="bblackjack.logiikka.KorttiTest" time="0.113" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="/Library/Java/JavaVirtualMachines/jdk1.8.0_31.jdk/Contents/Home/jre/lib"/>
@@ -44,7 +44,7 @@
     <property name="java.vm.specification.version" value="1.8"/>
     <property name="sun.arch.data.model" value="64"/>
     <property name="java.home" value="/Library/Java/JavaVirtualMachines/jdk1.8.0_31.jdk/Contents/Home/jre"/>
-    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher -Dmaven.ext.class.path=/Applications/NetBeans/NetBeans 8.0.2.app/Contents/Resources/NetBeans/java/maven-nblib/netbeans-eventspy.jar clean install"/>
+    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher -Dmaven.ext.class.path=/Applications/NetBeans/NetBeans 8.0.2.app/Contents/Resources/NetBeans/java/maven-nblib/netbeans-eventspy.jar test"/>
     <property name="java.specification.vendor" value="Oracle Corporation"/>
     <property name="user.language" value="fi"/>
     <property name="awt.toolkit" value="sun.lwawt.macosx.LWCToolkit"/>
@@ -62,11 +62,10 @@
     <property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="sun.cpu.isalist" value=""/>
   </properties>
-  <testcase classname="KasiTest" name="softKasiMuuttuuHardiksiKunLisataanYhdeksan" time="0.004"/>
-  <testcase classname="KasiTest" name="suljettuKasiKunDealer" time="0"/>
-  <testcase classname="KasiTest" name="softKasiArvoStringinaOikein" time="0"/>
-  <testcase classname="KasiTest" name="onBlackjackToimii" time="0.001"/>
-  <testcase classname="KasiTest" name="avoinKasiNakyy" time="0.001"/>
-  <testcase classname="KasiTest" name="assaEiNay" time="0.001"/>
-  <testcase classname="KasiTest" name="onBustToimii" time="0"/>
+  <testcase classname="bblackjack.logiikka.KorttiTest" name="oikeaArvo" time="0.007"/>
+  <testcase classname="bblackjack.logiikka.KorttiTest" name="oikeaNumeroarvo" time="0"/>
+  <testcase classname="bblackjack.logiikka.KorttiTest" name="vertailuToimiiKunVerrattavaYlempi" time="0"/>
+  <testcase classname="bblackjack.logiikka.KorttiTest" name="oikeaToString" time="0.001"/>
+  <testcase classname="bblackjack.logiikka.KorttiTest" name="vertailuToimiiKunSamaArvo" time="0.07"/>
+  <testcase classname="bblackjack.logiikka.KorttiTest" name="oikeaMaa" time="0.001"/>
 </testsuite>
