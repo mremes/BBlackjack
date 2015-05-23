@@ -11,3 +11,7 @@
 19.5.2015 - 16:00 - 20:00 / Logiikan viilausta: logiikan refaktorointi olio-orientoituneemmaksi
 
 19.5.2015 - 23:00 - 01:45 / Logiikan viilausta: logiikan refaktoroinnin jatkaminen, uusi toiminnallisuus: DOUBLE (tuplaus)
+
+20.5.2015 - 12:00 - 19:00 / Logiikka valmis: insurance-toiminnallisuus lisätty, tekstikäyttöliittymän viilaus ja testaus/debuggaus, ensimmäiset testit
+
+21.5.2015 - 14:00 - 18:00 / Testien laajennus, pit-reportin luominen
