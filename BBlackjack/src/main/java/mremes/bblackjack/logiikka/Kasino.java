@@ -25,22 +25,9 @@ public class Kasino {
             System.out.print("CHOOSE (1-4): ");
             String syotto = lukija.nextLine();
             if (syotto.equals("1")) {
-                boolean pelataan = true;
-                Jakaja.sekoitaKortit();
-                while (pelataan) {
-                    Kierros kierros = new Kierros(pelaaja, lukija, jakaja);
-                    kierros.pelaaKierros();
-                    System.out.print("\nNEW ROUND? (Y/N) ");
-                    String syote = lukija.nextLine();
-                    if (!syote.equals("Y")) {
-                        pelataan = false;
-                    }
-                    if (Jakaja.jaljellaKortteja() < 80) {
-                        shuffle();
-                    }
-                }
+                play();
             } else if (syotto.equals("2")) {
-                System.out.println("BALANCE: " + pelaaja.getBalance());
+                balance();
             } else if (syotto.equals("3")) {
                 System.out.print("AMOUNT: ");
                 deposit(Integer.parseInt(lukija.nextLine()));
@@ -54,8 +41,7 @@ public class Kasino {
     }
 
     // DEPO-METODI
-
-    private void deposit(int summa) throws InterruptedException {
+    public void deposit(int summa) throws InterruptedException {
         pelaaja.lisaaRahaa(summa);
         System.out.print("Processing.");
         Thread.sleep(1200);
@@ -65,6 +51,7 @@ public class Kasino {
         Thread.sleep(2200);
         System.out.println("\nYou have successfully deposited " + summa + "!");
     }
+
     private void shuffle() throws InterruptedException {
         Jakaja.sekoitaKortit();
         System.out.print("Shuffling.");
@@ -73,5 +60,30 @@ public class Kasino {
         Thread.sleep(750);
         System.out.println(".");
         Thread.sleep(750);
+    }
+
+    public void play() throws InterruptedException {
+        boolean pelataan = true;
+        Jakaja.sekoitaKortit();
+        while (pelataan) {
+            Kierros kierros = new Kierros(pelaaja, lukija, jakaja);
+            kierros.pelaaKierros();
+            System.out.print("\nNEW ROUND? (Y/N) ");
+            String syote = lukija.nextLine();
+            if (!syote.equals("Y")) {
+                pelataan = false;
+            }
+            if (Jakaja.jaljellaKortteja() < 80) {
+                shuffle();
+            }
+        }
+    }
+    
+    public void balance() {
+        System.out.println("BALANCE: " + pelaaja.getBalance());
+    }
+    
+    public void exit() {
+        System.out.println("Thank you for playing!");
     }
 }
