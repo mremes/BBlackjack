@@ -1,7 +1,6 @@
-bblackjack/logiikka/KasiTest.class
-bblackjack/logiikka/KorttiTest.class
-bblackjack/logiikka/KasinoTest.class
-bblackjack/logiikka/JakajaTest.class
-bblackjack/logiikka/KierrosTest.class
-bblackjack/logiikka/KorttipakkaTest.class
-bblackjack/logiikka/PelaajaTest.class
+userInterface/KasinoTest.class
+logiikka/JakajaTest.class
+logiikka/KorttiTest.class
+logiikka/PelaajaTest.class
+logiikka/KorttipakkaTest.class
+logiikka/KasiTest.class

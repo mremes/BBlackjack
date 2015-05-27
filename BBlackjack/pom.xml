@@ -42,22 +42,20 @@
                 <version>1.1.4</version>
                 <configuration>
                     <targetClasses>
-                        <param>mremes.bblackjack.elements.Kasi</param>
-                        <param>mremes.bblackjack.deckofcards.Kortti</param>
-                        <param>mremes.bblackjack.elements.Pelaaja</param>
-                        <param>mremes.bblackjack.deckofcards.Korttipakka</param>
-                        <param>mremes.bblackjack.tui.Kasino</param>
-                        <param>mremes.bblackjack.tui.Kierros</param>
-                        <param>mremes.bblackjack.utilities.Jakaja</param>
+                        <param>logiikka.elements.Kasi</param>
+                        <param>logiikka.cards.Kortti</param>
+                        <param>logiikka.elements.Pelaaja</param>
+                        <param>logiikka.cards.Korttipakka</param>
+                        <param>logiikka.utilities.Jakaja</param>
+                        <param>userInterface.Kasino</param>
                     </targetClasses>
                     <targetTests>
-                        <param>bblackjack.logiikka.KasiTest</param>
-                        <param>bblackjack.logiikka.KorttiTest</param>
-                        <param>bblackjack.logiikka.PelaajaTest</param>
-                        <param>bblackjack.logiikka.KorttipakkaTest</param>
-                        <param>bblackjack.logiikka.KasinoTest</param>
-                        <param>bblackjack.logiikka.KierrosTest</param>
-                        <param>bblackjack.logiikka.JakajaTest</param>
+                        <param>logiikka.KasiTest</param>
+                        <param>logiikka.KorttiTest</param>
+                        <param>logiikka.PelaajaTest</param>
+                        <param>logiikka.KorttipakkaTest</param>
+                        <param>logiikka.JakajaTest</param>
+                        <param>userInterface.KasinoTest</param>
                     </targetTests>
                 </configuration>
             </plugin>
