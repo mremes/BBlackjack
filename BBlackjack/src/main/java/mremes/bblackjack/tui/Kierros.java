@@ -1,4 +1,4 @@
-package mremes.bblackjack.logiikka;
+package mremes.bblackjack.tui;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -22,7 +22,7 @@ public class Kierros {
     private Scanner lukija;
     private int panos;
 
-    public Kierros(Pelaaja pelaaja, Scanner lukija, Jakaja jakaja) {
+    public Kierros(Pelaaja pelaaja, Scanner lukija) {
         this.pelaaja = pelaaja;
         this.pelaajanKadet = new HashMap();
         this.lukija = lukija;
@@ -31,8 +31,8 @@ public class Kierros {
 
     // PELAA YHDEN KIERROKSEN
     public void pelaaKierros() throws InterruptedException {
-        int panos = panostus();
-        jaaKadet(panos);
+        panostus();
+        jaaKadet();
         dealer();
         while (!KierrosUtil.pelaajaValmis(pelaajanKadet)) {
             pelaaja();
@@ -45,11 +45,10 @@ public class Kierros {
         tulos();
     }
 
-    public void jaaKadet(int panos) {
+    public void jaaKadet() {
         pelaajanKadet.put(Jakaja.uusiKasi(), panos);
         jakajanKasi = Jakaja.uusiKasi();
         jakajanKasi.setDealer();
-        System.out.println("");
     }
 
     // SOUT-TULOSTUSMETODIT
@@ -65,12 +64,11 @@ public class Kierros {
     }
 
     // PANOSTUS- JA VAKUUTUSMETODI
-    public int panostus() {
+    public void panostus() {
         System.out.println("\nYour stack: " + pelaaja.getBalance());
         System.out.print("Place your bet: ");
         panos = Integer.parseInt(lukija.nextLine());
         pelaaja.veloita(panos);
-        return panos;
     }
 
     public void insurance(Kasi k) throws InterruptedException {
@@ -112,7 +110,7 @@ public class Kierros {
     }
 
     public void komento(Kasi k) {
-        k.doables(pelaajanKadet.size());
+        System.out.println(k.doables(pelaajanKadet.size()));
         String komento = lukija.nextLine();
         if (komento.equals("HIT")) {
             hit(k);
@@ -174,11 +172,9 @@ public class Kierros {
         k.addKortti(Jakaja.annaKortti());
         k.setDoubled();
         pelaaja.veloita(panos);
-        panos *= 2;
         k.setValmis();
-        if (!k.isSplitted()) {
-            System.out.print("\nYou: " + k);
-        }
+        System.out.print("\nYou: " + k);
+
 
     }
 
@@ -186,6 +182,10 @@ public class Kierros {
     public void tulos() throws InterruptedException {
         jakajanKasi();
         for (Kasi k : pelaajanKadet.keySet()) {
+            int panos = this.panos;
+            if(k.isDoubled()) {
+                panos *= 2;
+            }
             Tulos tulos = new Tulos(pelaaja, k, jakajanKasi, panos);
             if (!k.isDoubled() && !jakajanKasi.isBlackjack()) {
                 System.out.println("You: " + k);
@@ -199,6 +199,7 @@ public class Kierros {
                 tulos.tulos(pelaajanKadet.keySet().size());
             }
         }
+        pelaajanKadet.clear();
     }
 
     public void jakajanKasi() throws InterruptedException {
@@ -219,6 +220,28 @@ public class Kierros {
                 break;
             }
         }
+    }
+    
+    // GETTERIT JA SETTERIT
+    
+    public Pelaaja getPelaaja() {
+        return this.pelaaja;
+    }
+    
+    public HashMap<Kasi, Integer> getPelaajanKadet() {
+        return this.pelaajanKadet;
+    }
+    
+    public Kasi getJakajanKasi() {
+        return this.jakajanKasi;
+    }
+    
+    public int getPanos() {
+        return this.panos;
+    }
+    
+    public Scanner getLukija() {
+        return this.lukija;
     }
 
 }

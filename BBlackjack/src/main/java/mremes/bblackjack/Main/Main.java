@@ -1,16 +1,18 @@
 package mremes.bblackjack.Main;
-import mremes.bblackjack.*;
-
-import mremes.bblackjack.logiikka.Kasino;
 import java.util.Scanner;
 import javax.swing.SwingUtilities;
-import mremes.bblackjack.logiikka.*;
+import mremes.bblackjack.*;
+import mremes.bblackjack.deckofcards.Arvo;
+import mremes.bblackjack.deckofcards.Kortti;
+import mremes.bblackjack.deckofcards.Korttipakka;
+import mremes.bblackjack.deckofcards.Maa;
+import mremes.bblackjack.elements.Kasi;
+import mremes.bblackjack.tui.Kasino;
 
 public class Main {
 
     public static void main(String[] args) throws InterruptedException {
-        Kasino kasino = new Kasino(new Scanner(System.in));
-        kasino.kaynnista();
+        System.out.println(new Kasi(new Kortti(Maa.HERTTA, Arvo.ASSA), new Kortti(Maa.PATA, Arvo.JATKA)));
         
     }
 }

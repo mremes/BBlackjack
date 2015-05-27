@@ -37,7 +37,7 @@ public class Jakaja {
         return new Kasi(Jakaja.annaKortti(), Jakaja.annaKortti());
     }
     // LASKIJA
-    private static int counter() {
+    public static int counter() {
         counter++;
         return counter - 1;
     }

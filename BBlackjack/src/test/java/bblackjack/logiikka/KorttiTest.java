@@ -49,6 +49,17 @@ public class KorttiTest {
         assertEquals(kortti.compareTo(new Kortti(Maa.PATA, Arvo.KAKKONEN)),-1);
     }
     
+    @Test
+    public void samaArvoToimii() {
+        assertTrue(kortti.samaArvo(new Kortti(Maa.PATA, Arvo.ASSA)));
+        assertTrue(!kortti.samaArvo(new Kortti(Maa.PATA, Arvo.KUNKKU)));
+    }
+    
+    @Test
+    public void getArvoSToimii() {
+        assertEquals("(ASSA)", kortti.getArvoS());
+    }
+    
 
 
 }

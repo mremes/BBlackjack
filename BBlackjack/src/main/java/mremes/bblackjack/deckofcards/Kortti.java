@@ -50,4 +50,19 @@ public class Kortti implements Comparable<Kortti> {
     public int hashCode() {
         return getNumeroarvo() + getMaa().hashCode();
     }
+    
+    @Override
+    public boolean equals(Object o) {
+        if(o.getClass() != this.getClass()) {
+            return false;
+        }
+        
+        Kortti k = (Kortti) o;
+        
+        if(k.getArvo() == this.getArvo() && k.getMaa() == this.getMaa()) {
+            return true;
+        }
+        
+        return false;
+    }
 }

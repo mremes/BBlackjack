@@ -55,7 +55,7 @@ public class Kasi implements Comparable<Kasi> {
         }
         return false;
     }
-    private boolean hasAce() {
+    public boolean hasAce() {
         for (Kortti kortti : this.kortit) {
             if (kortti.getArvo() == Arvo.ASSA) {
                 return true;
@@ -78,7 +78,7 @@ public class Kasi implements Comparable<Kasi> {
         }
         return false;
     }
-    public void doables(int kasienMaara) {
+    public String doables(int kasienMaara) {
         String dble = "DOUBLE";
         String split = "SPLIT";
         String komennot = "\nHIT, STAND";
@@ -88,7 +88,7 @@ public class Kasi implements Comparable<Kasi> {
         if (isSplittable() && kasienMaara == 1) {
             komennot += ", " + split;
         }
-        System.out.print(komennot + ": ");
+        return komennot + ": ";
     }
     // SETTERIT
     public void setValmis() {

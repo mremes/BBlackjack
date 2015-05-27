@@ -45,11 +45,19 @@
                         <param>mremes.bblackjack.elements.Kasi</param>
                         <param>mremes.bblackjack.deckofcards.Kortti</param>
                         <param>mremes.bblackjack.elements.Pelaaja</param>
+                        <param>mremes.bblackjack.deckofcards.Korttipakka</param>
+                        <param>mremes.bblackjack.tui.Kasino</param>
+                        <param>mremes.bblackjack.tui.Kierros</param>
+                        <param>mremes.bblackjack.utilities.Jakaja</param>
                     </targetClasses>
                     <targetTests>
                         <param>bblackjack.logiikka.KasiTest</param>
                         <param>bblackjack.logiikka.KorttiTest</param>
                         <param>bblackjack.logiikka.PelaajaTest</param>
+                        <param>bblackjack.logiikka.KorttipakkaTest</param>
+                        <param>bblackjack.logiikka.KasinoTest</param>
+                        <param>bblackjack.logiikka.KierrosTest</param>
+                        <param>bblackjack.logiikka.JakajaTest</param>
                     </targetTests>
                 </configuration>
             </plugin>

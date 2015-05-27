@@ -6,7 +6,7 @@
 package bblackjack.logiikka;
 
 import mremes.bblackjack.deckofcards.Arvo;
-import mremes.bblackjack.deckofcards.Kortti;
+import mremes.bblackjack.deckofcards.*;
 import mremes.bblackjack.deckofcards.Korttipakka;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -18,9 +18,15 @@ import org.junit.Test;
 public class KorttipakkaTest {
 
     private Korttipakka pakka;
-
+    
+    @Before
     public void setUp() {
         pakka = new Korttipakka();
+    }
+    
+    @Test
+    public void oikeaMaaraKortteja() {
+        assertEquals(52, pakka.getKortit().length);
     }
 
 }

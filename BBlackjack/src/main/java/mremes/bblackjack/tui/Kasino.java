@@ -1,15 +1,15 @@
-package mremes.bblackjack.logiikka;
+package mremes.bblackjack.tui;
 
+import java.io.ByteArrayOutputStream;
 import java.util.Scanner;
 import mremes.bblackjack.utilities.Jakaja;
-import mremes.bblackjack.logiikka.Kierros;
+import mremes.bblackjack.tui.Kierros;
 import mremes.bblackjack.elements.Pelaaja;
 
 public class Kasino {
 
     private Scanner lukija;
     private Pelaaja pelaaja;
-    private Jakaja jakaja;
 
     public Kasino(Scanner lukija) {
         this.lukija = lukija;
@@ -52,21 +52,11 @@ public class Kasino {
         System.out.println("\nYou have successfully deposited " + summa + "!");
     }
 
-    private void shuffle() throws InterruptedException {
-        Jakaja.sekoitaKortit();
-        System.out.print("Shuffling.");
-        Thread.sleep(750);
-        System.out.print(".");
-        Thread.sleep(750);
-        System.out.println(".");
-        Thread.sleep(750);
-    }
-
     public void play() throws InterruptedException {
         boolean pelataan = true;
         Jakaja.sekoitaKortit();
         while (pelataan) {
-            Kierros kierros = new Kierros(pelaaja, lukija, jakaja);
+            Kierros kierros = new Kierros(pelaaja, lukija);
             kierros.pelaaKierros();
             System.out.print("\nNEW ROUND? (Y/N) ");
             String syote = lukija.nextLine();
@@ -85,5 +75,23 @@ public class Kasino {
     
     public void exit() {
         System.out.println("Thank you for playing!");
+    }
+    
+    private void shuffle() throws InterruptedException {
+        Jakaja.sekoitaKortit();
+        System.out.print("Shuffling.");
+        Thread.sleep(750);
+        System.out.print(".");
+        Thread.sleep(750);
+        System.out.println(".");
+        Thread.sleep(750);
+    }
+    
+    public Pelaaja getPelaaja() {
+        return this.pelaaja;
+    }
+    
+    public Scanner getLukija() {
+        return this.lukija;
     }
 }

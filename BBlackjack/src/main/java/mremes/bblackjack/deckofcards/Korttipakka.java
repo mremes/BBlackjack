@@ -28,20 +28,9 @@ public class Korttipakka {
     // APUMETODI
     public Arvo[] annaArvot() {
         Arvo[] arvot = new Arvo[13];
-        arvot[0] = Arvo.KAKKONEN;
-        arvot[1] = Arvo.KOLMONEN;
-        arvot[2] = Arvo.NELONEN;
-        arvot[3] = Arvo.VITONEN;
-        arvot[4] = Arvo.KUTONEN;
-        arvot[5] = Arvo.SEISKA;
-        arvot[6] = Arvo.KASI;
-        arvot[7] = Arvo.YSI;
-        arvot[8] = Arvo.KYMPPI;
-        arvot[9] = Arvo.JATKA;
-        arvot[10] = Arvo.ROUVA;
-        arvot[11] = Arvo.KUNKKU;
-        arvot[12] = Arvo.ASSA;
-
+        for(int i = 0; i < 13; i++) {
+            arvot[i] = Arvo.values()[i];
+        }
         return arvot;
     }
 }
