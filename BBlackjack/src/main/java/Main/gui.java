@@ -5,6 +5,7 @@
  */
 package Main;
 
+import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.*;
@@ -18,8 +19,10 @@ import logiikka.utilities.*;
  * @author mrremes
  */
 public class gui extends javax.swing.JFrame {
+
     private Kierros kierros;
     private Pelaaja pelaaja;
+
     /**
      * Creates new form gui
      */
@@ -49,6 +52,10 @@ public class gui extends javax.swing.JFrame {
         jButton6 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Better Blackjack");
@@ -67,6 +74,11 @@ public class gui extends javax.swing.JFrame {
 
         jButton2.setText("STAND");
         jButton2.setEnabled(false);
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(319, 392, 99, -1));
 
         jButton3.setText("DOUBLE");
@@ -86,6 +98,8 @@ public class gui extends javax.swing.JFrame {
         jSlider1.setToolTipText("");
         jSlider1.setCursor(new java.awt.Cursor(java.awt.Cursor.MOVE_CURSOR));
         jSlider1.setFocusable(false);
+        jSlider1.setRequestFocusEnabled(false);
+        jSlider1.setVerifyInputWhenFocusTarget(false);
         getContentPane().add(jSlider1, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 356, -1, 66));
 
         jButton5.setText("DEAL");
@@ -94,12 +108,30 @@ public class gui extends javax.swing.JFrame {
                 jButton5ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(224, 356, 89, 62));
+        getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(224, 356, 89, 60));
 
         jButton6.setText("EXIT");
-        getContentPane().add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(529, 356, 89, 66));
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 360, 89, 60));
         getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 204, 606, -1));
         getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 12, 606, -1));
+
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setToolTipText("");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 320, 170, 30));
+
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 310, 160, 20));
+
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 120, 170, 20));
+
+        jLabel4.setText("Balance: 1000");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 330, 140, 30));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -107,29 +139,67 @@ public class gui extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         kierros.hit(kierros.getPelaajanKasi());
         jPanel3.add(new JLabel(new ImageIcon("cards/" + kierros.getVikaKortti().src())));
-        jPanel3.updateUI();
+        naytaArvo();
+        if (kierros.getPelaajanKasi().isBust()) {
+            jakajanKasi();
+            jLabel1.setText(kierros.getPelaajanKasi().getArvoS() + ", you're bust!");
+            jLabel1.updateUI();
+            jButton1.setEnabled(false);
+            jButton2.setEnabled(false);
+            jButton6.setEnabled(true);
+            jButton5.setEnabled(true);
+        }
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        jPanel3.removeAll();
-        jPanel4.removeAll();
-        jPanel3.updateUI();
-        jPanel4.updateUI();
-        kierros = new Kierros(new Pelaaja(1000));
-        kierros.jaaKadet();
+        alusta();
         Kasi k = kierros.getPelaajanKasi();
         Kasi j = kierros.getJakajanKasi();
         jPanel3.add(new JLabel(new ImageIcon("cards/" + k.getKortti(0).src())));
         jPanel4.add(new JLabel(new ImageIcon("cards/back1.png")));
         jPanel3.add(new JLabel(new ImageIcon("cards/" + k.getKortti(1).src())));
         jPanel4.add(new JLabel(new ImageIcon("cards/" + j.getKortti(1).src())));
-        jButton5.setEnabled(false);
-        jButton1.setEnabled(true);
-        jButton2.setEnabled(true);
-        jButton6.setEnabled(false);
         jPanel3.updateUI();
         jPanel4.updateUI();
+        jButton5.setEnabled(false);
+        if (!k.isBlackjack() && !k.isBlackjack()) {
+            playButtons();
+            naytaArvo();
+        } else if (k.isBlackjack()) {
+            defaultButtons();
+            jakajanKasi();
+            naytaArvo();
+        } else if (j.isBlackjack()) {
+            playButtons();
+            naytaArvo();
+        }
     }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        Kasi pelaaja = kierros.getPelaajanKasi();
+        kierros.stand(kierros.getPelaajanKasi());
+        defaultButtons();
+        jakajanKasi();
+        int compare = pelaaja.compareTo(kierros.getJakajanKasi());
+        switch (compare) {
+            case 1:
+                voitto();
+                break;
+            case 0:
+                tasuri();
+                break;
+            case -1:
+                havio();
+                break;
+            default:
+                break;
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_jButton6ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -173,8 +243,92 @@ public class gui extends javax.swing.JFrame {
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JSlider jSlider1;
     // End of variables declaration//GEN-END:variables
+
+    private void naytaArvo() {
+        jLabel2.setText(kierros.getPelaajanKasi().getArvoS());
+        jLabel2.updateUI();
+    }
+
+    private void alusta() {
+        kierros.setPanos(jSlider1.getValue());
+        pelaaja.veloita(jSlider1.getValue());
+        jSlider1.setValue(50);
+        jLabel4.setText("Balance: " + pelaaja.getBalance());
+        jLabel4.updateUI();
+        jPanel3.removeAll();
+        jPanel4.removeAll();
+        jPanel3.updateUI();
+        jPanel4.updateUI();
+        kierros = new Kierros(pelaaja);
+        kierros.jaaKadet();
+        jLabel1.setText("");
+        jLabel2.setText("");
+        jLabel3.setText("");
+        jLabel1.updateUI();
+        jLabel2.updateUI();
+        jLabel3.updateUI();
+    }
+
+    private void defaultButtons() {
+        jButton1.setEnabled(false);
+        jButton2.setEnabled(false);
+        jButton6.setEnabled(true);
+        jButton5.setEnabled(true);
+    }
+
+    private void playButtons() {
+        jButton1.setEnabled(true);
+        jButton2.setEnabled(true);
+        jButton6.setEnabled(false);
+    }
+    
+    private void voitto() {
+        if(!kierros.getPelaajanKasi().isBlackjack()) {
+            asetaTeksti("You win.");
+            pelaaja.lisaaRahaa(kierros.getPanos() * 2);
+        } else {
+            asetaTeksti("BLACKJACK, you win!");
+            pelaaja.lisaaRahaa((kierros.getPanos() * 2 + kierros.getPanos()/2));
+        }
+    }
+    
+    private  void havio() {
+        asetaTeksti("You lose.");
+    }
+    
+    private void tasuri() {
+        asetaTeksti("Push.");
+        pelaaja.lisaaRahaa(kierros.getPanos());
+    }
+    
+    private void asetaTeksti(String teksti) {
+        jLabel1.setText(teksti);
+        jLabel1.updateUI();
+    }
+    
+    public void jakajanKasi() {
+        HashMap<Kasi, Integer> pelaajanKadet = kierros.getPelaajanKadet();
+        Kasi jakajanKasi = kierros.getJakajanKasi();
+        jakajanKasi.setOpen();
+        if (KierrosUtil.dealerOttaa(pelaajanKadet)) {
+            while (jakajanKasi.getArvo() < 17 && !KierrosUtil.pelaajaAllBj(pelaajanKadet)) {
+                jakajanKasi.addKortti(Jakaja.annaKortti());
+            }
+        }
+        jPanel4.removeAll();
+        for (int i = 0; i < jakajanKasi.getKortit().size(); i++) {
+            jPanel4.add(new JLabel(new ImageIcon("cards/" + jakajanKasi.getKortti(i).src())));
+        }
+        jPanel4.updateUI();
+        jLabel3.setText(jakajanKasi.getArvoS());
+        jLabel3.updateUI();
+    }
 }

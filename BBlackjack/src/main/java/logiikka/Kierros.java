@@ -123,4 +123,23 @@ public class Kierros {
         }
         return k.getKortti(k.getKortit().size() - 1);
     }
+    
+    public void jakajanKasi() throws InterruptedException {
+        jakajanKasi.setOpen();
+        if (KierrosUtil.dealerOttaa(pelaajanKadet)) {
+            System.out.print("Dealer: " + jakajanKasi.kortit());
+            while (jakajanKasi.getArvo() < 17 && !KierrosUtil.pelaajaAllBj(pelaajanKadet)) {
+                jakajanKasi.addKortti(Jakaja.annaKortti());
+                Thread.sleep(1000);
+                System.out.print(Jakaja.edellinenKortti() + " ");
+            }
+            System.out.println(jakajanKasi.getArvoS());
+        }
+        for (Kasi k : pelaajanKadet.keySet()) {
+            if (k.isSplitted()) {
+                System.out.println("");
+                break;
+            }
+        }
+    }
 }

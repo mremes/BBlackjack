@@ -144,12 +144,12 @@ public class Kasi implements Comparable<Kasi> {
     } // LASKEE VAIN KADET ILMAN A:TA
     public String getArvoS() {
         if (isBlackjack()) {
-            return "(BLACKJACK)";
+            return "BLACKJACK";
         } else if (hasAce() && laskeArvo() + 10 <= 21) {
-            return "(" + laskeArvo() + " / " + getArvo() + ")";
+            return laskeArvo() + " / " + getArvo();
         }
 
-        return "(" + getArvo() + ")";
+        return "" + getArvo();
     } // PALAUTTAA ARVON STRINGINÄ
     public String kortit() {
         String stringi = "";

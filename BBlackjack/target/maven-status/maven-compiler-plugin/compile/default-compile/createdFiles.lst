@@ -11,8 +11,10 @@ logiikka/elements/Pelaaja.class
 Main/Main.class
 logiikka/cards/Arvo.class
 logiikka/cards/Maa.class
+Main/gui$4.class
 Main/gui$3.class
 logiikka/utilities/KierrosUtil.class
 logiikka/elements/Kasi.class
 logiikka/cards/Korttipakka.class
 userInterface/KasinoUI.class
+Main/gui$5.class

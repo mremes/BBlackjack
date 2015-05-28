@@ -32,7 +32,7 @@ public class Jakaja {
     } 
     public static Kortti edellinenKortti() {
         return Jakaja.kortit.get(counter - 1);
-    } 
+    }
     public static Kasi uusiKasi() {
         return new Kasi(Jakaja.annaKortti(), Jakaja.annaKortti());
     }
