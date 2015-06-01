@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite failures="1" time="0.066" errors="0" skipped="0" tests="24" name="logiikka.KasiTest">
+<testsuite failures="1" time="0.068" errors="0" skipped="0" tests="24" name="logiikka.KasiTest">
   <properties>
     <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
     <property name="sun.boot.library.path" value="/usr/lib/jvm/java-7-openjdk-amd64/jre/lib/amd64"/>
@@ -62,11 +62,11 @@
     <property name="sun.desktop" value="gnome"/>
     <property name="sun.cpu.isalist" value=""/>
   </properties>
-  <testcase time="0.005" classname="logiikka.KasiTest" name="onVakuutettuToimii"/>
+  <testcase time="0.006" classname="logiikka.KasiTest" name="onVakuutettuToimii"/>
   <testcase time="0" classname="logiikka.KasiTest" name="hasAceToimii"/>
   <testcase time="0" classname="logiikka.KasiTest" name="onValmisToimii"/>
-  <testcase time="0" classname="logiikka.KasiTest" name="oikeaDoablesKunEiVoiSplitataUseampiKasi"/>
-  <testcase time="0.001" classname="logiikka.KasiTest" name="oikeaDoablesKunVoiSplitataUseampiKasi"/>
+  <testcase time="0.001" classname="logiikka.KasiTest" name="oikeaDoablesKunEiVoiSplitataUseampiKasi"/>
+  <testcase time="0" classname="logiikka.KasiTest" name="oikeaDoablesKunVoiSplitataUseampiKasi"/>
   <testcase time="0" classname="logiikka.KasiTest" name="softKasiMuuttuuHardiksiKunLisataanYhdeksan"/>
   <testcase time="0" classname="logiikka.KasiTest" name="suljettuKasiKunDealer"/>
   <testcase time="0" classname="logiikka.KasiTest" name="softKasiArvoStringinaOikein"/>
@@ -75,7 +75,7 @@
   <testcase time="0.001" classname="logiikka.KasiTest" name="doubledToimii"/>
   <testcase time="0" classname="logiikka.KasiTest" name="getArvoSoftilleAssanKanssa"/>
   <testcase time="0" classname="logiikka.KasiTest" name="getArvoBustedille"/>
-  <testcase time="0.01" classname="logiikka.KasiTest" name="compareToToimii">
+  <testcase time="0.006" classname="logiikka.KasiTest" name="compareToToimii">
     <failure message="expected:&lt;1&gt; but was:&lt;2&gt;" type="java.lang.AssertionError">java.lang.AssertionError: expected:&lt;1&gt; but was:&lt;2&gt;
 	at org.junit.Assert.fail(Assert.java:88)
 	at org.junit.Assert.failNotEquals(Assert.java:743)
@@ -119,10 +119,10 @@
   <testcase time="0" classname="logiikka.KasiTest" name="oikeaDoablesKunEiVoiSplitataYksiKasi"/>
   <testcase time="0" classname="logiikka.KasiTest" name="onBlackjackToimii"/>
   <testcase time="0" classname="logiikka.KasiTest" name="avoinKasiNakyy"/>
-  <testcase time="0" classname="logiikka.KasiTest" name="assaEiNay"/>
+  <testcase time="0.001" classname="logiikka.KasiTest" name="assaEiNay"/>
   <testcase time="0" classname="logiikka.KasiTest" name="onBustToimii"/>
   <testcase time="0" classname="logiikka.KasiTest" name="splittableToimii"/>
-  <testcase time="0" classname="logiikka.KasiTest" name="oikeaDoablesKunVoiSplitataYksiKasi"/>
+  <testcase time="0.001" classname="logiikka.KasiTest" name="oikeaDoablesKunVoiSplitataYksiKasi"/>
   <testcase time="0" classname="logiikka.KasiTest" name="kasiStringinaToimii"/>
   <testcase time="0" classname="logiikka.KasiTest" name="oikeaDoablesKunKateenLyoty"/>
 </testsuite>

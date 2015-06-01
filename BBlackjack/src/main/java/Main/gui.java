@@ -23,6 +23,7 @@ public class gui extends javax.swing.JFrame {
 
     private Kierros kierros;
     private Pelaaja pelaaja;
+    private HashMap<Kasi, JLabel> scoreBox;
 
     /**
      * Creates new form gui
@@ -30,6 +31,7 @@ public class gui extends javax.swing.JFrame {
     public gui() {
         this.pelaaja = new Pelaaja(1000);
         this.kierros = new Kierros(pelaaja);
+        this.scoreBox = new HashMap();
         initComponents();
         Jakaja jakaja = new Jakaja();
         Jakaja.sekoitaKortit();
@@ -133,10 +135,10 @@ public class gui extends javax.swing.JFrame {
         });
         getContentPane().add(exit, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 360, 89, 60));
 
-        mainCards.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, -40, 5));
+        mainCards.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, -50, 5));
         getContentPane().add(mainCards, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, 606, -1));
 
-        dealerCards.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, -40, 5));
+        dealerCards.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, -50, 5));
         getContentPane().add(dealerCards, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 12, 606, -1));
 
         info.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -152,25 +154,32 @@ public class gui extends javax.swing.JFrame {
         balance.setText("Balance: 1000");
         getContentPane().add(balance, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 330, 140, 30));
 
-        split1Cards.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, -40, 5));
+        split1Cards.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, -50, 5));
         getContentPane().add(split1Cards, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, 250, -1));
 
-        split2Cards.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, -40, 5));
+        split2Cards.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, -50, 5));
         getContentPane().add(split2Cards, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 180, 220, -1));
-        getContentPane().add(split1Score, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 290, 120, 10));
-        getContentPane().add(split2Score, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 290, 120, 10));
+        getContentPane().add(split1Score, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 290, 120, 20));
+        getContentPane().add(split2Score, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 290, 120, 20));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void hitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hitActionPerformed
-        kierros.hit(kierros.getPelaajanKasi());
-        mainCards.add(new JLabel(new ImageIcon("cards/" + kierros.getVikaKortti().src())));
+        if (!kierros.splitattu()) {
+            kierros.hit(kierros.getPelaajanKasi());
+            mainCards.add(new JLabel(new ImageIcon("cards/" + kierros.getVikaKortti().src())));
+        } else if (!kierros.getPelaajanKadet().get(0).isValmis()) {
+            kierros.hit(kierros.getPelaajanKadet().get(0));
+            split1Cards.add(new JLabel(new ImageIcon("cards/" + kierros.getVikaKortti().src())));
+        } else if (!kierros.getPelaajanKadet().get(1).isValmis()) {
+            kierros.hit(kierros.getPelaajanKadet().get(1));
+            split2Cards.add(new JLabel(new ImageIcon("cards/" + kierros.getVikaKortti().src())));
+        }
         naytaArvo();
-        if (kierros.getPelaajanKasi().isBust()) {
+        if (KierrosUtil.pelaajaValmis(kierros.getPelaajanKadet())) {
             jakajanKasi();
-            info.setText(kierros.getPelaajanKasi().getArvoS() + ", you're bust!");
-            info.updateUI();
+            vertailu();
             defaultButtons();
         }
 
@@ -179,6 +188,7 @@ public class gui extends javax.swing.JFrame {
     private void dealActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dealActionPerformed
         alusta();
         Kasi k = kierros.getPelaajanKasi();
+        scoreBox.put(k, mainScore);
         Kasi j = kierros.getJakajanKasi();
         mainCards.add(new JLabel(new ImageIcon("cards/" + k.getKortti(0).src())));
         dealerCards.add(new JLabel(new ImageIcon("cards/back1.png")));
@@ -202,11 +212,19 @@ public class gui extends javax.swing.JFrame {
     }//GEN-LAST:event_dealActionPerformed
 
     private void standActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_standActionPerformed
-        Kasi pelaaja = kierros.getPelaajanKasi();
-        kierros.stand(kierros.getPelaajanKasi());
-        defaultButtons();
-        jakajanKasi();
-        vertailu();
+        if (!kierros.splitattu()) {
+            kierros.stand(kierros.getPelaajanKasi());
+        } else if (!kierros.getPelaajanKadet().get(0).isValmis()) {
+            kierros.stand(kierros.getPelaajanKadet().get(0));
+        } else if (!kierros.getPelaajanKadet().get(1).isValmis()) {
+            kierros.stand(kierros.getPelaajanKadet().get(1));
+        }
+
+        if (!kierros.splitattu() || KierrosUtil.pelaajaValmis(kierros.getPelaajanKadet())) {
+            defaultButtons();
+            jakajanKasi();
+            vertailu();
+        }
     }//GEN-LAST:event_standActionPerformed
 
     private void exitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitActionPerformed
@@ -214,21 +232,40 @@ public class gui extends javax.swing.JFrame {
     }//GEN-LAST:event_exitActionPerformed
 
     private void dbleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dbleActionPerformed
-        kierros.doubl(kierros.getPelaajanKasi());
-        mainCards.add(new JLabel(new ImageIcon("cards/" + kierros.getVikaKortti().src())));
+        if (!kierros.splitattu()) {
+            kierros.doubl(kierros.getPelaajanKasi());
+            mainCards.add(new JLabel(new ImageIcon("cards/" + kierros.getVikaKortti().src())));
+        } else if (!kierros.getPelaajanKadet().get(0).isValmis()) {
+            kierros.doubl(kierros.getPelaajanKadet().get(0));
+            split1Cards.add(new JLabel(new ImageIcon("cards/" + kierros.getVikaKortti().src())));
+        } else if (!kierros.getPelaajanKadet().get(1).isValmis()) {
+            kierros.doubl(kierros.getPelaajanKadet().get(1));
+            split2Cards.add(new JLabel(new ImageIcon("cards/" + kierros.getVikaKortti().src())));
+        }
+        if (!kierros.splitattu() || KierrosUtil.pelaajaValmis(kierros.getPelaajanKadet())) {
+            naytaArvo();
+            jakajanKasi();
+            updateBalance();
+            vertailu();
+            defaultButtons();
+        }
         naytaArvo();
-        jakajanKasi();
         updateBalance();
-        vertailu();
-        defaultButtons();
     }//GEN-LAST:event_dbleActionPerformed
 
     private void splitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_splitActionPerformed
         kierros.split(kierros.getPelaajanKasi());
+        split.setEnabled(false);
+        split1Cards.setVisible(true);
+        split2Cards.setVisible(true);
+        split1Score.setVisible(true);
+        split2Score.setVisible(true);
         mainCards.setVisible(false);
         mainScore.setVisible(false);
         Kasi k1 = kierros.getPelaajanKadet().get(0);
         Kasi k2 = kierros.getPelaajanKadet().get(1);
+        scoreBox.put(k1, split1Score);
+        scoreBox.put(k2, split2Score);
         split1Cards.add(new JLabel(new ImageIcon("cards/" + k1.getKortti(0).src())));
         split1Cards.add(new JLabel(new ImageIcon("cards/" + k1.getKortti(1).src())));
         split2Cards.add(new JLabel(new ImageIcon("cards/" + k2.getKortti(0).src())));
@@ -237,6 +274,7 @@ public class gui extends javax.swing.JFrame {
         split2Score.setText(k2.getArvoS());
         split1Cards.updateUI();
         split2Cards.updateUI();
+        updateBalance();
     }//GEN-LAST:event_splitActionPerformed
 
     /**
@@ -297,9 +335,26 @@ public class gui extends javax.swing.JFrame {
     private void naytaArvo() {
         mainScore.setText(kierros.getPelaajanKasi().getArvoS());
         mainScore.updateUI();
+        if (kierros.splitattu()) {
+            split1Cards.updateUI();
+            split2Cards.updateUI();
+            split1Score.setText(kierros.getPelaajanKadet().get(0).getArvoS());
+            split2Score.setText(kierros.getPelaajanKadet().get(1).getArvoS());
+        }
     }
 
     private void alusta() {
+        mainCards.setVisible(true);
+        mainScore.setVisible(true);
+        split1Score.setVisible(false);
+        split2Score.setVisible(false);
+        split1Cards.setVisible((false));
+        split2Cards.setVisible(false);
+        split1Score.removeAll();
+        split2Score.removeAll();
+        split1Cards.removeAll();
+        split2Cards.removeAll();
+        
         kierros = new Kierros(pelaaja);
         kierros.jaaKadet();
         kierros.setPanos((int) betsize.getValue());
@@ -324,6 +379,7 @@ public class gui extends javax.swing.JFrame {
         dble.setEnabled(false);
         exit.setEnabled(true);
         deal.setEnabled(true);
+        split.setEnabled(false);
     }
 
     private void playButtons() {
@@ -332,56 +388,51 @@ public class gui extends javax.swing.JFrame {
         dble.setEnabled(true);
         exit.setEnabled(false);
     }
-    
+
     private void vertailu() {
-        Kasi pelaaja = kierros.getPelaajanKasi();
-        int compare = pelaaja.compareTo(kierros.getJakajanKasi());
-        switch (compare) {
-            case 2:
-                blackjack();
-                break;
-            case 1:
-                voitto();
-                break;
-            case 0:
-                tasuri();
-                break;
-            case -1:
-                havio();
-                break;
-            default:
-                break;
+        for (Kasi pelaaja : kierros.getPelaajanKadet()) {
+            int compare = pelaaja.compareTo(kierros.getJakajanKasi());
+            switch (compare) {
+                case 2:
+                    scoreBox.get(pelaaja).setText(blackjack());
+                    break;
+                case 1:
+                    scoreBox.get(pelaaja).setText(voitto());
+                    break;
+                case 0:
+                    scoreBox.get(pelaaja).setText(tasuri());
+                    break;
+                case -1:
+                    scoreBox.get(pelaaja).setText(havio());
+                    break;
+                default:
+                    break;
+            }
         }
     }
-    
-    private void blackjack() {
-        int bjVoitto = kierros.getPanos() * 2 + kierros.getPanos()/2;
-        asetaTeksti("BLACKJACK, you win!");
+
+    private String blackjack() {
+        int bjVoitto = kierros.getPanos() * 2 + kierros.getPanos() / 2;
         pelaaja.lisaaRahaa(bjVoitto);
         updateBalance();
+        return "BJ pays 3/2.";
     }
 
-    private void voitto() {
+    private String voitto() {
         int normiVoitto = kierros.getPanos() * 2;
-        asetaTeksti("You win.");
         pelaaja.lisaaRahaa(normiVoitto);
         updateBalance();
-
+        return "You win.";
     }
 
-    private void havio() {
-        asetaTeksti("You lose.");
-    }
-
-    private void tasuri() {
-        asetaTeksti("Push.");
+    private String tasuri() {
         pelaaja.lisaaRahaa(kierros.getPanos());
         updateBalance();
+        return "Push.";
     }
-
-    private void asetaTeksti(String teksti) {
-        info.setText(teksti);
-        info.updateUI();
+    
+    private String havio() {
+        return "You lose.";
     }
 
     public void jakajanKasi() {

@@ -30,7 +30,8 @@ public class Kasi implements Comparable<Kasi> {
     }
 
     public boolean isValmis() {
-        return valmis;
+        boolean valmius = valmis || isBust() || isDoubled();
+        return valmius;
     }
 
     public boolean isSplitted() {
@@ -203,7 +204,7 @@ public class Kasi implements Comparable<Kasi> {
         if (isBlackjack()) {
             bj = 4839;
         }
-        return this.getArvo() + this.getKortit().get(0).hashCode() + this.getKortit().get(1).hashCode() + bj;
+        return this.getKortit().get(0).hashCode() + this.getKortti(1).hashCode();
     }
 
 }

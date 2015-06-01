@@ -18,6 +18,7 @@ public class Kierros {
 
     private Pelaaja pelaaja;
     private ArrayList<Kasi> pelaajanKadet;
+    private boolean splitattu;
     private Kasi jakajanKasi;
     private int panos;
 
@@ -25,6 +26,7 @@ public class Kierros {
         this.pelaaja = pelaaja;
         this.pelaajanKadet = new ArrayList();
         this.panos = 0;
+        this.splitattu = false;
     }
 
     // JAKAA KADET
@@ -44,6 +46,7 @@ public class Kierros {
 
     public void split(Kasi hand) {
         hand.setValmis();
+        this.splitattu = true;
         Kortti k1 = null;
         Kortti k2 = null;
         k1 = getPelaajanKasi().getKortti(0);
@@ -95,6 +98,10 @@ public class Kierros {
     public void setPanos(int panos) {
         this.pelaaja.veloita(panos);
         this.panos = panos;
+    }
+    
+    public boolean splitattu() {
+        return this.splitattu;
     }
 
     public void setInsurance(Kasi k) {
