@@ -5,6 +5,7 @@
  */
 package Main;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -43,19 +44,23 @@ public class gui extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jSlider1 = new javax.swing.JSlider();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
-        jPanel3 = new javax.swing.JPanel();
-        jPanel4 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        hit = new javax.swing.JButton();
+        stand = new javax.swing.JButton();
+        dble = new javax.swing.JButton();
+        split = new javax.swing.JButton();
+        betsize = new javax.swing.JSlider();
+        deal = new javax.swing.JButton();
+        exit = new javax.swing.JButton();
+        mainCards = new javax.swing.JPanel();
+        dealerCards = new javax.swing.JPanel();
+        info = new javax.swing.JLabel();
+        mainScore = new javax.swing.JLabel();
+        dealerScore = new javax.swing.JLabel();
+        balance = new javax.swing.JLabel();
+        split1Cards = new javax.swing.JPanel();
+        split2Cards = new javax.swing.JPanel();
+        split1Score = new javax.swing.JLabel();
+        split2Score = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Better Blackjack");
@@ -63,143 +68,176 @@ public class gui extends javax.swing.JFrame {
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton1.setText("HIT");
-        jButton1.setEnabled(false);
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        hit.setText("HIT");
+        hit.setEnabled(false);
+        hit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                hitActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(319, 356, 99, -1));
+        getContentPane().add(hit, new org.netbeans.lib.awtextra.AbsoluteConstraints(319, 356, 99, -1));
 
-        jButton2.setText("STAND");
-        jButton2.setEnabled(false);
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        stand.setText("STAND");
+        stand.setEnabled(false);
+        stand.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                standActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(319, 392, 99, -1));
+        getContentPane().add(stand, new org.netbeans.lib.awtextra.AbsoluteConstraints(319, 392, 99, -1));
 
-        jButton3.setText("DOUBLE");
-        jButton3.setEnabled(false);
-        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(424, 356, 99, -1));
-
-        jButton4.setText("SPLIT");
-        jButton4.setToolTipText("");
-        jButton4.setEnabled(false);
-        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(424, 392, 99, -1));
-
-        jSlider1.setMajorTickSpacing(50);
-        jSlider1.setMaximum(1000);
-        jSlider1.setMinimum(50);
-        jSlider1.setPaintTicks(true);
-        jSlider1.setSnapToTicks(true);
-        jSlider1.setToolTipText("");
-        jSlider1.setCursor(new java.awt.Cursor(java.awt.Cursor.MOVE_CURSOR));
-        jSlider1.setFocusable(false);
-        jSlider1.setRequestFocusEnabled(false);
-        jSlider1.setVerifyInputWhenFocusTarget(false);
-        getContentPane().add(jSlider1, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 356, -1, 66));
-
-        jButton5.setText("DEAL");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        dble.setText("DOUBLE");
+        dble.setEnabled(false);
+        dble.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                dbleActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(224, 356, 89, 60));
+        getContentPane().add(dble, new org.netbeans.lib.awtextra.AbsoluteConstraints(424, 356, 99, -1));
 
-        jButton6.setText("EXIT");
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
+        split.setText("SPLIT");
+        split.setToolTipText("");
+        split.setEnabled(false);
+        split.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
+                splitActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 360, 89, 60));
-        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 204, 606, -1));
-        getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 12, 606, -1));
+        getContentPane().add(split, new org.netbeans.lib.awtextra.AbsoluteConstraints(424, 392, 99, -1));
 
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setToolTipText("");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 320, 170, 30));
+        betsize.setMajorTickSpacing(50);
+        betsize.setMaximum(1000);
+        betsize.setMinimum(50);
+        betsize.setPaintTicks(true);
+        betsize.setSnapToTicks(true);
+        betsize.setToolTipText("");
+        betsize.setCursor(new java.awt.Cursor(java.awt.Cursor.MOVE_CURSOR));
+        betsize.setFocusable(false);
+        betsize.setRequestFocusEnabled(false);
+        betsize.setVerifyInputWhenFocusTarget(false);
+        getContentPane().add(betsize, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 356, -1, 66));
 
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 310, 160, 20));
+        deal.setText("DEAL");
+        deal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                dealActionPerformed(evt);
+            }
+        });
+        getContentPane().add(deal, new org.netbeans.lib.awtextra.AbsoluteConstraints(224, 356, 89, 60));
 
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 120, 170, 20));
+        exit.setText("EXIT");
+        exit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                exitActionPerformed(evt);
+            }
+        });
+        getContentPane().add(exit, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 360, 89, 60));
 
-        jLabel4.setText("Balance: 1000");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 330, 140, 30));
+        mainCards.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, -40, 5));
+        getContentPane().add(mainCards, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, 606, -1));
+
+        dealerCards.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, -40, 5));
+        getContentPane().add(dealerCards, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 12, 606, -1));
+
+        info.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        info.setToolTipText("");
+        getContentPane().add(info, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 320, 170, 30));
+
+        mainScore.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        getContentPane().add(mainScore, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 310, 160, 20));
+
+        dealerScore.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        getContentPane().add(dealerScore, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 120, 170, 20));
+
+        balance.setText("Balance: 1000");
+        getContentPane().add(balance, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 330, 140, 30));
+
+        split1Cards.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, -40, 5));
+        getContentPane().add(split1Cards, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, 250, -1));
+
+        split2Cards.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, -40, 5));
+        getContentPane().add(split2Cards, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 180, 220, -1));
+        getContentPane().add(split1Score, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 290, 120, 10));
+        getContentPane().add(split2Score, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 290, 120, 10));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void hitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hitActionPerformed
         kierros.hit(kierros.getPelaajanKasi());
-        jPanel3.add(new JLabel(new ImageIcon("cards/" + kierros.getVikaKortti().src())));
+        mainCards.add(new JLabel(new ImageIcon("cards/" + kierros.getVikaKortti().src())));
         naytaArvo();
         if (kierros.getPelaajanKasi().isBust()) {
             jakajanKasi();
-            jLabel1.setText(kierros.getPelaajanKasi().getArvoS() + ", you're bust!");
-            jLabel1.updateUI();
-            jButton1.setEnabled(false);
-            jButton2.setEnabled(false);
-            jButton6.setEnabled(true);
-            jButton5.setEnabled(true);
+            info.setText(kierros.getPelaajanKasi().getArvoS() + ", you're bust!");
+            info.updateUI();
+            defaultButtons();
         }
 
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_hitActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+    private void dealActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dealActionPerformed
         alusta();
         Kasi k = kierros.getPelaajanKasi();
         Kasi j = kierros.getJakajanKasi();
-        jPanel3.add(new JLabel(new ImageIcon("cards/" + k.getKortti(0).src())));
-        jPanel4.add(new JLabel(new ImageIcon("cards/back1.png")));
-        jPanel3.add(new JLabel(new ImageIcon("cards/" + k.getKortti(1).src())));
-        jPanel4.add(new JLabel(new ImageIcon("cards/" + j.getKortti(1).src())));
-        jPanel3.updateUI();
-        jPanel4.updateUI();
-        jButton5.setEnabled(false);
-        if (!k.isBlackjack() && !k.isBlackjack()) {
+        mainCards.add(new JLabel(new ImageIcon("cards/" + k.getKortti(0).src())));
+        dealerCards.add(new JLabel(new ImageIcon("cards/back1.png")));
+        mainCards.add(new JLabel(new ImageIcon("cards/" + k.getKortti(1).src())));
+        dealerCards.add(new JLabel(new ImageIcon("cards/" + j.getKortti(1).src())));
+        mainCards.updateUI();
+        dealerCards.updateUI();
+        deal.setEnabled(false);
+        if (!k.isBlackjack()) {
             playButtons();
             naytaArvo();
+            if (k.isSplittable()) {
+                split.setEnabled(true);
+            }
         } else if (k.isBlackjack()) {
             defaultButtons();
             jakajanKasi();
             naytaArvo();
-        } else if (j.isBlackjack()) {
-            playButtons();
-            naytaArvo();
+            vertailu();
         }
-    }//GEN-LAST:event_jButton5ActionPerformed
+    }//GEN-LAST:event_dealActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void standActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_standActionPerformed
         Kasi pelaaja = kierros.getPelaajanKasi();
         kierros.stand(kierros.getPelaajanKasi());
         defaultButtons();
         jakajanKasi();
-        int compare = pelaaja.compareTo(kierros.getJakajanKasi());
-        switch (compare) {
-            case 1:
-                voitto();
-                break;
-            case 0:
-                tasuri();
-                break;
-            case -1:
-                havio();
-                break;
-            default:
-                break;
-        }
-    }//GEN-LAST:event_jButton2ActionPerformed
+        vertailu();
+    }//GEN-LAST:event_standActionPerformed
 
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+    private void exitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitActionPerformed
         System.exit(0);
-    }//GEN-LAST:event_jButton6ActionPerformed
+    }//GEN-LAST:event_exitActionPerformed
+
+    private void dbleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dbleActionPerformed
+        kierros.doubl(kierros.getPelaajanKasi());
+        mainCards.add(new JLabel(new ImageIcon("cards/" + kierros.getVikaKortti().src())));
+        naytaArvo();
+        jakajanKasi();
+        updateBalance();
+        vertailu();
+        defaultButtons();
+    }//GEN-LAST:event_dbleActionPerformed
+
+    private void splitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_splitActionPerformed
+        kierros.split(kierros.getPelaajanKasi());
+        mainCards.setVisible(false);
+        mainScore.setVisible(false);
+        Kasi k1 = kierros.getPelaajanKadet().get(0);
+        Kasi k2 = kierros.getPelaajanKadet().get(1);
+        split1Cards.add(new JLabel(new ImageIcon("cards/" + k1.getKortti(0).src())));
+        split1Cards.add(new JLabel(new ImageIcon("cards/" + k1.getKortti(1).src())));
+        split2Cards.add(new JLabel(new ImageIcon("cards/" + k2.getKortti(0).src())));
+        split2Cards.add(new JLabel(new ImageIcon("cards/" + k2.getKortti(1).src())));
+        split1Score.setText(k1.getArvoS());
+        split2Score.setText(k2.getArvoS());
+        split1Cards.updateUI();
+        split2Cards.updateUI();
+    }//GEN-LAST:event_splitActionPerformed
 
     /**
      * @param args the command line arguments
@@ -237,85 +275,117 @@ public class gui extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
-    private javax.swing.JSlider jSlider1;
+    private javax.swing.JLabel balance;
+    private javax.swing.JSlider betsize;
+    private javax.swing.JButton dble;
+    private javax.swing.JButton deal;
+    private javax.swing.JPanel dealerCards;
+    private javax.swing.JLabel dealerScore;
+    private javax.swing.JButton exit;
+    private javax.swing.JButton hit;
+    private javax.swing.JLabel info;
+    private javax.swing.JPanel mainCards;
+    private javax.swing.JLabel mainScore;
+    private javax.swing.JButton split;
+    private javax.swing.JPanel split1Cards;
+    private javax.swing.JLabel split1Score;
+    private javax.swing.JPanel split2Cards;
+    private javax.swing.JLabel split2Score;
+    private javax.swing.JButton stand;
     // End of variables declaration//GEN-END:variables
 
     private void naytaArvo() {
-        jLabel2.setText(kierros.getPelaajanKasi().getArvoS());
-        jLabel2.updateUI();
+        mainScore.setText(kierros.getPelaajanKasi().getArvoS());
+        mainScore.updateUI();
     }
 
     private void alusta() {
-        kierros.setPanos(jSlider1.getValue());
-        pelaaja.veloita(jSlider1.getValue());
-        jSlider1.setValue(50);
-        jLabel4.setText("Balance: " + pelaaja.getBalance());
-        jLabel4.updateUI();
-        jPanel3.removeAll();
-        jPanel4.removeAll();
-        jPanel3.updateUI();
-        jPanel4.updateUI();
         kierros = new Kierros(pelaaja);
         kierros.jaaKadet();
-        jLabel1.setText("");
-        jLabel2.setText("");
-        jLabel3.setText("");
-        jLabel1.updateUI();
-        jLabel2.updateUI();
-        jLabel3.updateUI();
+        kierros.setPanos((int) betsize.getValue());
+        updateBalance();
+        betsize.setValue(50);
+        balance.updateUI();
+        mainCards.removeAll();
+        dealerCards.removeAll();
+        mainCards.updateUI();
+        dealerCards.updateUI();
+        info.setText("");
+        mainScore.setText("");
+        dealerScore.setText("");
+        info.updateUI();
+        mainScore.updateUI();
+        dealerScore.updateUI();
     }
 
     private void defaultButtons() {
-        jButton1.setEnabled(false);
-        jButton2.setEnabled(false);
-        jButton6.setEnabled(true);
-        jButton5.setEnabled(true);
+        hit.setEnabled(false);
+        stand.setEnabled(false);
+        dble.setEnabled(false);
+        exit.setEnabled(true);
+        deal.setEnabled(true);
     }
 
     private void playButtons() {
-        jButton1.setEnabled(true);
-        jButton2.setEnabled(true);
-        jButton6.setEnabled(false);
+        hit.setEnabled(true);
+        stand.setEnabled(true);
+        dble.setEnabled(true);
+        exit.setEnabled(false);
     }
     
-    private void voitto() {
-        if(!kierros.getPelaajanKasi().isBlackjack()) {
-            asetaTeksti("You win.");
-            pelaaja.lisaaRahaa(kierros.getPanos() * 2);
-        } else {
-            asetaTeksti("BLACKJACK, you win!");
-            pelaaja.lisaaRahaa((kierros.getPanos() * 2 + kierros.getPanos()/2));
+    private void vertailu() {
+        Kasi pelaaja = kierros.getPelaajanKasi();
+        int compare = pelaaja.compareTo(kierros.getJakajanKasi());
+        switch (compare) {
+            case 2:
+                blackjack();
+                break;
+            case 1:
+                voitto();
+                break;
+            case 0:
+                tasuri();
+                break;
+            case -1:
+                havio();
+                break;
+            default:
+                break;
         }
     }
     
-    private  void havio() {
+    private void blackjack() {
+        int bjVoitto = kierros.getPanos() * 2 + kierros.getPanos()/2;
+        asetaTeksti("BLACKJACK, you win!");
+        pelaaja.lisaaRahaa(bjVoitto);
+        updateBalance();
+    }
+
+    private void voitto() {
+        int normiVoitto = kierros.getPanos() * 2;
+        asetaTeksti("You win.");
+        pelaaja.lisaaRahaa(normiVoitto);
+        updateBalance();
+
+    }
+
+    private void havio() {
         asetaTeksti("You lose.");
     }
-    
+
     private void tasuri() {
         asetaTeksti("Push.");
         pelaaja.lisaaRahaa(kierros.getPanos());
+        updateBalance();
     }
-    
+
     private void asetaTeksti(String teksti) {
-        jLabel1.setText(teksti);
-        jLabel1.updateUI();
+        info.setText(teksti);
+        info.updateUI();
     }
-    
+
     public void jakajanKasi() {
-        HashMap<Kasi, Integer> pelaajanKadet = kierros.getPelaajanKadet();
+        ArrayList<Kasi> pelaajanKadet = kierros.getPelaajanKadet();
         Kasi jakajanKasi = kierros.getJakajanKasi();
         jakajanKasi.setOpen();
         if (KierrosUtil.dealerOttaa(pelaajanKadet)) {
@@ -323,12 +393,17 @@ public class gui extends javax.swing.JFrame {
                 jakajanKasi.addKortti(Jakaja.annaKortti());
             }
         }
-        jPanel4.removeAll();
+        dealerCards.removeAll();
         for (int i = 0; i < jakajanKasi.getKortit().size(); i++) {
-            jPanel4.add(new JLabel(new ImageIcon("cards/" + jakajanKasi.getKortti(i).src())));
+            dealerCards.add(new JLabel(new ImageIcon("cards/" + jakajanKasi.getKortti(i).src())));
         }
-        jPanel4.updateUI();
-        jLabel3.setText(jakajanKasi.getArvoS());
-        jLabel3.updateUI();
+        dealerCards.updateUI();
+        dealerScore.setText(jakajanKasi.getArvoS());
+        dealerScore.updateUI();
+    }
+
+    public void updateBalance() {
+        balance.setText("Balance: " + pelaaja.getBalance());
+        betsize.setValue(50);
     }
 }

@@ -42,7 +42,7 @@ public class Kasi implements Comparable<Kasi> {
     }
 
     public boolean isBlackjack() {
-        if (this.getArvo() == 999 && kortit.size() == 2) {
+        if (this.getArvo() == 999) {
             return true;
         }
         return false;
@@ -181,6 +181,8 @@ public class Kasi implements Comparable<Kasi> {
             return -1;
         } else if (jakajanKasi.isBust()) {
             return 1;
+        } else if(this.isBlackjack() && !jakajanKasi.isBlackjack()) {
+            return 2;
         }
 
         if (this.isBlackjack() && jakajanKasi.isBlackjack()) {

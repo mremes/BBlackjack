@@ -17,18 +17,22 @@ import logiikka.utilities.TulosPrint;
 public class Kierros {
 
     private Pelaaja pelaaja;
-    private HashMap<Kasi, Integer> pelaajanKadet;
+    private ArrayList<Kasi> pelaajanKadet;
     private Kasi jakajanKasi;
     private int panos;
 
     public Kierros(Pelaaja pelaaja) {
         this.pelaaja = pelaaja;
-        this.pelaajanKadet = new HashMap();
+        this.pelaajanKadet = new ArrayList();
+        this.panos = 0;
     }
 
     // JAKAA KADET
     public void jaaKadet() {
-        pelaajanKadet.put(Jakaja.uusiKasi(), panos);
+        if (Jakaja.jaljellaKortteja() < 80) {
+            Jakaja.sekoitaKortit();
+        }
+        pelaajanKadet.add(Jakaja.uusiKasi());
         jakajanKasi = Jakaja.uusiKasi();
         jakajanKasi.setDealer();
     }
@@ -42,17 +46,13 @@ public class Kierros {
         hand.setValmis();
         Kortti k1 = null;
         Kortti k2 = null;
-        Kasi kasi = null;
-        for (Kasi k : pelaajanKadet.keySet()) {
-            kasi = k;
-            k1 = k.getKortti(0);
-            k2 = k.getKortti(1);
-            break;
-        }
-        pelaajanKadet.put(new Kasi(k1, Jakaja.annaKortti()), panos);
-        pelaajanKadet.put(new Kasi(k2, Jakaja.annaKortti()), panos);
+        k1 = getPelaajanKasi().getKortti(0);
+        k2 = getPelaajanKasi().getKortti(1);
+        pelaajanKadet.clear();
+        pelaajanKadet.add(new Kasi(k1, Jakaja.annaKortti()));
+        pelaajanKadet.add(new Kasi(k2, Jakaja.annaKortti()));
 
-        for (Kasi k : pelaajanKadet.keySet()) {
+        for (Kasi k : pelaajanKadet) {
             k.setSplitted();
             if (k1.getArvo() == Arvo.ASSA && k2.getArvo() == Arvo.ASSA) {
                 k.setValmis();
@@ -60,7 +60,6 @@ public class Kierros {
         }
 
         pelaaja.veloita(panos);
-        pelaajanKadet.remove(kasi);
     }
 
     public void hit(Kasi k) {
@@ -71,6 +70,7 @@ public class Kierros {
         k.addKortti(Jakaja.annaKortti());
         k.setDoubled();
         pelaaja.veloita(panos);
+        setPanos(getPanos() * 2);
         k.setValmis();
 
     }
@@ -80,7 +80,7 @@ public class Kierros {
         return this.pelaaja;
     }
 
-    public HashMap<Kasi, Integer> getPelaajanKadet() {
+    public ArrayList<Kasi> getPelaajanKadet() {
         return this.pelaajanKadet;
     }
 
@@ -93,8 +93,8 @@ public class Kierros {
     }
 
     public void setPanos(int panos) {
+        this.pelaaja.veloita(panos);
         this.panos = panos;
-        pelaaja.veloita(panos);
     }
 
     public void setInsurance(Kasi k) {
@@ -108,7 +108,7 @@ public class Kierros {
 
     public Kasi getPelaajanKasi() {
         Kasi k = null;
-        for (Kasi kasi : pelaajanKadet.keySet()) {
+        for (Kasi kasi : pelaajanKadet) {
             k = kasi;
             break;
         }
@@ -117,13 +117,13 @@ public class Kierros {
 
     public Kortti getVikaKortti() {
         Kasi k = null;
-        for (Kasi kasi : pelaajanKadet.keySet()) {
+        for (Kasi kasi : pelaajanKadet) {
             k = kasi;
             break;
         }
         return k.getKortti(k.getKortit().size() - 1);
     }
-    
+
     public void jakajanKasi() throws InterruptedException {
         jakajanKasi.setOpen();
         if (KierrosUtil.dealerOttaa(pelaajanKadet)) {
@@ -135,7 +135,7 @@ public class Kierros {
             }
             System.out.println(jakajanKasi.getArvoS());
         }
-        for (Kasi k : pelaajanKadet.keySet()) {
+        for (Kasi k : pelaajanKadet) {
             if (k.isSplitted()) {
                 System.out.println("");
                 break;

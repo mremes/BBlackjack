@@ -58,18 +58,18 @@ public class KasiTest {
     @Test
     public void avoinKasiNakyy() {
         blackjack.setOpen();
-        assertEquals(blackjack.toString(), "♥A ♠J (BLACKJACK)");
+        assertEquals("♥A ♠J BLACKJACK", blackjack.toString());
     }
     
     @Test
     public void softKasiArvoStringinaOikein() {
-        assertEquals(softKasi.getArvoS(), "(5 / 15)");
+        assertEquals(softKasi.getArvoS(), "5 / 15");
     }
     
     @Test
     public void softKasiMuuttuuHardiksiKunLisataanYhdeksan() {
         softKasi.addKortti(new Kortti(Maa.PATA, Arvo.YSI));
-        assertEquals(softKasi.getArvoS(), "(14)");
+        assertEquals(softKasi.getArvoS(), "14");
     }
     
     @Test

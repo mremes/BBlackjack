@@ -1,13 +1,14 @@
 package logiikka.utilities;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import logiikka.elements.Kasi;
 
 public class KierrosUtil {
     
-    public static boolean pelaajaBust(HashMap<Kasi, Integer> pelaajanKadet) {
+    public static boolean pelaajaBust(ArrayList<Kasi> pelaajanKadet) {
         boolean bust = true;
-        for (Kasi k : pelaajanKadet.keySet()) {
+        for (Kasi k : pelaajanKadet) {
             if (!k.isBust()) {
                 bust = false;
                 break;
@@ -15,9 +16,9 @@ public class KierrosUtil {
         }
         return bust;
     }
-    public static boolean pelaajaValmis(HashMap<Kasi, Integer> pelaajanKadet) {
+    public static boolean pelaajaValmis(ArrayList<Kasi> pelaajanKadet) {
         boolean valmis = true;
-        for (Kasi k : pelaajanKadet.keySet()) {
+        for (Kasi k : pelaajanKadet) {
             if (!k.isValmis()) {
                 valmis = false;
                 break;
@@ -25,9 +26,9 @@ public class KierrosUtil {
         }
         return valmis;
     }
-    public static boolean pelaajaAllBj(HashMap<Kasi, Integer> pelaajanKadet) {
+    public static boolean pelaajaAllBj(ArrayList<Kasi> pelaajanKadet) {
         boolean allbj = true;
-        for (Kasi k : pelaajanKadet.keySet()) {
+        for (Kasi k : pelaajanKadet) {
             if (!k.isBlackjack()) {
                 allbj = false;
                 break;
@@ -35,16 +36,16 @@ public class KierrosUtil {
         }
         return allbj;
     }
-    public static boolean voiVakuuttaa(Kasi jakajanKasi, Kasi pelaajanKasi, HashMap<Kasi, Integer> kadet) {
+    public static boolean voiVakuuttaa(Kasi jakajanKasi, Kasi pelaajanKasi, ArrayList<Kasi> kadet) {
         return jakajanKasi.nakyvaAssa() && kadet.size() == 1 && pelaajanKasi.korttienLkm() == 2;
     }
-    public static boolean montaKatta(HashMap<Kasi, Integer> kadet) {
+    public static boolean montaKatta(ArrayList<Kasi> kadet) {
         return kadet.size() > 1;
     }
-    public static boolean dealerOttaa(HashMap<Kasi,Integer> pelaajanKadet) {
+    public static boolean dealerOttaa(ArrayList<Kasi> pelaajanKadet) {
         int busted = 0;
         int blackjacks = 0;
-        for (Kasi k : pelaajanKadet.keySet()) {
+        for (Kasi k : pelaajanKadet) {
             if (k.isBust()) {
                 busted++;
             }

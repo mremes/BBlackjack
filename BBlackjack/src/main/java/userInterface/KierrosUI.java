@@ -1,14 +1,15 @@
 package userInterface;
 
-import logiikka.utilities.KierrosUtil;
-import logiikka.utilities.Jakaja;
-import logiikka.utilities.TulosPrint;
-import logiikka.elements.Pelaaja;
-import logiikka.elements.Kasi;
-import logiikka.Kierros;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
 import java.util.Set;
+import logiikka.Kierros;
+import logiikka.elements.Kasi;
+import logiikka.elements.Pelaaja;
+import logiikka.utilities.Jakaja;
+import logiikka.utilities.KierrosUtil;
+import logiikka.utilities.TulosPrint;
 
 public class KierrosUI {
 
@@ -30,13 +31,13 @@ public class KierrosUI {
     }
     
     public void pelaaKierros() throws InterruptedException {
-        HashMap<Kasi, Integer> pelaajanKadet = kierros.getPelaajanKadet();
+        ArrayList<Kasi> pelaajanKadet = kierros.getPelaajanKadet();
         panostus();
         kierros.jaaKadet();
         dealer();
         while (!KierrosUtil.pelaajaValmis(pelaajanKadet)) {
             pelaaja();
-            for (Kasi k : pelaajanKadet.keySet()) {
+            for (Kasi k : pelaajanKadet) {
                 while (!k.isValmis()) {
                     if (KierrosUtil.voiVakuuttaa(kierros.getJakajanKasi(), k, pelaajanKadet)) {
                         insurance(k);
@@ -50,7 +51,7 @@ public class KierrosUI {
 
     public void pelaaja() {
         System.out.println("");
-        for (Kasi k : kierros.getPelaajanKadet().keySet()) {
+        for (Kasi k : kierros.getPelaajanKadet()) {
             System.out.println("You: " + k);
         }
     }
@@ -108,7 +109,7 @@ public class KierrosUI {
 
     public void tulos() throws InterruptedException {
         Kasi jakaja = kierros.getJakajanKasi();
-        Set<Kasi> pelaajanKadet = kierros.getPelaajanKadet().keySet();
+        ArrayList<Kasi> pelaajanKadet = kierros.getPelaajanKadet();
         Pelaaja pelaaja = kierros.getPelaaja();
         jakajanKasi();
         for (Kasi k : pelaajanKadet) {
@@ -134,7 +135,7 @@ public class KierrosUI {
     }
     
     public void jakajanKasi() throws InterruptedException {
-        HashMap<Kasi, Integer> pelaajanKadet = kierros.getPelaajanKadet();
+        ArrayList<Kasi> pelaajanKadet = kierros.getPelaajanKadet();
         Kasi jakajanKasi = kierros.getJakajanKasi();
         jakajanKasi.setOpen();
         System.out.println("");
@@ -147,7 +148,7 @@ public class KierrosUI {
             }
             System.out.println(jakajanKasi.getArvoS());
         }
-        for (Kasi k : pelaajanKadet.keySet()) {
+        for (Kasi k : pelaajanKadet) {
             if (k.isSplitted()) {
                 System.out.println("");
                 break;
