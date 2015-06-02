@@ -71,7 +71,6 @@ public class Kierros {
         k.addKortti(Jakaja.annaKortti());
         k.setDoubled();
         pelaaja.veloita(panos);
-        setPanos(getPanos() * 2);
         k.setValmis();
 
     }
@@ -120,12 +119,7 @@ public class Kierros {
         return k;
     }
 
-    public Kortti getVikaKortti() {
-        Kasi k = null;
-        for (Kasi kasi : pelaajanKadet) {
-            k = kasi;
-            break;
-        }
+    public Kortti getVikaKortti(Kasi k) {
         return k.getKortti(k.getKortit().size() - 1);
     }
 
