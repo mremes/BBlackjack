@@ -47,10 +47,8 @@ public class Kierros {
     public void split(Kasi hand) {
         hand.setValmis();
         this.splitattu = true;
-        Kortti k1 = null;
-        Kortti k2 = null;
-        k1 = getPelaajanKasi().getKortti(0);
-        k2 = getPelaajanKasi().getKortti(1);
+        Kortti k1 = getPelaajanKasi().getKortti(0);
+        Kortti k2 = getPelaajanKasi().getKortti(1);
         pelaajanKadet.clear();
         pelaajanKadet.add(new Kasi(k1, Jakaja.annaKortti()));
         pelaajanKadet.add(new Kasi(k2, Jakaja.annaKortti()));

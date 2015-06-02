@@ -166,6 +166,9 @@ public class gui extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void hitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hitActionPerformed
+        if(kierros.getPelaajanKasi().isSplittable()) {
+            split.setEnabled(false);
+        }
         if (!kierros.splitattu()) {
             kierros.hit(kierros.getPelaajanKasi());
             mainCards.add(new JLabel(new ImageIcon("cards/" + kierros.getVikaKortti().src())));
@@ -249,7 +252,6 @@ public class gui extends javax.swing.JFrame {
             vertailu();
             defaultButtons();
         }
-        naytaArvo();
         updateBalance();
     }//GEN-LAST:event_dbleActionPerformed
 
@@ -275,6 +277,14 @@ public class gui extends javax.swing.JFrame {
         split1Cards.updateUI();
         split2Cards.updateUI();
         updateBalance();
+        
+        if(KierrosUtil.pelaajaValmis(kierros.getPelaajanKadet())) {
+            naytaArvo();
+            jakajanKasi();
+            updateBalance();
+            vertailu();
+            defaultButtons();
+        }
     }//GEN-LAST:event_splitActionPerformed
 
     /**

@@ -182,11 +182,9 @@ public class Kasi implements Comparable<Kasi> {
             return -1;
         } else if (jakajanKasi.isBust()) {
             return 1;
-        } else if(this.isBlackjack() && !jakajanKasi.isBlackjack()) {
+        } else if (this.isBlackjack() && !jakajanKasi.isBlackjack()) {
             return 2;
-        }
-
-        if (this.isBlackjack() && jakajanKasi.isBlackjack()) {
+        } else if (this.isBlackjack() && jakajanKasi.isBlackjack()) {
             return 0;
         } else {
             if (!isBust() && (this.getArvo() > jakajanKasi.getArvo())) {
