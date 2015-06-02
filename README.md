@@ -1,2 +1,2 @@
 # BBlackjack
-Better Blackjack (Ohjelmoinnin harjoitustyö kesä 2015)
+Areas to contribute: 1) Sounds for dealing and background sound in my program
