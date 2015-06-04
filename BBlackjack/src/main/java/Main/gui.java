@@ -137,11 +137,12 @@ public class gui extends javax.swing.JFrame {
         split.setFocusPainted(false);
         split.setOpaque(false);
 
-        betsize.setFont(new java.awt.Font("Ubuntu", 0, 8)); // NOI18N
+        betsize.setFont(new java.awt.Font("Ubuntu", 0, 10)); // NOI18N
         betsize.setForeground(java.awt.Color.white);
         betsize.setMajorTickSpacing(50);
         betsize.setMaximum(500);
         betsize.setMinimum(50);
+        betsize.setPaintLabels(true);
         betsize.setPaintTicks(true);
         betsize.setSnapToTicks(true);
         betsize.setToolTipText("");
@@ -232,7 +233,7 @@ public class gui extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Ubuntu", 1, 15)); // NOI18N
         jLabel1.setForeground(java.awt.Color.white);
         jLabel1.setText("BET SIZE");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 350, 70, 40));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 345, 70, 40));
 
         jCheckBox1.setForeground(java.awt.Color.white);
         jCheckBox1.setText("Remember bet size");
@@ -261,16 +262,20 @@ public class gui extends javax.swing.JFrame {
         }
         if (!kierros.splitattu()) {
             kierros.hit(kierros.getPelaajanKasi());
+            dble.setEnabled(false);
             mainCards.add(new JLabel(new ImageIcon("cards/" + kierros.getVikaKortti(kierros.getPelaajanKasi()).src())));
         } else if (!kierros.getPelaajanKadet().get(0).isValmis()) {
             kierros.hit(kierros.getPelaajanKadet().get(0));
+            dble.setEnabled(false);
             split1Cards.add(new JLabel(new ImageIcon("cards/" + kierros.getVikaKortti(kierros.getPelaajanKadet().get(0)).src())));
             if (kierros.getPelaajanKadet().get(0).isValmis()) {
                 focusSplit1.setVisible(false);
                 focusSplit2.setVisible(true);
+                dble.setEnabled(true);
             }
         } else if (!kierros.getPelaajanKadet().get(1).isValmis()) {
             kierros.hit(kierros.getPelaajanKadet().get(1));
+            dble.setEnabled(false);
             split2Cards.add(new JLabel(new ImageIcon("cards/" + kierros.getVikaKortti(kierros.getPelaajanKadet().get(1)).src())));
         }
         naytaArvo();
@@ -317,6 +322,7 @@ public class gui extends javax.swing.JFrame {
             if (kierros.getPelaajanKadet().get(0).isValmis()) {
                 focusSplit1.setVisible(false);
                 focusSplit2.setVisible(true);
+                dble.setEnabled(true);
             }
         } else if (!kierros.getPelaajanKadet().get(1).isValmis()) {
             kierros.stand(kierros.getPelaajanKadet().get(1));
@@ -488,7 +494,9 @@ public class gui extends javax.swing.JFrame {
         kierros.setPanos((int) betsize.getValue());
         updateBalance();
         if(jCheckBox1.isSelected()) {
-            betsize.setValue(betsize.getValue());
+            int value = betsize.getValue();
+            betsize.setValue(value);
+            
         } else {
             betsize.setValue(50);
         }
@@ -592,6 +600,5 @@ public class gui extends javax.swing.JFrame {
 
     public void updateBalance() {
         balance.setText("Balance: " + pelaaja.getBalance());
-        betsize.setValue(50);
     }
 }
