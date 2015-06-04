@@ -8,7 +8,7 @@
       <Color id="Default Cursor"/>
     </Property>
     <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-      <Dimension value="[630, 450]"/>
+      <Dimension value="[630, 430]"/>
     </Property>
     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
       <Dimension value="[630, 430]"/>
@@ -39,15 +39,17 @@
     <Component class="javax.swing.JButton" name="hit">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="/Users/mattiremes/Desktop/BBlackjack/BBlackjack/hit.png"/>
+          <Image iconType="2" name="/home/ad/fshome4/u4/m/mrremes/Linux/NetBeansProjects/BBlackjack/BBlackjack/hit.png"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="HIT"/>
         <Property name="borderPainted" type="boolean" value="false"/>
         <Property name="enabled" type="boolean" value="false"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="hitActionPerformed"/>
       </Events>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_allCodePost" type="java.lang.String" value="hit.setBorderPainted(false); &#xa;        hit.setContentAreaFilled(false); &#xa;        hit.setFocusPainted(false); &#xa;        hit.setOpaque(false);"/>
+      </AuxValues>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
           <AbsoluteConstraints x="330" y="360" width="99" height="-1"/>
@@ -57,15 +59,17 @@
     <Component class="javax.swing.JButton" name="stand">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="/Users/mattiremes/Desktop/BBlackjack/BBlackjack/stand.png"/>
+          <Image iconType="2" name="/home/ad/fshome4/u4/m/mrremes/Linux/NetBeansProjects/BBlackjack/BBlackjack/stand.png"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="STAND"/>
         <Property name="borderPainted" type="boolean" value="false"/>
         <Property name="enabled" type="boolean" value="false"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="standActionPerformed"/>
       </Events>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_allCodePost" type="java.lang.String" value="stand.setBorderPainted(false); &#xa;        stand.setContentAreaFilled(false); &#xa;        stand.setFocusPainted(false); &#xa;        stand.setOpaque(false);"/>
+      </AuxValues>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
           <AbsoluteConstraints x="330" y="390" width="99" height="-1"/>
@@ -75,15 +79,17 @@
     <Component class="javax.swing.JButton" name="dble">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="/Users/mattiremes/Desktop/BBlackjack/BBlackjack/double.png"/>
+          <Image iconType="2" name="/home/ad/fshome4/u4/m/mrremes/Linux/NetBeansProjects/BBlackjack/BBlackjack/double.png"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="DOUBLE"/>
         <Property name="borderPainted" type="boolean" value="false"/>
         <Property name="enabled" type="boolean" value="false"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="dbleActionPerformed"/>
       </Events>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_allCodePost" type="java.lang.String" value="dble.setBorderPainted(false); &#xa;        dble.setContentAreaFilled(false); &#xa;        dble.setFocusPainted(false); &#xa;        dble.setOpaque(false);"/>
+      </AuxValues>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
           <AbsoluteConstraints x="430" y="360" width="99" height="-1"/>
@@ -93,9 +99,8 @@
     <Component class="javax.swing.JButton" name="split">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="/Users/mattiremes/Desktop/BBlackjack/BBlackjack/split.png"/>
+          <Image iconType="2" name="/home/ad/fshome4/u4/m/mrremes/Linux/NetBeansProjects/BBlackjack/BBlackjack/split.png"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="SPLIT"/>
         <Property name="toolTipText" type="java.lang.String" value=""/>
         <Property name="borderPainted" type="boolean" value="false"/>
         <Property name="enabled" type="boolean" value="false"/>
@@ -103,6 +108,9 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="splitActionPerformed"/>
       </Events>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_allCodePost" type="java.lang.String" value="split.setBorderPainted(false); &#xa;        split.setContentAreaFilled(false); &#xa;        split.setFocusPainted(false); &#xa;        split.setOpaque(false);"/>
+      </AuxValues>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
           <AbsoluteConstraints x="430" y="390" width="99" height="-1"/>
@@ -111,8 +119,14 @@
     </Component>
     <Component class="javax.swing.JSlider" name="betsize">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Ubuntu" size="8" style="0"/>
+        </Property>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="ff" id="white" palette="1" red="ff" type="palette"/>
+        </Property>
         <Property name="majorTickSpacing" type="int" value="50"/>
-        <Property name="maximum" type="int" value="1000"/>
+        <Property name="maximum" type="int" value="500"/>
         <Property name="minimum" type="int" value="50"/>
         <Property name="paintTicks" type="boolean" value="true"/>
         <Property name="snapToTicks" type="boolean" value="true"/>
@@ -124,6 +138,9 @@
         <Property name="requestFocusEnabled" type="boolean" value="false"/>
         <Property name="verifyInputWhenFocusTarget" type="boolean" value="false"/>
       </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_allCodePost" type="java.lang.String" value="        betsize.setForeground(Color.WHITE);&#xa;        betsize.setPaintTicks(true);&#xa;        betsize.setPaintLabels(true);&#xa;betsize.setPaintTrack(true);&#xa;"/>
+      </AuxValues>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
           <AbsoluteConstraints x="12" y="356" width="-1" height="66"/>
@@ -133,15 +150,17 @@
     <Component class="javax.swing.JButton" name="deal">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="/Users/mattiremes/Desktop/BBlackjack/BBlackjack/deal.png"/>
+          <Image iconType="2" name="/home/ad/fshome4/u4/m/mrremes/Linux/NetBeansProjects/BBlackjack/BBlackjack/deal.png"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="DEAL"/>
         <Property name="borderPainted" type="boolean" value="false"/>
         <Property name="defaultCapable" type="boolean" value="false"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="dealActionPerformed"/>
       </Events>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_allCodePost" type="java.lang.String" value="deal.setBorderPainted(false); &#xa;        deal.setContentAreaFilled(false); &#xa;        deal.setFocusPainted(false); &#xa;        deal.setOpaque(false);"/>
+      </AuxValues>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
           <AbsoluteConstraints x="240" y="360" width="90" height="60"/>
@@ -151,14 +170,16 @@
     <Component class="javax.swing.JButton" name="exit">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="/Users/mattiremes/Desktop/BBlackjack/BBlackjack/exit.png"/>
+          <Image iconType="2" name="/home/ad/fshome4/u4/m/mrremes/Linux/NetBeansProjects/BBlackjack/BBlackjack/exit.png"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="EXIT"/>
         <Property name="borderPainted" type="boolean" value="false"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="exitActionPerformed"/>
       </Events>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_allCodePost" type="java.lang.String" value="exit.setBorderPainted(false); &#xa;        exit.setContentAreaFilled(false); &#xa;        exit.setFocusPainted(false); &#xa;        exit.setOpaque(false);&#xa;"/>
+      </AuxValues>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
           <AbsoluteConstraints x="530" y="360" width="89" height="60"/>
@@ -193,21 +214,10 @@
         <Property name="horizontalGap" type="int" value="-50"/>
       </Layout>
     </Container>
-    <Component class="javax.swing.JLabel" name="info">
-      <Properties>
-        <Property name="horizontalAlignment" type="int" value="0"/>
-        <Property name="toolTipText" type="java.lang.String" value=""/>
-      </Properties>
-      <Constraints>
-        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="440" y="320" width="170" height="30"/>
-        </Constraint>
-      </Constraints>
-    </Component>
     <Component class="javax.swing.JLabel" name="mainScore">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Lucida Grande" size="14" style="1"/>
+          <Font name="Droid Sans Fallback" size="15" style="1"/>
         </Property>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -216,7 +226,7 @@
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="230" y="330" width="160" height="20"/>
+          <AbsoluteConstraints x="234" y="335" width="160" height="20"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -248,7 +258,7 @@
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="20" y="330" width="140" height="30"/>
+          <AbsoluteConstraints x="20" y="10" width="140" height="30"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -281,37 +291,111 @@
       </Layout>
     </Container>
     <Component class="javax.swing.JLabel" name="split1Score">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Droid Sans Fallback" size="15" style="1"/>
+        </Property>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="ff" id="white" palette="1" red="ff" type="palette"/>
+        </Property>
+        <Property name="horizontalAlignment" type="int" value="0"/>
+      </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="100" y="290" width="120" height="20"/>
+          <AbsoluteConstraints x="80" y="320" width="120" height="20"/>
         </Constraint>
       </Constraints>
     </Component>
     <Component class="javax.swing.JLabel" name="split2Score">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Droid Sans Fallback" size="15" style="1"/>
+        </Property>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="ff" id="white" palette="1" red="ff" type="palette"/>
+        </Property>
+        <Property name="horizontalAlignment" type="int" value="0"/>
+      </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="440" y="290" width="120" height="20"/>
+          <AbsoluteConstraints x="430" y="320" width="120" height="20"/>
         </Constraint>
       </Constraints>
     </Component>
     <Component class="javax.swing.JLabel" name="focusSplit1">
+      <Properties>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="2" name="/home/ad/fshome4/u4/m/mrremes/Linux/NetBeansProjects/BBlackjack/BBlackjack/arrowdown.png"/>
+        </Property>
+      </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="110" y="140" width="60" height="40"/>
+          <AbsoluteConstraints x="130" y="170" width="30" height="40"/>
         </Constraint>
       </Constraints>
     </Component>
     <Component class="javax.swing.JLabel" name="focusSplit2">
+      <Properties>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="2" name="/home/ad/fshome4/u4/m/mrremes/Linux/NetBeansProjects/BBlackjack/BBlackjack/arrowdown.png"/>
+        </Property>
+      </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="460" y="140" width="60" height="40"/>
+          <AbsoluteConstraints x="475" y="170" width="30" height="40"/>
+        </Constraint>
+      </Constraints>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel1">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Ubuntu" size="15" style="1"/>
+        </Property>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="ff" id="white" palette="1" red="ff" type="palette"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="BET SIZE"/>
+      </Properties>
+      <Constraints>
+        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+          <AbsoluteConstraints x="150" y="350" width="70" height="40"/>
+        </Constraint>
+      </Constraints>
+    </Component>
+    <Component class="javax.swing.JCheckBox" name="jCheckBox1">
+      <Properties>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="ff" id="white" palette="1" red="ff" type="palette"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Remember bet size"/>
+        <Property name="toolTipText" type="java.lang.String" value=""/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCheckBox1ActionPerformed"/>
+      </Events>
+      <Constraints>
+        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+          <AbsoluteConstraints x="450" y="10" width="-1" height="-1"/>
+        </Constraint>
+      </Constraints>
+    </Component>
+    <Component class="javax.swing.JCheckBox" name="jCheckBox2">
+      <Properties>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="ff" id="white" palette="1" red="ff" type="palette"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Strategy practice"/>
+      </Properties>
+      <Constraints>
+        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+          <AbsoluteConstraints x="450" y="30" width="-1" height="-1"/>
         </Constraint>
       </Constraints>
     </Component>
     <Component class="javax.swing.JLabel" name="background">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="/Users/mattiremes/Desktop/BBlackjack/BBlackjack/blackjack_background.png"/>
+          <Image iconType="2" name="/home/ad/fshome4/u4/m/mrremes/Linux/NetBeansProjects/BBlackjack/BBlackjack/blackjack_background.png"/>
         </Property>
         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
           <Dimension value="[640, 430]"/>

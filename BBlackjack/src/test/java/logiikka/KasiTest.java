@@ -166,7 +166,9 @@ public class KasiTest {
     public void compareToToimii() {
         splittable.addKortti(new Kortti(Maa.HERTTA, Arvo.NELONEN));
         assertEquals(-1, splittable.compareTo(softKasi));
-        assertEquals(1, blackjack.compareTo(softKasi));
+        assertEquals(2, blackjack.compareTo(softKasi));
+        splittable = new Kasi(new Kortti(Maa.HERTTA, Arvo.KUNKKU), new Kortti(Maa.PATA, Arvo.KUNKKU));
+        assertEquals(1, splittable.compareTo(softKasi));
     }
     
     @Test

@@ -5,6 +5,7 @@
  */
 package Main;
 
+import java.awt.Color;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.logging.Level;
@@ -57,7 +58,6 @@ public class gui extends javax.swing.JFrame {
         exit = new javax.swing.JButton();
         mainCards = new javax.swing.JPanel();
         dealerCards = new javax.swing.JPanel();
-        info = new javax.swing.JLabel();
         mainScore = new javax.swing.JLabel();
         dealerScore = new javax.swing.JLabel();
         balance = new javax.swing.JLabel();
@@ -67,18 +67,20 @@ public class gui extends javax.swing.JFrame {
         split2Score = new javax.swing.JLabel();
         focusSplit1 = new javax.swing.JLabel();
         focusSplit2 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jCheckBox1 = new javax.swing.JCheckBox();
+        jCheckBox2 = new javax.swing.JCheckBox();
         background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Better Blackjack");
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        setMinimumSize(new java.awt.Dimension(630, 450));
+        setMinimumSize(new java.awt.Dimension(630, 430));
         setPreferredSize(new java.awt.Dimension(630, 430));
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        hit.setIcon(new javax.swing.ImageIcon("/Users/mattiremes/Desktop/BBlackjack/BBlackjack/hit.png")); // NOI18N
-        hit.setText("HIT");
+        hit.setIcon(new javax.swing.ImageIcon("/home/ad/fshome4/u4/m/mrremes/Linux/NetBeansProjects/BBlackjack/BBlackjack/hit.png")); // NOI18N
         hit.setBorderPainted(false);
         hit.setEnabled(false);
         hit.addActionListener(new java.awt.event.ActionListener() {
@@ -87,9 +89,12 @@ public class gui extends javax.swing.JFrame {
             }
         });
         getContentPane().add(hit, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 360, 99, -1));
+        hit.setBorderPainted(false);
+        hit.setContentAreaFilled(false);
+        hit.setFocusPainted(false);
+        hit.setOpaque(false);
 
-        stand.setIcon(new javax.swing.ImageIcon("/Users/mattiremes/Desktop/BBlackjack/BBlackjack/stand.png")); // NOI18N
-        stand.setText("STAND");
+        stand.setIcon(new javax.swing.ImageIcon("/home/ad/fshome4/u4/m/mrremes/Linux/NetBeansProjects/BBlackjack/BBlackjack/stand.png")); // NOI18N
         stand.setBorderPainted(false);
         stand.setEnabled(false);
         stand.addActionListener(new java.awt.event.ActionListener() {
@@ -98,9 +103,12 @@ public class gui extends javax.swing.JFrame {
             }
         });
         getContentPane().add(stand, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 390, 99, -1));
+        stand.setBorderPainted(false);
+        stand.setContentAreaFilled(false);
+        stand.setFocusPainted(false);
+        stand.setOpaque(false);
 
-        dble.setIcon(new javax.swing.ImageIcon("/Users/mattiremes/Desktop/BBlackjack/BBlackjack/double.png")); // NOI18N
-        dble.setText("DOUBLE");
+        dble.setIcon(new javax.swing.ImageIcon("/home/ad/fshome4/u4/m/mrremes/Linux/NetBeansProjects/BBlackjack/BBlackjack/double.png")); // NOI18N
         dble.setBorderPainted(false);
         dble.setEnabled(false);
         dble.addActionListener(new java.awt.event.ActionListener() {
@@ -109,9 +117,12 @@ public class gui extends javax.swing.JFrame {
             }
         });
         getContentPane().add(dble, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 360, 99, -1));
+        dble.setBorderPainted(false);
+        dble.setContentAreaFilled(false);
+        dble.setFocusPainted(false);
+        dble.setOpaque(false);
 
-        split.setIcon(new javax.swing.ImageIcon("/Users/mattiremes/Desktop/BBlackjack/BBlackjack/split.png")); // NOI18N
-        split.setText("SPLIT");
+        split.setIcon(new javax.swing.ImageIcon("/home/ad/fshome4/u4/m/mrremes/Linux/NetBeansProjects/BBlackjack/BBlackjack/split.png")); // NOI18N
         split.setToolTipText("");
         split.setBorderPainted(false);
         split.setEnabled(false);
@@ -121,9 +132,15 @@ public class gui extends javax.swing.JFrame {
             }
         });
         getContentPane().add(split, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 390, 99, -1));
+        split.setBorderPainted(false);
+        split.setContentAreaFilled(false);
+        split.setFocusPainted(false);
+        split.setOpaque(false);
 
+        betsize.setFont(new java.awt.Font("Ubuntu", 0, 8)); // NOI18N
+        betsize.setForeground(java.awt.Color.white);
         betsize.setMajorTickSpacing(50);
-        betsize.setMaximum(1000);
+        betsize.setMaximum(500);
         betsize.setMinimum(50);
         betsize.setPaintTicks(true);
         betsize.setSnapToTicks(true);
@@ -133,9 +150,12 @@ public class gui extends javax.swing.JFrame {
         betsize.setRequestFocusEnabled(false);
         betsize.setVerifyInputWhenFocusTarget(false);
         getContentPane().add(betsize, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 356, -1, 66));
+        betsize.setForeground(Color.WHITE);
+        betsize.setPaintTicks(true);
+        betsize.setPaintLabels(true);
+        betsize.setPaintTrack(true);
 
-        deal.setIcon(new javax.swing.ImageIcon("/Users/mattiremes/Desktop/BBlackjack/BBlackjack/deal.png")); // NOI18N
-        deal.setText("DEAL");
+        deal.setIcon(new javax.swing.ImageIcon("/home/ad/fshome4/u4/m/mrremes/Linux/NetBeansProjects/BBlackjack/BBlackjack/deal.png")); // NOI18N
         deal.setBorderPainted(false);
         deal.setDefaultCapable(false);
         deal.addActionListener(new java.awt.event.ActionListener() {
@@ -144,9 +164,12 @@ public class gui extends javax.swing.JFrame {
             }
         });
         getContentPane().add(deal, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 360, 90, 60));
+        deal.setBorderPainted(false);
+        deal.setContentAreaFilled(false);
+        deal.setFocusPainted(false);
+        deal.setOpaque(false);
 
-        exit.setIcon(new javax.swing.ImageIcon("/Users/mattiremes/Desktop/BBlackjack/BBlackjack/exit.png")); // NOI18N
-        exit.setText("EXIT");
+        exit.setIcon(new javax.swing.ImageIcon("/home/ad/fshome4/u4/m/mrremes/Linux/NetBeansProjects/BBlackjack/BBlackjack/exit.png")); // NOI18N
         exit.setBorderPainted(false);
         exit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -154,6 +177,10 @@ public class gui extends javax.swing.JFrame {
             }
         });
         getContentPane().add(exit, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 360, 89, 60));
+        exit.setBorderPainted(false);
+        exit.setContentAreaFilled(false);
+        exit.setFocusPainted(false);
+        exit.setOpaque(false);
 
         mainCards.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, -50, 5));
         getContentPane().add(mainCards, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, 606, -1));
@@ -163,14 +190,10 @@ public class gui extends javax.swing.JFrame {
         getContentPane().add(dealerCards, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 12, 606, -1));
         dealerCards.setOpaque(false);
 
-        info.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        info.setToolTipText("");
-        getContentPane().add(info, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 320, 170, 30));
-
-        mainScore.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        mainScore.setFont(new java.awt.Font("Droid Sans Fallback", 1, 15)); // NOI18N
         mainScore.setForeground(new java.awt.Color(255, 255, 255));
         mainScore.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        getContentPane().add(mainScore, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 330, 160, 20));
+        getContentPane().add(mainScore, new org.netbeans.lib.awtextra.AbsoluteConstraints(234, 335, 160, 20));
 
         dealerScore.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         dealerScore.setForeground(new java.awt.Color(255, 255, 255));
@@ -180,7 +203,7 @@ public class gui extends javax.swing.JFrame {
         balance.setFont(new java.awt.Font("Lucida Grande", 3, 14)); // NOI18N
         balance.setForeground(new java.awt.Color(255, 255, 255));
         balance.setText("Balance: 1000");
-        getContentPane().add(balance, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 330, 140, 30));
+        getContentPane().add(balance, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 140, 30));
 
         split1Cards.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, -50, 5));
         getContentPane().add(split1Cards, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, 250, -1));
@@ -190,12 +213,42 @@ public class gui extends javax.swing.JFrame {
         getContentPane().add(split2Cards, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 210, 220, -1));
         split2Cards.setOpaque(false);
 
-        getContentPane().add(split1Score, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 290, 120, 20));
-        getContentPane().add(split2Score, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 290, 120, 20));
-        getContentPane().add(focusSplit1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 140, 60, 40));
-        getContentPane().add(focusSplit2, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 140, 60, 40));
+        split1Score.setFont(new java.awt.Font("Droid Sans Fallback", 1, 15)); // NOI18N
+        split1Score.setForeground(java.awt.Color.white);
+        split1Score.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        getContentPane().add(split1Score, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 320, 120, 20));
 
-        background.setIcon(new javax.swing.ImageIcon("/Users/mattiremes/Desktop/BBlackjack/BBlackjack/blackjack_background.png")); // NOI18N
+        split2Score.setFont(new java.awt.Font("Droid Sans Fallback", 1, 15)); // NOI18N
+        split2Score.setForeground(java.awt.Color.white);
+        split2Score.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        getContentPane().add(split2Score, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 320, 120, 20));
+
+        focusSplit1.setIcon(new javax.swing.ImageIcon("/home/ad/fshome4/u4/m/mrremes/Linux/NetBeansProjects/BBlackjack/BBlackjack/arrowdown.png")); // NOI18N
+        getContentPane().add(focusSplit1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 170, 30, 40));
+
+        focusSplit2.setIcon(new javax.swing.ImageIcon("/home/ad/fshome4/u4/m/mrremes/Linux/NetBeansProjects/BBlackjack/BBlackjack/arrowdown.png")); // NOI18N
+        getContentPane().add(focusSplit2, new org.netbeans.lib.awtextra.AbsoluteConstraints(475, 170, 30, 40));
+
+        jLabel1.setFont(new java.awt.Font("Ubuntu", 1, 15)); // NOI18N
+        jLabel1.setForeground(java.awt.Color.white);
+        jLabel1.setText("BET SIZE");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 350, 70, 40));
+
+        jCheckBox1.setForeground(java.awt.Color.white);
+        jCheckBox1.setText("Remember bet size");
+        jCheckBox1.setToolTipText("");
+        jCheckBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jCheckBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 10, -1, -1));
+
+        jCheckBox2.setForeground(java.awt.Color.white);
+        jCheckBox2.setText("Strategy practice");
+        getContentPane().add(jCheckBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 30, -1, -1));
+
+        background.setIcon(new javax.swing.ImageIcon("/home/ad/fshome4/u4/m/mrremes/Linux/NetBeansProjects/BBlackjack/BBlackjack/blackjack_background.png")); // NOI18N
         background.setPreferredSize(new java.awt.Dimension(640, 430));
         getContentPane().add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 630, 450));
 
@@ -342,6 +395,11 @@ public class gui extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_splitActionPerformed
 
+    private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
+
+
+    }//GEN-LAST:event_jCheckBox1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -389,7 +447,9 @@ public class gui extends javax.swing.JFrame {
     private javax.swing.JLabel focusSplit1;
     private javax.swing.JLabel focusSplit2;
     private javax.swing.JButton hit;
-    private javax.swing.JLabel info;
+    private javax.swing.JCheckBox jCheckBox1;
+    private javax.swing.JCheckBox jCheckBox2;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel mainCards;
     private javax.swing.JLabel mainScore;
     private javax.swing.JButton split;
@@ -427,16 +487,18 @@ public class gui extends javax.swing.JFrame {
         kierros.jaaKadet();
         kierros.setPanos((int) betsize.getValue());
         updateBalance();
-        betsize.setValue(50);
+        if(jCheckBox1.isSelected()) {
+            betsize.setValue(betsize.getValue());
+        } else {
+            betsize.setValue(50);
+        }
         balance.updateUI();
         mainCards.removeAll();
         dealerCards.removeAll();
         mainCards.updateUI();
         dealerCards.updateUI();
-        info.setText("");
         mainScore.setText("");
         dealerScore.setText("");
-        info.updateUI();
         mainScore.updateUI();
         dealerScore.updateUI();
     }
