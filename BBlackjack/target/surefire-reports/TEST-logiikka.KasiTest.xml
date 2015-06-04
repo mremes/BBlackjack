@@ -1,81 +1,81 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite failures="1" time="0.068" errors="0" skipped="0" tests="24" name="logiikka.KasiTest">
+<testsuite tests="24" failures="1" name="logiikka.KasiTest" time="0.075" errors="0" skipped="0">
   <properties>
-    <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
-    <property name="sun.boot.library.path" value="/usr/lib/jvm/java-7-openjdk-amd64/jre/lib/amd64"/>
-    <property name="java.vm.version" value="24.79-b02"/>
-    <property name="user.country.format" value="FI"/>
+    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
+    <property name="sun.boot.library.path" value="/Library/Java/JavaVirtualMachines/jdk1.8.0_31.jdk/Contents/Home/jre/lib"/>
+    <property name="java.vm.version" value="25.31-b07"/>
+    <property name="gopherProxySet" value="false"/>
     <property name="java.vm.vendor" value="Oracle Corporation"/>
     <property name="java.vendor.url" value="http://java.oracle.com/"/>
     <property name="path.separator" value=":"/>
     <property name="guice.disable.misplaced.annotation.check" value="true"/>
-    <property name="java.vm.name" value="OpenJDK 64-Bit Server VM"/>
+    <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM"/>
     <property name="file.encoding.pkg" value="sun.io"/>
-    <property name="user.country" value="GB"/>
+    <property name="user.country" value="FI"/>
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="sun.os.patch.level" value="unknown"/>
     <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
-    <property name="user.dir" value="/home/ad/fshome4/u4/m/mrremes/Linux/NetBeansProjects/BBlackjack/BBlackjack"/>
-    <property name="java.runtime.version" value="1.7.0_79-b14"/>
-    <property name="java.awt.graphicsenv" value="sun.awt.X11GraphicsEnvironment"/>
-    <property name="java.endorsed.dirs" value="/usr/lib/jvm/java-7-openjdk-amd64/jre/lib/endorsed"/>
-    <property name="os.arch" value="amd64"/>
-    <property name="java.io.tmpdir" value="/tmp"/>
+    <property name="user.dir" value="/Users/mattiremes/Desktop/BBlackjack/BBlackjack"/>
+    <property name="java.runtime.version" value="1.8.0_31-b13"/>
+    <property name="java.awt.graphicsenv" value="sun.awt.CGraphicsEnvironment"/>
+    <property name="java.endorsed.dirs" value="/Library/Java/JavaVirtualMachines/jdk1.8.0_31.jdk/Contents/Home/jre/lib/endorsed"/>
+    <property name="os.arch" value="x86_64"/>
+    <property name="java.io.tmpdir" value="/var/folders/70/465vn8nj5m5d5p_m64zyp6r00000gn/T/"/>
     <property name="line.separator" value="
 "/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
-    <property name="os.name" value="Linux"/>
-    <property name="maven.ext.class.path" value="/usr/share/netbeans/8.0/java/maven-nblib/netbeans-eventspy.jar"/>
-    <property name="classworlds.conf" value="/usr/share/netbeans/8.0/java/maven/bin/m2.conf"/>
+    <property name="os.name" value="Mac OS X"/>
+    <property name="maven.ext.class.path" value="/Applications/NetBeans/NetBeans 8.0.2.app/Contents/Resources/NetBeans/java/maven-nblib/netbeans-eventspy.jar"/>
+    <property name="classworlds.conf" value="/Applications/NetBeans/NetBeans 8.0.2.app/Contents/Resources/NetBeans/java/maven/bin/m2.conf"/>
     <property name="sun.jnu.encoding" value="UTF-8"/>
-    <property name="java.library.path" value="/usr/lib/jvm/default-java/jre/lib/amd64:/usr/lib/jvm/default-java/jre/lib/i386::/usr/java/packages/lib/amd64:/usr/lib/x86_64-linux-gnu/jni:/lib/x86_64-linux-gnu:/usr/lib/x86_64-linux-gnu:/usr/lib/jni:/lib:/usr/lib"/>
+    <property name="java.library.path" value="/Applications/NetBeans/NetBeans 8.0.2.app/Contents/Resources/NetBeans/webcommon/bin::/Users/mattiremes/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:."/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
-    <property name="java.class.version" value="51.0"/>
+    <property name="java.class.version" value="52.0"/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
-    <property name="os.version" value="3.13.0-53-generic"/>
-    <property name="user.home" value="/home/mrremes"/>
+    <property name="os.version" value="10.10.2"/>
+    <property name="http.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
+    <property name="user.home" value="/Users/mattiremes"/>
     <property name="user.timezone" value="Europe/Helsinki"/>
-    <property name="java.awt.printerjob" value="sun.print.PSPrinterJob"/>
-    <property name="java.specification.version" value="1.7"/>
+    <property name="java.awt.printerjob" value="sun.lwawt.macosx.CPrinterJob"/>
+    <property name="java.specification.version" value="1.8"/>
     <property name="file.encoding" value="UTF-8"/>
-    <property name="user.name" value="mrremes"/>
-    <property name="java.class.path" value="/usr/share/netbeans/8.0/java/maven/boot/plexus-classworlds-2.4.jar"/>
-    <property name="java.vm.specification.version" value="1.7"/>
+    <property name="user.name" value="mattiremes"/>
+    <property name="java.class.path" value="/Applications/NetBeans/NetBeans 8.0.2.app/Contents/Resources/NetBeans/java/maven/boot/plexus-classworlds-2.4.jar"/>
+    <property name="java.vm.specification.version" value="1.8"/>
     <property name="sun.arch.data.model" value="64"/>
-    <property name="java.home" value="/usr/lib/jvm/java-7-openjdk-amd64/jre"/>
-    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher -Dmaven.ext.class.path=/usr/share/netbeans/8.0/java/maven-nblib/netbeans-eventspy.jar clean install"/>
+    <property name="java.home" value="/Library/Java/JavaVirtualMachines/jdk1.8.0_31.jdk/Contents/Home/jre"/>
+    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher -Dmaven.ext.class.path=/Applications/NetBeans/NetBeans 8.0.2.app/Contents/Resources/NetBeans/java/maven-nblib/netbeans-eventspy.jar clean install"/>
     <property name="java.specification.vendor" value="Oracle Corporation"/>
-    <property name="user.language" value="en"/>
-    <property name="user.language.format" value="fi"/>
-    <property name="awt.toolkit" value="sun.awt.X11.XToolkit"/>
+    <property name="user.language" value="fi"/>
+    <property name="awt.toolkit" value="sun.lwawt.macosx.LWCToolkit"/>
     <property name="java.vm.info" value="mixed mode"/>
-    <property name="java.version" value="1.7.0_79"/>
-    <property name="java.ext.dirs" value="/usr/lib/jvm/java-7-openjdk-amd64/jre/lib/ext:/usr/java/packages/lib/ext"/>
-    <property name="securerandom.source" value="file:/dev/./urandom"/>
-    <property name="sun.boot.class.path" value="/usr/lib/jvm/java-7-openjdk-amd64/jre/lib/resources.jar:/usr/lib/jvm/java-7-openjdk-amd64/jre/lib/rt.jar:/usr/lib/jvm/java-7-openjdk-amd64/jre/lib/sunrsasign.jar:/usr/lib/jvm/java-7-openjdk-amd64/jre/lib/jsse.jar:/usr/lib/jvm/java-7-openjdk-amd64/jre/lib/jce.jar:/usr/lib/jvm/java-7-openjdk-amd64/jre/lib/charsets.jar:/usr/lib/jvm/java-7-openjdk-amd64/jre/lib/rhino.jar:/usr/lib/jvm/java-7-openjdk-amd64/jre/lib/jfr.jar:/usr/lib/jvm/java-7-openjdk-amd64/jre/classes"/>
+    <property name="java.version" value="1.8.0_31"/>
+    <property name="java.ext.dirs" value="/Users/mattiremes/Library/Java/Extensions:/Library/Java/JavaVirtualMachines/jdk1.8.0_31.jdk/Contents/Home/jre/lib/ext:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java"/>
+    <property name="sun.boot.class.path" value="/Library/Java/JavaVirtualMachines/jdk1.8.0_31.jdk/Contents/Home/jre/lib/resources.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_31.jdk/Contents/Home/jre/lib/rt.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_31.jdk/Contents/Home/jre/lib/sunrsasign.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_31.jdk/Contents/Home/jre/lib/jsse.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_31.jdk/Contents/Home/jre/lib/jce.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_31.jdk/Contents/Home/jre/lib/charsets.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_31.jdk/Contents/Home/jre/lib/jfr.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_31.jdk/Contents/Home/jre/classes"/>
     <property name="java.vendor" value="Oracle Corporation"/>
-    <property name="maven.home" value="/usr/share/netbeans/8.0/java/maven"/>
+    <property name="maven.home" value="/Applications/NetBeans/NetBeans 8.0.2.app/Contents/Resources/NetBeans/java/maven"/>
     <property name="file.separator" value="/"/>
     <property name="java.vendor.url.bug" value="http://bugreport.sun.com/bugreport/"/>
     <property name="sun.cpu.endian" value="little"/>
-    <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
-    <property name="sun.desktop" value="gnome"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeBig"/>
+    <property name="socksNonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
+    <property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="sun.cpu.isalist" value=""/>
   </properties>
-  <testcase time="0.006" classname="logiikka.KasiTest" name="onVakuutettuToimii"/>
-  <testcase time="0" classname="logiikka.KasiTest" name="hasAceToimii"/>
-  <testcase time="0" classname="logiikka.KasiTest" name="onValmisToimii"/>
-  <testcase time="0.001" classname="logiikka.KasiTest" name="oikeaDoablesKunEiVoiSplitataUseampiKasi"/>
-  <testcase time="0" classname="logiikka.KasiTest" name="oikeaDoablesKunVoiSplitataUseampiKasi"/>
-  <testcase time="0" classname="logiikka.KasiTest" name="softKasiMuuttuuHardiksiKunLisataanYhdeksan"/>
-  <testcase time="0" classname="logiikka.KasiTest" name="suljettuKasiKunDealer"/>
-  <testcase time="0" classname="logiikka.KasiTest" name="softKasiArvoStringinaOikein"/>
-  <testcase time="0" classname="logiikka.KasiTest" name="nakyvaBlackjackNakyvaAssa"/>
-  <testcase time="0" classname="logiikka.KasiTest" name="getArvoBlackjackeille"/>
-  <testcase time="0.001" classname="logiikka.KasiTest" name="doubledToimii"/>
-  <testcase time="0" classname="logiikka.KasiTest" name="getArvoSoftilleAssanKanssa"/>
-  <testcase time="0" classname="logiikka.KasiTest" name="getArvoBustedille"/>
-  <testcase time="0.006" classname="logiikka.KasiTest" name="compareToToimii">
+  <testcase classname="logiikka.KasiTest" name="onVakuutettuToimii" time="0"/>
+  <testcase classname="logiikka.KasiTest" name="hasAceToimii" time="0.001"/>
+  <testcase classname="logiikka.KasiTest" name="onValmisToimii" time="0"/>
+  <testcase classname="logiikka.KasiTest" name="oikeaDoablesKunEiVoiSplitataUseampiKasi" time="0"/>
+  <testcase classname="logiikka.KasiTest" name="oikeaDoablesKunVoiSplitataUseampiKasi" time="0"/>
+  <testcase classname="logiikka.KasiTest" name="softKasiMuuttuuHardiksiKunLisataanYhdeksan" time="0"/>
+  <testcase classname="logiikka.KasiTest" name="suljettuKasiKunDealer" time="0.001"/>
+  <testcase classname="logiikka.KasiTest" name="softKasiArvoStringinaOikein" time="0"/>
+  <testcase classname="logiikka.KasiTest" name="nakyvaBlackjackNakyvaAssa" time="0.004"/>
+  <testcase classname="logiikka.KasiTest" name="getArvoBlackjackeille" time="0"/>
+  <testcase classname="logiikka.KasiTest" name="doubledToimii" time="0.001"/>
+  <testcase classname="logiikka.KasiTest" name="getArvoSoftilleAssanKanssa" time="0"/>
+  <testcase classname="logiikka.KasiTest" name="getArvoBustedille" time="0"/>
+  <testcase classname="logiikka.KasiTest" name="compareToToimii" time="0.02">
     <failure message="expected:&lt;1&gt; but was:&lt;2&gt;" type="java.lang.AssertionError">java.lang.AssertionError: expected:&lt;1&gt; but was:&lt;2&gt;
 	at org.junit.Assert.fail(Assert.java:88)
 	at org.junit.Assert.failNotEquals(Assert.java:743)
@@ -84,9 +84,9 @@
 	at org.junit.Assert.assertEquals(Assert.java:542)
 	at logiikka.KasiTest.compareToToimii(KasiTest.java:169)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:606)
+	at java.lang.reflect.Method.invoke(Method.java:483)
 	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:47)
 	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
 	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:44)
@@ -105,9 +105,9 @@
 	at org.apache.maven.surefire.junit4.JUnit4Provider.executeTestSet(JUnit4Provider.java:123)
 	at org.apache.maven.surefire.junit4.JUnit4Provider.invoke(JUnit4Provider.java:104)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:606)
+	at java.lang.reflect.Method.invoke(Method.java:483)
 	at org.apache.maven.surefire.util.ReflectionUtils.invokeMethodWithArray(ReflectionUtils.java:164)
 	at org.apache.maven.surefire.booter.ProviderFactory$ProviderProxy.invoke(ProviderFactory.java:110)
 	at org.apache.maven.surefire.booter.SurefireStarter.invokeProvider(SurefireStarter.java:175)
@@ -115,14 +115,14 @@
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:68)
 </failure>
   </testcase>
-  <testcase time="0" classname="logiikka.KasiTest" name="onJakajaToimii"/>
-  <testcase time="0" classname="logiikka.KasiTest" name="oikeaDoablesKunEiVoiSplitataYksiKasi"/>
-  <testcase time="0" classname="logiikka.KasiTest" name="onBlackjackToimii"/>
-  <testcase time="0" classname="logiikka.KasiTest" name="avoinKasiNakyy"/>
-  <testcase time="0.001" classname="logiikka.KasiTest" name="assaEiNay"/>
-  <testcase time="0" classname="logiikka.KasiTest" name="onBustToimii"/>
-  <testcase time="0" classname="logiikka.KasiTest" name="splittableToimii"/>
-  <testcase time="0.001" classname="logiikka.KasiTest" name="oikeaDoablesKunVoiSplitataYksiKasi"/>
-  <testcase time="0" classname="logiikka.KasiTest" name="kasiStringinaToimii"/>
-  <testcase time="0" classname="logiikka.KasiTest" name="oikeaDoablesKunKateenLyoty"/>
+  <testcase classname="logiikka.KasiTest" name="onJakajaToimii" time="0"/>
+  <testcase classname="logiikka.KasiTest" name="oikeaDoablesKunEiVoiSplitataYksiKasi" time="0.001"/>
+  <testcase classname="logiikka.KasiTest" name="onBlackjackToimii" time="0.002"/>
+  <testcase classname="logiikka.KasiTest" name="avoinKasiNakyy" time="0"/>
+  <testcase classname="logiikka.KasiTest" name="assaEiNay" time="0"/>
+  <testcase classname="logiikka.KasiTest" name="onBustToimii" time="0"/>
+  <testcase classname="logiikka.KasiTest" name="splittableToimii" time="0.001"/>
+  <testcase classname="logiikka.KasiTest" name="oikeaDoablesKunVoiSplitataYksiKasi" time="0"/>
+  <testcase classname="logiikka.KasiTest" name="kasiStringinaToimii" time="0"/>
+  <testcase classname="logiikka.KasiTest" name="oikeaDoablesKunKateenLyoty" time="0.001"/>
 </testsuite>

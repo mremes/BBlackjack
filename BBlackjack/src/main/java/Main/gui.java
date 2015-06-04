@@ -67,50 +67,60 @@ public class gui extends javax.swing.JFrame {
         split2Score = new javax.swing.JLabel();
         focusSplit1 = new javax.swing.JLabel();
         focusSplit2 = new javax.swing.JLabel();
+        background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Better Blackjack");
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        setMinimumSize(new java.awt.Dimension(630, 450));
         setPreferredSize(new java.awt.Dimension(630, 430));
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        hit.setIcon(new javax.swing.ImageIcon("/Users/mattiremes/Desktop/BBlackjack/BBlackjack/hit.png")); // NOI18N
         hit.setText("HIT");
+        hit.setBorderPainted(false);
         hit.setEnabled(false);
         hit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 hitActionPerformed(evt);
             }
         });
-        getContentPane().add(hit, new org.netbeans.lib.awtextra.AbsoluteConstraints(319, 356, 99, -1));
+        getContentPane().add(hit, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 360, 99, -1));
 
+        stand.setIcon(new javax.swing.ImageIcon("/Users/mattiremes/Desktop/BBlackjack/BBlackjack/stand.png")); // NOI18N
         stand.setText("STAND");
+        stand.setBorderPainted(false);
         stand.setEnabled(false);
         stand.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 standActionPerformed(evt);
             }
         });
-        getContentPane().add(stand, new org.netbeans.lib.awtextra.AbsoluteConstraints(319, 392, 99, -1));
+        getContentPane().add(stand, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 390, 99, -1));
 
+        dble.setIcon(new javax.swing.ImageIcon("/Users/mattiremes/Desktop/BBlackjack/BBlackjack/double.png")); // NOI18N
         dble.setText("DOUBLE");
+        dble.setBorderPainted(false);
         dble.setEnabled(false);
         dble.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 dbleActionPerformed(evt);
             }
         });
-        getContentPane().add(dble, new org.netbeans.lib.awtextra.AbsoluteConstraints(424, 356, 99, -1));
+        getContentPane().add(dble, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 360, 99, -1));
 
+        split.setIcon(new javax.swing.ImageIcon("/Users/mattiremes/Desktop/BBlackjack/BBlackjack/split.png")); // NOI18N
         split.setText("SPLIT");
         split.setToolTipText("");
+        split.setBorderPainted(false);
         split.setEnabled(false);
         split.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 splitActionPerformed(evt);
             }
         });
-        getContentPane().add(split, new org.netbeans.lib.awtextra.AbsoluteConstraints(424, 392, 99, -1));
+        getContentPane().add(split, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 390, 99, -1));
 
         betsize.setMajorTickSpacing(50);
         betsize.setMaximum(1000);
@@ -124,15 +134,20 @@ public class gui extends javax.swing.JFrame {
         betsize.setVerifyInputWhenFocusTarget(false);
         getContentPane().add(betsize, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 356, -1, 66));
 
+        deal.setIcon(new javax.swing.ImageIcon("/Users/mattiremes/Desktop/BBlackjack/BBlackjack/deal.png")); // NOI18N
         deal.setText("DEAL");
+        deal.setBorderPainted(false);
+        deal.setDefaultCapable(false);
         deal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 dealActionPerformed(evt);
             }
         });
-        getContentPane().add(deal, new org.netbeans.lib.awtextra.AbsoluteConstraints(224, 356, 89, 60));
+        getContentPane().add(deal, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 360, 90, 60));
 
+        exit.setIcon(new javax.swing.ImageIcon("/Users/mattiremes/Desktop/BBlackjack/BBlackjack/exit.png")); // NOI18N
         exit.setText("EXIT");
+        exit.setBorderPainted(false);
         exit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 exitActionPerformed(evt);
@@ -142,37 +157,47 @@ public class gui extends javax.swing.JFrame {
 
         mainCards.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, -50, 5));
         getContentPane().add(mainCards, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, 606, -1));
+        mainCards.setOpaque(false);
 
         dealerCards.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, -50, 5));
         getContentPane().add(dealerCards, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 12, 606, -1));
+        dealerCards.setOpaque(false);
 
         info.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         info.setToolTipText("");
         getContentPane().add(info, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 320, 170, 30));
 
+        mainScore.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        mainScore.setForeground(new java.awt.Color(255, 255, 255));
         mainScore.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         getContentPane().add(mainScore, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 330, 160, 20));
 
+        dealerScore.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        dealerScore.setForeground(new java.awt.Color(255, 255, 255));
         dealerScore.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         getContentPane().add(dealerScore, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 120, 170, 20));
 
+        balance.setFont(new java.awt.Font("Lucida Grande", 3, 14)); // NOI18N
+        balance.setForeground(new java.awt.Color(255, 255, 255));
         balance.setText("Balance: 1000");
         getContentPane().add(balance, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 330, 140, 30));
 
         split1Cards.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, -50, 5));
-        getContentPane().add(split1Cards, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, 250, -1));
+        getContentPane().add(split1Cards, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, 250, -1));
+        split1Cards.setOpaque(false);
 
         split2Cards.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, -50, 5));
-        getContentPane().add(split2Cards, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 180, 220, -1));
+        getContentPane().add(split2Cards, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 210, 220, -1));
+        split2Cards.setOpaque(false);
+
         getContentPane().add(split1Score, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 290, 120, 20));
         getContentPane().add(split2Score, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 290, 120, 20));
-
-        focusSplit1.setIcon(new javax.swing.ImageIcon("/home/ad/fshome4/u4/m/mrremes/Linux/NetBeansProjects/BBlackjack/BBlackjack/down4-512.png")); // NOI18N
         getContentPane().add(focusSplit1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 140, 60, 40));
-        focusSplit1.getAccessibleContext().setAccessibleParent(null);
-
-        focusSplit2.setIcon(new javax.swing.ImageIcon("/home/ad/fshome4/u4/m/mrremes/Linux/NetBeansProjects/BBlackjack/BBlackjack/down4-512.png")); // NOI18N
         getContentPane().add(focusSplit2, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 140, 60, 40));
+
+        background.setIcon(new javax.swing.ImageIcon("/Users/mattiremes/Desktop/BBlackjack/BBlackjack/blackjack_background.png")); // NOI18N
+        background.setPreferredSize(new java.awt.Dimension(640, 430));
+        getContentPane().add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 630, 450));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -353,6 +378,7 @@ public class gui extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel background;
     private javax.swing.JLabel balance;
     private javax.swing.JSlider betsize;
     private javax.swing.JButton dble;
