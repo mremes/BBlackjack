@@ -62,11 +62,11 @@
     <property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="sun.cpu.isalist" value=""/>
   </properties>
-  <testcase classname="logiikka.PelaajaTest" name="negatiivinenVeloitusEiVaikutaBalanceen" time="0.001"/>
+  <testcase classname="logiikka.PelaajaTest" name="negatiivinenVeloitusEiVaikutaBalanceen" time="0"/>
   <testcase classname="logiikka.PelaajaTest" name="balanceSailyyKunVeloitusNolla" time="0"/>
   <testcase classname="logiikka.PelaajaTest" name="eiRahaaOikein" time="0"/>
   <testcase classname="logiikka.PelaajaTest" name="oikeaMaaraRahaa" time="0"/>
-  <testcase classname="logiikka.PelaajaTest" name="negatiivinenLisaysEiVaikutaBalanceen" time="0.001"/>
-  <testcase classname="logiikka.PelaajaTest" name="lisaaRahaaOikein" time="0.001"/>
-  <testcase classname="logiikka.PelaajaTest" name="veloittaaOikein" time="0.001"/>
+  <testcase classname="logiikka.PelaajaTest" name="negatiivinenLisaysEiVaikutaBalanceen" time="0"/>
+  <testcase classname="logiikka.PelaajaTest" name="lisaaRahaaOikein" time="0"/>
+  <testcase classname="logiikka.PelaajaTest" name="veloittaaOikein" time="0"/>
 </testsuite>

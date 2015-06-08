@@ -57,6 +57,10 @@ public class gui extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jInternalFrame1 = new javax.swing.JInternalFrame();
+        jLabel4 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
+        jButton2 = new javax.swing.JButton();
         hit = new javax.swing.JButton();
         stand = new javax.swing.JButton();
         dble = new javax.swing.JButton();
@@ -64,8 +68,10 @@ public class gui extends javax.swing.JFrame {
         betsize = new javax.swing.JSlider();
         deal = new javax.swing.JButton();
         exit = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
         mainCards = new javax.swing.JPanel();
         dealerCards = new javax.swing.JPanel();
+        jButton1 = new javax.swing.JButton();
         mainScore = new javax.swing.JLabel();
         dealerScore = new javax.swing.JLabel();
         balance = new javax.swing.JLabel();
@@ -78,6 +84,9 @@ public class gui extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jCheckBox1 = new javax.swing.JCheckBox();
         jCheckBox2 = new javax.swing.JCheckBox();
+        jLabel2 = new javax.swing.JLabel();
+        jCheckBox3 = new javax.swing.JCheckBox();
+        jCheckBox4 = new javax.swing.JCheckBox();
         background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -86,6 +95,23 @@ public class gui extends javax.swing.JFrame {
         setMinimumSize(new java.awt.Dimension(630, 440));
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jInternalFrame1.setVisible(false);
+        jInternalFrame1.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel4.setText("Amount:");
+        jInternalFrame1.getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 240, 30));
+        jInternalFrame1.getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 10, 80, -1));
+
+        jButton2.setText("OK");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        jInternalFrame1.getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 10, -1, -1));
+
+        getContentPane().add(jInternalFrame1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 170, 250, 80));
 
         hit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttons/hit.png")));
         hit.setBorderPainted(false);
@@ -190,6 +216,11 @@ public class gui extends javax.swing.JFrame {
         exit.setFocusPainted(false);
         exit.setOpaque(false);
 
+        jLabel3.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("Game options");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 10, -1, -1));
+
         mainCards.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, -50, 5));
         getContentPane().add(mainCards, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, 606, -1));
         mainCards.setOpaque(false);
@@ -197,6 +228,14 @@ public class gui extends javax.swing.JFrame {
         dealerCards.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, -50, 5));
         getContentPane().add(dealerCards, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 12, 606, -1));
         dealerCards.setOpaque(false);
+
+        jButton1.setText("DEPOSIT");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, -1, -1));
 
         mainScore.setFont(new java.awt.Font("Droid Sans Fallback", 1, 15)); // NOI18N
         mainScore.setForeground(new java.awt.Color(255, 255, 255));
@@ -240,7 +279,7 @@ public class gui extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Ubuntu", 1, 15)); // NOI18N
         jLabel1.setForeground(java.awt.Color.white);
         jLabel1.setText("BET SIZE");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 345, 70, 40));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(147, 340, 70, 40));
 
         jCheckBox1.setForeground(java.awt.Color.white);
         jCheckBox1.setText("Remember bet size");
@@ -250,11 +289,34 @@ public class gui extends javax.swing.JFrame {
                 jCheckBox1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jCheckBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 10, -1, -1));
+        getContentPane().add(jCheckBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 30, -1, -1));
 
         jCheckBox2.setForeground(java.awt.Color.white);
         jCheckBox2.setText("Strategy practice");
-        getContentPane().add(jCheckBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 30, -1, -1));
+        getContentPane().add(jCheckBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 50, -1, -1));
+
+        jLabel2.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("Sound options");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 70, -1, -1));
+
+        jCheckBox3.setForeground(java.awt.Color.white);
+        jCheckBox3.setText("Mute background");
+        jCheckBox3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox3ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jCheckBox3, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 90, -1, -1));
+
+        jCheckBox4.setForeground(new java.awt.Color(255, 255, 255));
+        jCheckBox4.setText("Mute play sounds");
+        jCheckBox4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox4ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jCheckBox4, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 110, -1, -1));
 
         background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/table/blackjack_background.png")));
         background.setPreferredSize(new java.awt.Dimension(640, 430));
@@ -297,29 +359,35 @@ public class gui extends javax.swing.JFrame {
     }//GEN-LAST:event_hitActionPerformed
 
     private void dealActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dealActionPerformed
-        alusta();
-        aani.deal.play();
-        Kasi k = kierros.getPelaajanKasi();
-        scoreBox.put(k, mainScore);
-        Kasi j = kierros.getJakajanKasi();
-        mainCards.add(new JLabel(new ImageIcon(getClass().getResource("/cards/" + k.getKortti(0).src()))));
-        dealerCards.add(new JLabel(new ImageIcon(getClass().getResource("/cards/back1.png"))));
-        mainCards.add(new JLabel(new ImageIcon(getClass().getResource("/cards/" + k.getKortti(1).src()))));
-        dealerCards.add(new JLabel(new ImageIcon(getClass().getResource("/cards/" + j.getKortti(1).src()))));
-        mainCards.updateUI();
-        dealerCards.updateUI();
-        deal.setEnabled(false);
-        if (!k.isBlackjack()) {
-            playButtons();
-            naytaArvo();
-            if (k.isSplittable()) {
-                split.setEnabled(true);
+        if (pelaaja.getBalance() - betsize.getValue() < 0) {
+            jTextField1.setVisible(false);
+            jLabel4.setText("Deposit more to continue.");
+            jInternalFrame1.setVisible(true);
+        } else {
+            alusta();
+            aani.deal.play();
+            Kasi k = kierros.getPelaajanKasi();
+            scoreBox.put(k, mainScore);
+            Kasi j = kierros.getJakajanKasi();
+            mainCards.add(new JLabel(new ImageIcon(getClass().getResource("/cards/" + k.getKortti(0).src()))));
+            dealerCards.add(new JLabel(new ImageIcon(getClass().getResource("/cards/back1.png"))));
+            mainCards.add(new JLabel(new ImageIcon(getClass().getResource("/cards/" + k.getKortti(1).src()))));
+            dealerCards.add(new JLabel(new ImageIcon(getClass().getResource("/cards/" + j.getKortti(1).src()))));
+            mainCards.updateUI();
+            dealerCards.updateUI();
+            deal.setEnabled(false);
+            if (!k.isBlackjack()) {
+                playButtons();
+                naytaArvo();
+                if (k.isSplittable()) {
+                    split.setEnabled(true);
+                }
+            } else if (k.isBlackjack()) {
+                defaultButtons();
+                jakajanKasi();
+                naytaArvo();
+                vertailu();
             }
-        } else if (k.isBlackjack()) {
-            defaultButtons();
-            jakajanKasi();
-            naytaArvo();
-            vertailu();
         }
     }//GEN-LAST:event_dealActionPerformed
 
@@ -350,65 +418,77 @@ public class gui extends javax.swing.JFrame {
     }//GEN-LAST:event_exitActionPerformed
 
     private void dbleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dbleActionPerformed
-        aani.hit.play();
-        if (!kierros.splitattu()) {
-            kierros.doubl(kierros.getPelaajanKasi());
-            mainCards.add(new JLabel(new ImageIcon(getClass().getResource("/cards/" + kierros.getVikaKortti(kierros.getPelaajanKasi()).src()))));
-        } else if (!kierros.getPelaajanKadet().get(0).isValmis()) {
-            kierros.doubl(kierros.getPelaajanKadet().get(0));
-            split1Cards.add(new JLabel(new ImageIcon(getClass().getResource("/cards/" + kierros.getVikaKortti(kierros.getPelaajanKadet().get(0)).src()))));
-            split1Score.setText(kierros.getPelaajanKadet().get(0).getArvoS());
-            if (kierros.getPelaajanKadet().get(0).isValmis()) {
-                focusSplit1.setVisible(false);
-                focusSplit2.setVisible(true);
+        if (pelaaja.getBalance() - kierros.getPanos() < 0) {
+            jTextField1.setVisible(false);
+            jLabel4.setText("No money for this action.");
+            jInternalFrame1.setVisible(true);
+        } else {
+            aani.hit.play();
+            if (!kierros.splitattu()) {
+                kierros.doubl(kierros.getPelaajanKasi());
+                mainCards.add(new JLabel(new ImageIcon(getClass().getResource("/cards/" + kierros.getVikaKortti(kierros.getPelaajanKasi()).src()))));
+            } else if (!kierros.getPelaajanKadet().get(0).isValmis()) {
+                kierros.doubl(kierros.getPelaajanKadet().get(0));
+                split1Cards.add(new JLabel(new ImageIcon(getClass().getResource("/cards/" + kierros.getVikaKortti(kierros.getPelaajanKadet().get(0)).src()))));
+                split1Score.setText(kierros.getPelaajanKadet().get(0).getArvoS());
+                if (kierros.getPelaajanKadet().get(0).isValmis()) {
+                    focusSplit1.setVisible(false);
+                    focusSplit2.setVisible(true);
+                }
+            } else if (!kierros.getPelaajanKadet().get(1).isValmis()) {
+                kierros.doubl(kierros.getPelaajanKadet().get(1));
+                split2Cards.add(new JLabel(new ImageIcon(getClass().getResource("/cards/" + kierros.getVikaKortti(kierros.getPelaajanKadet().get(1)).src()))));
             }
-        } else if (!kierros.getPelaajanKadet().get(1).isValmis()) {
-            kierros.doubl(kierros.getPelaajanKadet().get(1));
-            split2Cards.add(new JLabel(new ImageIcon(getClass().getResource("/cards/" + kierros.getVikaKortti(kierros.getPelaajanKadet().get(1)).src()))));
-        }
-        if (KierrosUtil.pelaajaValmis(kierros.getPelaajanKadet())) {
-            focusSplit2.setVisible(false);
-            naytaArvo();
-            jakajanKasi();
+            if (KierrosUtil.pelaajaValmis(kierros.getPelaajanKadet())) {
+                focusSplit2.setVisible(false);
+                naytaArvo();
+                jakajanKasi();
+                updateBalance();
+                vertailu();
+                defaultButtons();
+            }
             updateBalance();
-            vertailu();
-            defaultButtons();
         }
-        updateBalance();
     }//GEN-LAST:event_dbleActionPerformed
 
     private void splitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_splitActionPerformed
-        aani.split.play();
-        kierros.split(kierros.getPelaajanKasi());
-        split.setEnabled(false);
-        split1Cards.setVisible(true);
-        split2Cards.setVisible(true);
-        split1Score.setVisible(true);
-        split2Score.setVisible(true);
-        mainCards.setVisible(false);
-        mainScore.setVisible(false);
-        Kasi k1 = kierros.getPelaajanKadet().get(0);
-        Kasi k2 = kierros.getPelaajanKadet().get(1);
-        scoreBox.put(k1, split1Score);
-        scoreBox.put(k2, split2Score);
-        split1Cards.add(new JLabel(new ImageIcon(getClass().getResource("/cards/" + k1.getKortti(0).src()))));
-        split1Cards.add(new JLabel(new ImageIcon(getClass().getResource("/cards/" + k1.getKortti(1).src()))));
-        split2Cards.add(new JLabel(new ImageIcon(getClass().getResource("/cards/" + k2.getKortti(0).src()))));
-        split2Cards.add(new JLabel(new ImageIcon(getClass().getResource("/cards/" + k2.getKortti(1).src()))));
-        split1Score.setText(k1.getArvoS());
-        split2Score.setText(k2.getArvoS());
-        split1Cards.updateUI();
-        split2Cards.updateUI();
-        focusSplit1.setVisible(true);
-        updateBalance();
-
-        if (KierrosUtil.pelaajaValmis(kierros.getPelaajanKadet())) {
-            focusSplit1.setVisible(false);
-            naytaArvo();
-            jakajanKasi();
+        if (pelaaja.getBalance() - kierros.getPanos() < 0) {
+            jTextField1.setVisible(false);
+            jLabel4.setText("No money for this action.");
+            jInternalFrame1.setVisible(true);
+        } else {
+            aani.split.play();
+            kierros.split(kierros.getPelaajanKasi());
+            split.setEnabled(false);
+            split1Cards.setVisible(true);
+            split2Cards.setVisible(true);
+            split1Score.setVisible(true);
+            split2Score.setVisible(true);
+            mainCards.setVisible(false);
+            mainScore.setVisible(false);
+            Kasi k1 = kierros.getPelaajanKadet().get(0);
+            Kasi k2 = kierros.getPelaajanKadet().get(1);
+            scoreBox.put(k1, split1Score);
+            scoreBox.put(k2, split2Score);
+            split1Cards.add(new JLabel(new ImageIcon(getClass().getResource("/cards/" + k1.getKortti(0).src()))));
+            split1Cards.add(new JLabel(new ImageIcon(getClass().getResource("/cards/" + k1.getKortti(1).src()))));
+            split2Cards.add(new JLabel(new ImageIcon(getClass().getResource("/cards/" + k2.getKortti(0).src()))));
+            split2Cards.add(new JLabel(new ImageIcon(getClass().getResource("/cards/" + k2.getKortti(1).src()))));
+            split1Score.setText(k1.getArvoS());
+            split2Score.setText(k2.getArvoS());
+            split1Cards.updateUI();
+            split2Cards.updateUI();
+            focusSplit1.setVisible(true);
             updateBalance();
-            vertailu();
-            defaultButtons();
+
+            if (KierrosUtil.pelaajaValmis(kierros.getPelaajanKadet())) {
+                focusSplit1.setVisible(false);
+                naytaArvo();
+                jakajanKasi();
+                updateBalance();
+                vertailu();
+                defaultButtons();
+            }
         }
     }//GEN-LAST:event_splitActionPerformed
 
@@ -416,6 +496,44 @@ public class gui extends javax.swing.JFrame {
 
 
     }//GEN-LAST:event_jCheckBox1ActionPerformed
+
+    private void jCheckBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox3ActionPerformed
+        aani.bgsound.setMute();
+        if (!jCheckBox3.isSelected()) {
+            aani.bgsound.unmute();
+            aani.bgsound.playLooped();
+        }
+    }//GEN-LAST:event_jCheckBox3ActionPerformed
+
+    private void jCheckBox4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox4ActionPerformed
+        aani.hit.setMute();
+        aani.deal.setMute();
+        aani.split.setMute();
+        aani.result.setMute();
+        if (!jCheckBox4.isSelected()) {
+            aani.hit.unmute();
+            aani.deal.unmute();
+            aani.split.unmute();
+            aani.result.unmute();
+        }
+    }//GEN-LAST:event_jCheckBox4ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        jTextField1.setVisible(true);
+        jButton2.setVisible(true);
+        jLabel4.setText("Amount: ");
+        jInternalFrame1.setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        if (jLabel4.getText().equals("Amount: ")) {
+            pelaaja.lisaaRahaa(Integer.parseInt(jTextField1.getText()));
+            jInternalFrame1.setVisible(false);
+            updateBalance();
+        } else {
+            jInternalFrame1.setVisible(false);
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -464,9 +582,18 @@ public class gui extends javax.swing.JFrame {
     private javax.swing.JLabel focusSplit1;
     private javax.swing.JLabel focusSplit2;
     private javax.swing.JButton hit;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JCheckBox jCheckBox2;
+    private javax.swing.JCheckBox jCheckBox3;
+    private javax.swing.JCheckBox jCheckBox4;
+    private javax.swing.JInternalFrame jInternalFrame1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JTextField jTextField1;
     private javax.swing.JPanel mainCards;
     private javax.swing.JLabel mainScore;
     private javax.swing.JButton split;
@@ -605,7 +732,6 @@ public class gui extends javax.swing.JFrame {
         for (int i = 0; i < jakajanKasi.getKortit().size(); i++) {
             dealerCards.add(new JLabel(new ImageIcon(getClass().getResource("/cards/" + jakajanKasi.getKortti(i).src()))));
         }
-    
 
         dealerCards.updateUI();
         dealerScore.setText(jakajanKasi.getArvoS());
@@ -615,5 +741,5 @@ public class gui extends javax.swing.JFrame {
     public void updateBalance() {
         balance.setText("Balance: " + pelaaja.getBalance());
     }
-    
+
 }
