@@ -83,12 +83,12 @@ public final class Strategy {
     }
 
     public static int y(Kasi pelaaja) {
-        if (pelaaja.getArvoS().contains("/")) {
+        if (pelaaja.getArvoS().length() > 2) {
             int arvo;
             if (pelaaja.nakyvaAssa()) {
-                arvo = pelaaja.getArvo() - pelaaja.getKortti(1).getNumeroarvo();
+                arvo = pelaaja.getArvo() - 10;
             } else {
-                arvo = pelaaja.getArvo() - pelaaja.getKortti(0).getNumeroarvo();
+                arvo = pelaaja.getArvo() - 10;
             }
             if (arvo == 2 || arvo == 3) {
                 return 4;

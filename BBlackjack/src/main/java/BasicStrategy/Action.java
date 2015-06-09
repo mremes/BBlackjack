@@ -3,11 +3,11 @@
 package BasicStrategy;
 
 public enum Action {
-    HIT("hit."),
-    STAND("stand."),
-    DOUBLEH("double or hit."),
-    DOUBLES("double or stand."),
-    SPLIT("split.");
+    HIT("HIT"),
+    STAND("STAND"),
+    DOUBLEH("DOUBLE (or HIT)"),
+    DOUBLES("DOUBLE (or STAND)"),
+    SPLIT("SPLIT");
     
     private final String action;
     
