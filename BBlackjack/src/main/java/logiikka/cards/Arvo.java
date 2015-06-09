@@ -1,7 +1,11 @@
-
 package logiikka.cards;
 
-
+/**
+ * Enum-luokka, joka määrittelee kortin arvon laadun ja numeroarvon Black Jack-
+ * pelissä.
+ *
+ * @author mrremes
+ */
 public enum Arvo {
     KAKKONEN (2, "2"),
     KOLMONEN (3, "3"),
@@ -19,16 +23,32 @@ public enum Arvo {
     
     private final int numeroarvo;
     private final String kirjain;
-    
+    /**
+     * Enum-luokka, joka määrittelee kortin arvon laadun ja numeroarvon Black
+     * Jack- pelissä.
+     *
+     * @author mrremes
+     */
     Arvo(int arvo, String kirjain) {
         this.numeroarvo = arvo;
         this.kirjain = kirjain;
     }
     
     // GETTERIT
+    /**
+     * Palauttaa numeroarvon
+     *
+     * @return numeroarvo kokonaislukuna
+     */
+
     public int getArvo() {
         return numeroarvo;
     }
+    /**
+     * Palauttaa arvon merkkijonona
+     *
+     * @return merkkijono
+     */
     public String getKirjain() {
         return this.kirjain;
     }

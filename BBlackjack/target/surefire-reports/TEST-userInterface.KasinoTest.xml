@@ -62,8 +62,8 @@
     <property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="sun.cpu.isalist" value=""/>
   </properties>
-  <testcase classname="userInterface.KasinoTest" name="soutBalanceToimii" time="0.008"/>
-  <testcase classname="userInterface.KasinoTest" name="pelaajallaTonniAlussa" time="0.001"/>
-  <testcase classname="userInterface.KasinoTest" name="kasinonDepositToimii" time="4.612"/>
+  <testcase classname="userInterface.KasinoTest" name="soutBalanceToimii" time="0.016"/>
+  <testcase classname="userInterface.KasinoTest" name="pelaajallaTonniAlussa" time="0"/>
+  <testcase classname="userInterface.KasinoTest" name="kasinonDepositToimii" time="4.609"/>
   <testcase classname="userInterface.KasinoTest" name="soutExitToimii" time="0"/>
 </testsuite>

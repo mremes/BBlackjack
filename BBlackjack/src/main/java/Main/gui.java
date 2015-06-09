@@ -5,6 +5,8 @@
  */
 package Main;
 
+import BasicStrategy.Strategy;
+import BasicStrategy.Action;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -96,6 +98,9 @@ public class gui extends javax.swing.JFrame {
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jInternalFrame1.setFocusCycleRoot(false);
+        jInternalFrame1.setFocusTraversalKeysEnabled(false);
+        jInternalFrame1.setRequestFocusEnabled(false);
         jInternalFrame1.setVisible(false);
         jInternalFrame1.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -112,6 +117,7 @@ public class gui extends javax.swing.JFrame {
         jInternalFrame1.getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 10, -1, -1));
 
         getContentPane().add(jInternalFrame1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 170, 250, 80));
+        jInternalFrame1.setClosable(true);
 
         hit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttons/hit.png")));
         hit.setBorderPainted(false);
@@ -229,13 +235,17 @@ public class gui extends javax.swing.JFrame {
         getContentPane().add(dealerCards, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 12, 606, -1));
         dealerCards.setOpaque(false);
 
-        jButton1.setText("DEPOSIT");
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttons/deposit.png")));
+        jButton1.setBorderPainted(false);
+        jButton1.setContentAreaFilled(false);
+        jButton1.setFocusPainted(false);
+        jButton1.setInheritsPopupMenu(true);
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, -1, -1));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 35, -1, -1));
 
         mainScore.setFont(new java.awt.Font("Droid Sans Fallback", 1, 15)); // NOI18N
         mainScore.setForeground(new java.awt.Color(255, 255, 255));
@@ -326,11 +336,11 @@ public class gui extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void hitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hitActionPerformed
-        aani.hit.play();
         if (kierros.getPelaajanKasi().isSplittable()) {
             split.setEnabled(false);
         }
         if (!kierros.splitattu()) {
+            aani.hit.play();
             kierros.hit(kierros.getPelaajanKasi());
             dble.setEnabled(false);
             mainCards.add(new JLabel(new ImageIcon(getClass().getResource("/cards/" + kierros.getVikaKortti(kierros.getPelaajanKasi()).src()))));
@@ -527,9 +537,14 @@ public class gui extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         if (jLabel4.getText().equals("Amount: ")) {
-            pelaaja.lisaaRahaa(Integer.parseInt(jTextField1.getText()));
-            jInternalFrame1.setVisible(false);
-            updateBalance();
+            if (jTextField1.getText().matches("[0-9]+")) {
+                pelaaja.lisaaRahaa(Integer.parseInt(jTextField1.getText()));
+                jInternalFrame1.setVisible(false);
+                updateBalance();
+            } else {
+                jTextField1.setText("");
+                jInternalFrame1.setVisible(false);
+            }
         } else {
             jInternalFrame1.setVisible(false);
         }
@@ -740,6 +755,15 @@ public class gui extends javax.swing.JFrame {
 
     public void updateBalance() {
         balance.setText("Balance: " + pelaaja.getBalance());
+    }
+    
+    public void vinkki(Kasi k, Action toiminto) {
+        Action vinkki = Strategy.get(k, kierros.getJakajanKasi());
+        if(vinkki != toiminto) {
+            jLabel4.setText("Advice: " + vinkki);
+            jTextField1.setVisible(false);
+            jInternalFrame1.setVisible(true);
+        }
     }
 
 }

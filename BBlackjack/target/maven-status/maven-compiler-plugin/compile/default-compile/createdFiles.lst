@@ -9,6 +9,7 @@ Main/gui$2.class
 Main/Sound$1.class
 logiikka/cards/Maa.class
 Main/gui$3.class
+BasicStrategy/Strategy.class
 Main/gui$10.class
 Main/gui$9.class
 Main/Sound.class
@@ -25,3 +26,4 @@ Main/gui$6.class
 logiikka/Kierros.class
 Main/gui$5.class
 logiikka/elements/Kasi.class
+BasicStrategy/Action.class

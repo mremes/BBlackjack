@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="24" failures="0" name="logiikka.KasiTest" time="0.047" errors="0" skipped="0">
+<testsuite tests="24" failures="0" name="logiikka.KasiTest" time="0.032" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="/Library/Java/JavaVirtualMachines/jdk1.8.0_31.jdk/Contents/Home/jre/lib"/>
@@ -62,28 +62,28 @@
     <property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="sun.cpu.isalist" value=""/>
   </properties>
-  <testcase classname="logiikka.KasiTest" name="onVakuutettuToimii" time="0.001"/>
+  <testcase classname="logiikka.KasiTest" name="onVakuutettuToimii" time="0"/>
   <testcase classname="logiikka.KasiTest" name="hasAceToimii" time="0"/>
   <testcase classname="logiikka.KasiTest" name="onValmisToimii" time="0"/>
-  <testcase classname="logiikka.KasiTest" name="oikeaDoablesKunEiVoiSplitataUseampiKasi" time="0"/>
+  <testcase classname="logiikka.KasiTest" name="oikeaDoablesKunEiVoiSplitataUseampiKasi" time="0.001"/>
   <testcase classname="logiikka.KasiTest" name="oikeaDoablesKunVoiSplitataUseampiKasi" time="0"/>
-  <testcase classname="logiikka.KasiTest" name="softKasiMuuttuuHardiksiKunLisataanYhdeksan" time="0.001"/>
-  <testcase classname="logiikka.KasiTest" name="suljettuKasiKunDealer" time="0.001"/>
+  <testcase classname="logiikka.KasiTest" name="softKasiMuuttuuHardiksiKunLisataanYhdeksan" time="0.003"/>
+  <testcase classname="logiikka.KasiTest" name="suljettuKasiKunDealer" time="0"/>
   <testcase classname="logiikka.KasiTest" name="softKasiArvoStringinaOikein" time="0"/>
   <testcase classname="logiikka.KasiTest" name="nakyvaBlackjackNakyvaAssa" time="0.001"/>
   <testcase classname="logiikka.KasiTest" name="getArvoBlackjackeille" time="0"/>
-  <testcase classname="logiikka.KasiTest" name="doubledToimii" time="0"/>
+  <testcase classname="logiikka.KasiTest" name="doubledToimii" time="0.001"/>
   <testcase classname="logiikka.KasiTest" name="getArvoSoftilleAssanKanssa" time="0.001"/>
   <testcase classname="logiikka.KasiTest" name="getArvoBustedille" time="0"/>
-  <testcase classname="logiikka.KasiTest" name="compareToToimii" time="0.001"/>
-  <testcase classname="logiikka.KasiTest" name="onJakajaToimii" time="0.001"/>
+  <testcase classname="logiikka.KasiTest" name="compareToToimii" time="0"/>
+  <testcase classname="logiikka.KasiTest" name="onJakajaToimii" time="0"/>
   <testcase classname="logiikka.KasiTest" name="oikeaDoablesKunEiVoiSplitataYksiKasi" time="0.001"/>
-  <testcase classname="logiikka.KasiTest" name="onBlackjackToimii" time="0"/>
+  <testcase classname="logiikka.KasiTest" name="onBlackjackToimii" time="0.001"/>
   <testcase classname="logiikka.KasiTest" name="avoinKasiNakyy" time="0"/>
-  <testcase classname="logiikka.KasiTest" name="assaEiNay" time="0"/>
-  <testcase classname="logiikka.KasiTest" name="onBustToimii" time="0.001"/>
-  <testcase classname="logiikka.KasiTest" name="splittableToimii" time="0.005"/>
+  <testcase classname="logiikka.KasiTest" name="assaEiNay" time="0.001"/>
+  <testcase classname="logiikka.KasiTest" name="onBustToimii" time="0"/>
+  <testcase classname="logiikka.KasiTest" name="splittableToimii" time="0"/>
   <testcase classname="logiikka.KasiTest" name="oikeaDoablesKunVoiSplitataYksiKasi" time="0"/>
   <testcase classname="logiikka.KasiTest" name="kasiStringinaToimii" time="0"/>
-  <testcase classname="logiikka.KasiTest" name="oikeaDoablesKunKateenLyoty" time="0.001"/>
+  <testcase classname="logiikka.KasiTest" name="oikeaDoablesKunKateenLyoty" time="0"/>
 </testsuite>

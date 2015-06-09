@@ -2,29 +2,55 @@ package logiikka.cards;
 
 import logiikka.cards.Arvo;
 
+
 public class Kortti implements Comparable<Kortti> {
     private Maa maa;
     private Arvo arvo;
     
+    /**
+     * Luokka määrittelee pelikortin, jolla on maa ja arvo (Maa- ja Arvo-enumit)
+     * @param maa kortin maa
+     * @param arvo kortin arvo
+     */
     public Kortti(Maa maa, Arvo arvo) {
         this.maa = maa;
         this.arvo = arvo;
     }
     
     // GETTERIT
+    /**
+     * palauttaa kortin Arvo-enumin
+     * @return kortin Arvo-enum
+     */
     public Arvo getArvo() {
         return arvo;
     }
+    /**
+     * palauttaa kortin Maa-enumin
+     * @return kortin Maa-enum
+     */
     public Maa getMaa() {
         return maa;
     }
+     /**
+     * palauttaa kortin numeroarvon
+     * @return 
+     */
     public int getNumeroarvo() {
         return this.arvo.getArvo();
     }
+    /**
+     * palauttaa kortin numeroarvon merkkijonona kaarisulkeiden sisällä
+     * @return kortin numeroarvo Stringinä
+     */
     public String getArvoS() {
         return "(" + getArvo() + ")";
     }
-    
+    /**
+     * palauttaa kortin .png-kuvan tiedostonimen, joka koostuu maan merkkijonosta ja
+     * arvon kirjaimesta sekä .png-päätteestä
+     * @return kortin .png-kuvatiedoston nimi
+     */
     public String src() {
         return this.maa.getNimi() + this.arvo.getKirjain() + ".png";
     }

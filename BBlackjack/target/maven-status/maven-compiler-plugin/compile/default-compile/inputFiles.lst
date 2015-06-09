@@ -1,4 +1,5 @@
 /Users/mattiremes/Desktop/BBlackjack/BBlackjack/src/main/java/logiikka/utilities/Jakaja.java
+/Users/mattiremes/Desktop/BBlackjack/BBlackjack/src/main/java/BasicStrategy/Action.java
 /Users/mattiremes/Desktop/BBlackjack/BBlackjack/src/main/java/Main/Sound.java
 /Users/mattiremes/Desktop/BBlackjack/BBlackjack/src/main/java/logiikka/cards/Korttipakka.java
 /Users/mattiremes/Desktop/BBlackjack/BBlackjack/src/main/java/logiikka/utilities/TulosPrint.java
@@ -9,6 +10,7 @@
 /Users/mattiremes/Desktop/BBlackjack/BBlackjack/src/main/java/logiikka/cards/Arvo.java
 /Users/mattiremes/Desktop/BBlackjack/BBlackjack/src/main/java/logiikka/utilities/KierrosUtil.java
 /Users/mattiremes/Desktop/BBlackjack/BBlackjack/src/main/java/userInterface/KasinoUI.java
+/Users/mattiremes/Desktop/BBlackjack/BBlackjack/src/main/java/BasicStrategy/Strategy.java
 /Users/mattiremes/Desktop/BBlackjack/BBlackjack/src/main/java/logiikka/cards/Maa.java
 /Users/mattiremes/Desktop/BBlackjack/BBlackjack/src/main/java/logiikka/elements/Kasi.java
 /Users/mattiremes/Desktop/BBlackjack/BBlackjack/src/main/java/userInterface/KierrosUI.java

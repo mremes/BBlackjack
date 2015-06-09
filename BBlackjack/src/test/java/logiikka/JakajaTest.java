@@ -76,10 +76,4 @@ public class JakajaTest {
         assertEquals(413, Jakaja.jaljellaKortteja());
         
     }
-    
-    @Test
-    public void counterResetToimii() {
-        Jakaja.resetCounter();
-        assertEquals(0, Jakaja.counter());
-    }
 }

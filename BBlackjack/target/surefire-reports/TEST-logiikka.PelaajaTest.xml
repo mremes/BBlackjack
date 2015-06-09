@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="7" failures="0" name="logiikka.PelaajaTest" time="0.011" errors="0" skipped="0">
+<testsuite tests="7" failures="0" name="logiikka.PelaajaTest" time="0.008" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="/Library/Java/JavaVirtualMachines/jdk1.8.0_31.jdk/Contents/Home/jre/lib"/>
@@ -68,5 +68,5 @@
   <testcase classname="logiikka.PelaajaTest" name="oikeaMaaraRahaa" time="0"/>
   <testcase classname="logiikka.PelaajaTest" name="negatiivinenLisaysEiVaikutaBalanceen" time="0"/>
   <testcase classname="logiikka.PelaajaTest" name="lisaaRahaaOikein" time="0"/>
-  <testcase classname="logiikka.PelaajaTest" name="veloittaaOikein" time="0"/>
+  <testcase classname="logiikka.PelaajaTest" name="veloittaaOikein" time="0.001"/>
 </testsuite>

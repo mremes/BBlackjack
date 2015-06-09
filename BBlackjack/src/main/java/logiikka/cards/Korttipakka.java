@@ -8,6 +8,10 @@ public class Korttipakka {
 
     private Kortti kortit[];
     // KORTTIPAKKA KONSTRUOIDAAN KONSTRUKTORISSA
+    /**
+     * Korttipakka sisältää 52 pelikorttia: 13 korttia neljällä eri maalla. Olio
+     * sisältää nämä kaikki Kortti-oliot taulukossa. Konstruktori konstruoi korttipakan.
+     */
     public Korttipakka() {
         this.kortit = new Kortti[52];
         int i = 0;
@@ -21,11 +25,15 @@ public class Korttipakka {
 
     }
     
-    // PALAUTTAA KORTIT
+    /**
+     * Palauttaa Kortti-oliot taulukossa
+     * @return 
+     */
     public Kortti[] getKortit() {
         return this.kortit;
     }
     // APUMETODI
+    
     public Arvo[] annaArvot() {
         Arvo[] arvot = new Arvo[13];
         for(int i = 0; i < 13; i++) {
