@@ -3,7 +3,10 @@ package logiikka.utilities;
 import java.util.ArrayList;
 import java.util.HashMap;
 import logiikka.elements.Kasi;
-
+/**
+ * Luokka sisältää kierrokseen liittyviä apumetodeja, jotka kertovat käden tilasta.
+ * @author mrremes
+ */
 public class KierrosUtil {
     /**
      * kertoo, ovatko pelaajan kaikki kädet 'poikki' (eli arvo yli 21)

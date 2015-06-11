@@ -8,7 +8,10 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.Timer;
 import sun.audio.*;
-
+/**
+ * Luokka soittaa ääniä.
+ * @author mrremes
+ */
 public class Sound {
 
     private InputStream in;

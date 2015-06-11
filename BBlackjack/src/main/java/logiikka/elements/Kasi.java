@@ -4,7 +4,11 @@ import logiikka.cards.Kortti;
 import logiikka.cards.Arvo;
 import java.util.ArrayList;
 import java.util.Arrays;
-
+/**
+     * Kasi-luokka määrittelee pelikorteista koostuvan käden. Kädessä on oltava
+     * vähintään kaksi Kortti-oliota, jotka määritetään konstruktorissa. Käteen
+     * lisätään uusia Kortti-olioita addKortti-metodilla.
+     */
 public class Kasi implements Comparable<Kasi> {
 
     private ArrayList<Kortti> kortit;
@@ -14,11 +18,9 @@ public class Kasi implements Comparable<Kasi> {
     private boolean doubled;
     private boolean splitted;
     /**
-     * Kasi-luokka määrittelee pelikorteista koostuvan käden. Kädessä on oltava
-     * vähintään kaksi Kortti-oliota, jotka määritetään konstruktorissa. Käteen
-     * lisätään uusia Kortti-olioita addKortti-metodilla.
-     * @param kortti1 pelikäden ensimmäinen kortti (jakajalla: piilossa oleva kortti)
-     * @param kortti2 pelikäden toinen kortti (jakajalla: näkyvä kortti)
+     * Luo käden parametrina annetuista korteista
+     * @param kortti1
+     * @param kortti2 
      */
     public Kasi(Kortti kortti1, Kortti kortti2) {
         this.kortit = new ArrayList();

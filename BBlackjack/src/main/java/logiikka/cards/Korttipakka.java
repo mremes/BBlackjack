@@ -3,15 +3,13 @@ package logiikka.cards;
 import logiikka.cards.Maa;
 import logiikka.cards.Kortti;
 import logiikka.cards.Arvo;
-
-public class Korttipakka {
-
-    private Kortti kortit[];
-    // KORTTIPAKKA KONSTRUOIDAAN KONSTRUKTORISSA
-    /**
+/**
      * Korttipakka sisältää 52 pelikorttia: 13 korttia neljällä eri maalla. Olio
      * sisältää nämä kaikki Kortti-oliot taulukossa. Konstruktori konstruoi korttipakan.
      */
+public class Korttipakka {
+    private Kortti kortit[];
+
     public Korttipakka() {
         this.kortit = new Kortti[52];
         int i = 0;

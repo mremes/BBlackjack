@@ -2,16 +2,16 @@ package logiikka.cards;
 
 import logiikka.cards.Arvo;
 
-
-public class Kortti implements Comparable<Kortti> {
-    private Maa maa;
-    private Arvo arvo;
-    
-    /**
+/**
      * Luokka määrittelee pelikortin, jolla on maa ja arvo (Maa- ja Arvo-enumit)
      * @param maa kortin maa
      * @param arvo kortin arvo
      */
+public class Kortti implements Comparable<Kortti> {
+    private Maa maa;
+    private Arvo arvo;
+    
+    
     public Kortti(Maa maa, Arvo arvo) {
         this.maa = maa;
         this.arvo = arvo;

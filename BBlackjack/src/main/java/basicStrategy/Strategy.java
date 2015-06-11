@@ -1,9 +1,12 @@
-package BasicStrategy;
+package basicStrategy;
 
 import java.util.ArrayList;
 import logiikka.cards.Kortti;
 import logiikka.elements.Kasi;
-
+/**
+ * Luokka sisältää koko perusstrategian ja sen optimaaliset siirrot kaikille käsille
+ * @author mrremes
+ */
 public final class Strategy {
 
     private static Action[][] hardTotals;

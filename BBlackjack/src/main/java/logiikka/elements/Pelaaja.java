@@ -1,16 +1,18 @@
 package logiikka.elements;
 
 import java.util.ArrayList;
-
-public class Pelaaja {
-
-    private int balance;
-    /**
+/**
      * Pelaaja on olio, joka omistaa, panostaa ja tallettaa rahaa. Oliolla on
      * balance, jota voi muokata lisäämällä rahaa ja veloittamalla tililtä
      * rahaa
      *
-     * @param balance
+     */
+public class Pelaaja {
+
+    private int balance;
+    /**
+     * Luo pelaajan ja antaa sille alkusaldoksi parametrina annetun määrän rahaa.
+     * @param balance 
      */
     public Pelaaja(int balance) {
         this.balance = balance;

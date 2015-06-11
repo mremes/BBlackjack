@@ -5,8 +5,8 @@
  */
 package Main;
 
-import BasicStrategy.Strategy;
-import BasicStrategy.Action;
+import basicStrategy.Strategy;
+import basicStrategy.Action;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -35,7 +35,7 @@ public class gui extends javax.swing.JFrame {
     private Strategy strategy;
 
     /**
-     * Creates new form gui
+     * Luo käyttöliittymän.
      */
     public gui() {
         this.pelaaja = new Pelaaja(1000);

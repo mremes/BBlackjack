@@ -1,7 +1,11 @@
 
 
-package BasicStrategy;
+package basicStrategy;
 
+/**
+ * Kuvastaa pelissä tapahtuvia toimintoja
+ * @author mrremes
+ */
 public enum Action {
     HIT("HIT"),
     STAND("STAND"),

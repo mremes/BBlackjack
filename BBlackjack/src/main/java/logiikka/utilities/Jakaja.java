@@ -5,14 +5,14 @@ import logiikka.cards.Korttipakka;
 import logiikka.cards.Kortti;
 import java.util.ArrayList;
 import java.util.Collections;
-
-public class Jakaja {
-    private static int counter;
-    private static ArrayList<Kortti> kortit;
-    /**
+/**
      * Jakaja on olio, joka hallitsee kortteja. Jakaja-oliota käytetään staattisten
      * metodien avulla ja jakajalla on kahdeksan pakkaa käytössään.
      */
+public class Jakaja {
+    private static int counter;
+    private static ArrayList<Kortti> kortit;
+    
     public Jakaja() {
         Jakaja.counter = 0;
         ArrayList<Kortti> kortit1 = new ArrayList();

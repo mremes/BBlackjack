@@ -12,7 +12,6 @@ import logiikka.elements.Kasi;
 import logiikka.elements.Pelaaja;
 import logiikka.utilities.Jakaja;
 import logiikka.utilities.KierrosUtil;
-import logiikka.utilities.TulosPrint;
 
 /**
  * Luokka kuvaa yhtä Black Jack -korttipelin pelattua kierrosta ja sisältää
