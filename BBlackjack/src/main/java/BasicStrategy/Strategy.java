@@ -73,6 +73,9 @@ public final class Strategy {
 
     public static Action get(Kasi pelaaja, Kasi jakaja) {
         if (pelaaja.isSplittable()) {
+            if(pelaaja.isSplitted()) {
+                return hardTotals[y(pelaaja)][x(jakaja)];
+            }
             return pairs[y(pelaaja)][x(jakaja)];
         } else if (pelaaja.getArvoS().contains("/")) {
             return softTotals[y(pelaaja)][x(jakaja)];

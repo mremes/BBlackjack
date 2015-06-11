@@ -50,8 +50,23 @@ public class KorttiTest {
     }
     
     @Test
+    public void vertailuToimiiKunVerrattavaAlempi() {
+        Kortti e = new Kortti(Maa.PATA, Arvo.KOLMONEN);
+        assertEquals(1, e.compareTo(new Kortti(Maa.PATA, Arvo.KAKKONEN)));
+    }
+    @Test
     public void getArvoSToimii() {
         assertEquals("(ASSA)", kortti.getArvoS());
+    }
+    
+    @Test
+    public void srctoimii() {
+        assertEquals("HerttaA.png", kortti.src());
+    }
+    
+    @Test
+    public void hashCodeToimii() {
+        assertEquals(kortti.getNumeroarvo() + kortti.getMaa().hashCode(), kortti.hashCode());
     }
     
 

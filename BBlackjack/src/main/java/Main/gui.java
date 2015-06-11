@@ -370,7 +370,7 @@ public class gui extends javax.swing.JFrame {
                 }
             }
         } else if (!kierros.getPelaajanKadet().get(1).isValmis()) {
-            if (vinkki(kierros.getPelaajanKadet().get(0), Action.HIT)) {
+            if (vinkki(kierros.getPelaajanKadet().get(1), Action.HIT)) {
                 kierros.hit(kierros.getPelaajanKadet().get(1));
                 dble.setEnabled(false);
                 split2Cards.add(new JLabel(new ImageIcon(getClass().getResource("/cards/" + kierros.getVikaKortti(kierros.getPelaajanKadet().get(1)).src()))));
