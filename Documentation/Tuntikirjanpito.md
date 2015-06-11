@@ -20,4 +20,20 @@
 
 26.5.2015 - 10:00 - 13:00 / Lisää testejä
 
-27.5.2015 - 12:00 - 19:45 / Logiikan erotus Kierros-luokasta. Testikattavuuden lisääminen. Ensimmäinen GUI-prototyyppi. 
+27.5.2015 - 12:00 - 19:45 / Logiikan erotus Kierros-luokasta. Testikattavuuden lisääminen. Ensimmäinen GUI-prototyyppi.
+
+28.5.2015 - 12:00 - 18:00 / GUI:n jatkoa (hit- ja stand-toiminnot)
+
+1.6.2015 - 10:00 - 14:00 / lisää GUI:ta (split ja double) + testikattavuuden lisäys
+
+2.6.2015 - 09:00 - 12:00 / lisää GUI:ta (splittauksen hiominen) + uusi luokkakaavio
+
+4.6.2015 - 10:00 - 16:00 / GUI (uudet grafiikat + äänien testaus)
+
+8.6.2015 - 12:00 - 15:00 / Uusia toiminnallisuuksia GUI:hin + luonnostelma strategy advisorista + JavaDoc
+
+9.6.2015 - 10:00 - 18:00 / Sekvenssikaaviot (5kpl), Strategy advisor alkaa olemaan valmis + JavaDoc
+
+11.6.2015 - 15:00 - 16:00  + 18:00 - 20:00 / Rakenteen siistiminen + JavaDocin hiominen
+ 
+
