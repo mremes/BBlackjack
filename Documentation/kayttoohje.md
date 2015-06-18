@@ -22,6 +22,7 @@ strategia-toiminto, joka kertoo optimaalisen siirron kuhunkin tilanteeseen
 
 ### Asetukset
 Game options:
+
 1) Remember bet size - muistaa panoksen
 
 2) Strategy practice - aloittaa strategia-toiminnon. Kun pelaaja tekee siirron, joka ei ole optimaalisen strategian mukainen, ohjelma heittää pop-up-ikkunan, jossa kerrotaan oikea siirto. Jos haluaa välttämättä tehdä 'väärän siirron', niin strategia-toiminnon on oltava pois päältä
