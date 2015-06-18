@@ -39,3 +39,12 @@ T-K    | 10
 A      | 11, kun käden yhteispistemäärä on alle 21 ja 1, kun käden yhteispistemäärä ylittää 21 A:n arvolla 11
 
 Esimerkiksi: A-9 : 20 (11 + 9), A-9-9 : 19 (1 + 9 + 9)
+
+## Sovelluksen rakenne
+Sovellus koostuu GUI:sta (Main-paketissa), kierroslogiikasta (logiikka-paketti), korteista (logiikka.cards-paketti) sekä kierroksen elementeistä eli Käsi-olioista ja Pelaaja-oliosta. Kortteja hallinnoi Jakaja-luokka, jonka staattisilla metodeilla käsketään Jakaja-oliota jakamaan kortteja tai sekoittamaan kortteja.
+
+GUI-sisältää sovelluksen logiikkaa, jotaa yritetään refaktoroida Logiikka-luokkaan seuraavaan releasiin.
+
+Käyttöliittymässä on myös peliäänet sekä taustaäänet, jota hallinnoi Aani-luokka (sounds-paketti). Aani-luokassa on static final-muuttujia, jotka ovat Aani-luokan ilmentymiä. Niillä pystyy hallinnoimaan kaikkia pelin ääniä.
+
+Pelissä on myös strategia-toiminnallisuus, joka kertoo optimaalisen strategian blackjackin pelaamiseen. Sitä hallinnoi strategia-pakkauksessa oleva luokka Strategia. Strategia-luokassa on kolme taulukkoa pehmeille, koville ja parillisille käsille.
